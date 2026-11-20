@@ -195,6 +195,26 @@
   animation: node-halo 3.6s ease-in-out infinite;
 }
 
+/* Resposta do FAQ e banner de cookies surgindo */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+.faq-panel:not([hidden]) {
+  animation: fade-up 0.35s var(--ease-out-quart);
+}
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+}
+.cookie-banner {
+  animation: rise-in 0.45s var(--ease-out-quart);
+}
+
 /* Desliga animações e transições para quem prefere menos movimento */
 @media (prefers-reduced-motion: reduce) {
   .trace-pulse {

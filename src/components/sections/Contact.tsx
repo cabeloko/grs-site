@@ -44,7 +44,7 @@ export function Contact() {
           />
         </Reveal>
 
-        <div className="mt-14 grid gap-6 lg:grid-cols-[minmax(0,1fr)_340px] lg:gap-8">
+        <div className="mt-14 grid grid-cols-[minmax(0,1fr)] gap-6 lg:grid-cols-[minmax(0,1fr)_340px] lg:gap-8">
           <Reveal>
             <Card id={QUOTE_ANCHOR} className="p-6 sm:p-10">
               <QuoteForm />

@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono, Space_Grotesk } from "next/font/google";
+import { CookieConsent } from "@/components/consent/CookieConsent";
+import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { SkipLink } from "@/components/layout/SkipLink";
 import { WhatsAppFloat } from "@/components/layout/WhatsAppFloat";
@@ -55,7 +57,9 @@ export default function RootLayout({
         <SkipLink />
         <Header />
         {children}
+        <Footer />
         <WhatsAppFloat />
+        <CookieConsent />
       </body>
     </html>
   );

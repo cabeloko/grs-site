@@ -183,7 +183,7 @@ export function QuoteForm() {
   const countId = `${fieldId("details")}-count`;
 
   return (
-    <form ref={formRef} onSubmit={onSubmit} noValidate className="grid gap-6 sm:grid-cols-2">
+    <form ref={formRef} onSubmit={onSubmit} noValidate className="grid grid-cols-[minmax(0,1fr)] gap-6 sm:grid-cols-2">
       <Field id={fieldId("name")} label="Nome completo" error={err("name")} className="sm:col-span-2">
         <input
           id={fieldId("name")}
@@ -346,7 +346,7 @@ export function QuoteForm() {
       </Field>
 
       <div className="sm:col-span-2">
-        <Button type="submit" size="lg" className="w-full sm:w-auto">
+        <Button type="submit" size="lg" className="w-full whitespace-normal py-3 text-center sm:w-auto">
           <Send aria-hidden className="size-4" />
           {contactContent.submitLabel}
         </Button>
