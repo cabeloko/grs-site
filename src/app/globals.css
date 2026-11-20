@@ -40,7 +40,7 @@
     monospace;
 
   /* Escala de títulos fluida */
-  --text-display: clamp(2.375rem, 1.6rem + 3.6vw, 4.5rem);
+  --text-display: clamp(2.375rem, 1.55rem + 3vw, 4rem);
   --text-display--line-height: 1.04;
   --text-display--letter-spacing: -0.035em;
   --text-h2: clamp(1.875rem, 1.45rem + 1.9vw, 3rem);
@@ -130,8 +130,81 @@
   mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%);
 }
 
+/* --------------------------------------------------------------------------
+   Animações (apenas transform e opacity / stroke-dashoffset em SVG)
+   -------------------------------------------------------------------------- */
+
+/* Entrada do Hero */
+@keyframes hero-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+@keyframes hero-rise {
+  from {
+    transform: translateY(18px);
+  }
+}
+.hero-in {
+  animation: hero-in 0.8s var(--ease-out-quart) both;
+}
+/* O h1 só desliza (sem opacidade) para não atrasar o LCP */
+.hero-in-rise {
+  animation: hero-rise 0.9s var(--ease-out-quart) both;
+}
+
+/* Pulso de dados percorrendo as trilhas do circuito */
+@keyframes trace-pulse {
+  0% {
+    stroke-dashoffset: 100;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  60%,
+  100% {
+    stroke-dashoffset: -20;
+    opacity: 0;
+  }
+}
+.trace-pulse {
+  stroke-dasharray: 14 120;
+  stroke-dashoffset: 100;
+  opacity: 0;
+  animation: trace-pulse 4.8s cubic-bezier(0.45, 0, 0.2, 1) infinite;
+}
+
+/* Halo dos nós de conexão */
+@keyframes node-halo {
+  0%,
+  100% {
+    opacity: 0.08;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.28;
+    transform: scale(1.35);
+  }
+}
+.node-halo {
+  opacity: 0.12;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: node-halo 3.6s ease-in-out infinite;
+}
+
 /* Desliga animações e transições para quem prefere menos movimento */
 @media (prefers-reduced-motion: reduce) {
+  .trace-pulse {
+    display: none;
+  }
+  .hero-in,
+  .hero-in-rise {
+    animation: none !important;
+  }
+
   *,
   *::before,
   *::after {

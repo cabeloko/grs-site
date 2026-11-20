@@ -6,7 +6,7 @@ type Variant = "primary" | "secondary" | "ghost";
 type Size = "md" | "lg";
 
 const base =
-  "group/btn relative inline-flex min-h-11 items-center justify-center gap-2 rounded-full font-medium " +
+  "group/btn relative inline-flex min-h-11 whitespace-nowrap items-center justify-center gap-2 rounded-full font-medium " +
   "transition-[background-color,border-color,color,box-shadow,transform] duration-200 ease-out " +
   "active:translate-y-px disabled:pointer-events-none disabled:opacity-50 select-none";
 
