@@ -86,13 +86,25 @@ export const solutionsContent = {
   ] satisfies Service[],
 };
 
+export type DifferentialIcon =
+  | "smartphone"
+  | "gauge"
+  | "palette"
+  | "code"
+  | "compass"
+  | "search"
+  | "plug"
+  | "handshake"
+  | "globe";
+
 export type Differential = {
   title: string;
   description: string;
+  icon: DifferentialIcon;
   /** Tamanho no bento grid. */
-  size: "lg" | "md" | "sm";
+  size: "lg" | "md" | "sm" | "wide";
   /** Ilustração opcional exibida no card. */
-  visual?: "responsive" | "performance";
+  visual?: "responsive" | "performance" | "remote";
 };
 
 export const differentialsContent = {
@@ -103,6 +115,7 @@ export const differentialsContent = {
   items: [
     {
       title: "Experiência adaptada ao celular",
+      icon: "smartphone",
       description:
         "Layouts pensados primeiro para telas pequenas e ajustados para tablets e computadores.",
       size: "lg",
@@ -110,6 +123,7 @@ export const differentialsContent = {
     },
     {
       title: "Boas práticas de desempenho",
+      icon: "gauge",
       description:
         "Imagens otimizadas, código enxuto e carregamento rápido para não perder visitantes.",
       size: "md",
@@ -117,40 +131,48 @@ export const differentialsContent = {
     },
     {
       title: "Design moderno e profissional",
+      icon: "palette",
       description: "Visual alinhado à identidade da sua marca.",
       size: "sm",
     },
     {
       title: "Desenvolvimento personalizado",
+      icon: "code",
       description: "Estrutura criada a partir das necessidades do seu negócio.",
       size: "sm",
     },
     {
       title: "Navegação intuitiva",
+      icon: "compass",
       description: "Informações organizadas para o visitante encontrar o que procura.",
       size: "sm",
     },
     {
       title: "Estrutura preparada para SEO",
+      icon: "search",
       description:
         "Base técnica que ajuda os mecanismos de busca a entender seu site.",
       size: "sm",
     },
     {
       title: "Integração com canais de contato",
+      icon: "plug",
       description: "WhatsApp, e-mail e redes sociais a um clique.",
       size: "sm",
     },
     {
       title: "Acompanhamento de cada projeto",
+      icon: "handshake",
       description: "Comunicação próxima do primeiro contato à publicação.",
       size: "sm",
     },
     {
       title: "Atendimento remoto para todo o Brasil",
+      icon: "globe",
       description:
-        "Todo o processo acontece online, onde quer que sua empresa esteja.",
-      size: "md",
+        "Todo o processo acontece on-line, onde quer que sua empresa esteja.",
+      size: "wide",
+      visual: "remote",
     },
   ] satisfies Differential[],
 };
