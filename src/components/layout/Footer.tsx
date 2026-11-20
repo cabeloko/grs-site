@@ -44,7 +44,7 @@ export function Footer() {
 
       <Container className="grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr]">
         <div className="max-w-sm">
-          <Link href="/" aria-label="GRS – Soluções Tecnológicas, página inicial" className="inline-block rounded-lg">
+          <Link href="/" aria-label="GRS – Soluções Tecnológicas, página inicial" className="inline-flex min-h-11 items-center rounded-lg">
             <Logo />
           </Link>
           <p className="mt-5 text-sm leading-relaxed text-muted">{siteConfig.institutional}</p>

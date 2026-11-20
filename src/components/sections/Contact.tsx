@@ -45,11 +45,15 @@ export function Contact() {
         </Reveal>
 
         <div className="mt-14 grid grid-cols-[minmax(0,1fr)] gap-6 lg:grid-cols-[minmax(0,1fr)_340px] lg:gap-8">
-          <Reveal>
-            <Card id={QUOTE_ANCHOR} className="p-6 sm:p-10">
-              <QuoteForm />
-            </Card>
-          </Reveal>
+          {/* A âncora fica fora do Reveal: o deslocamento da animação de
+              entrada alteraria o ponto de rolagem calculado pelo navegador */}
+          <div id={QUOTE_ANCHOR}>
+            <Reveal>
+              <Card className="p-6 sm:p-10">
+                <QuoteForm />
+              </Card>
+            </Reveal>
+          </div>
 
           <Reveal delay={0.1}>
             <aside aria-labelledby="contato-alternativas" className="lg:sticky lg:top-28">

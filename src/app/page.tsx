@@ -6,11 +6,14 @@ import { Hero } from "@/components/sections/Hero";
 import { Portfolio } from "@/components/sections/Portfolio";
 import { Process } from "@/components/sections/Process";
 import { Solutions } from "@/components/sections/Solutions";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { faqJsonLd } from "@/lib/seo";
 
 /** Landing page da GRS. */
 export default function Home() {
   return (
     <main id="conteudo" tabIndex={-1} className="outline-none">
+      <JsonLd data={faqJsonLd()} />
       <Hero />
       {/* Fio condutor: a trilha do Hero desce até a primeira seção */}
       <CircuitConnector className="relative -my-16 lg:-my-20" />

@@ -115,7 +115,7 @@ export function Header() {
       <Container className="flex h-header items-center justify-between gap-6">
         <a
           href={isHome ? "#inicio" : "/"}
-          className="-m-1 rounded-lg p-1"
+          className="-mx-1 flex min-h-11 items-center rounded-lg px-1"
           aria-label="GRS – Soluções Tecnológicas, ir para o início"
           onClick={() => open && close(false)}
         >

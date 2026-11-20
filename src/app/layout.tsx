@@ -6,7 +6,9 @@ import { Header } from "@/components/layout/Header";
 import { SkipLink } from "@/components/layout/SkipLink";
 import { WhatsAppFloat } from "@/components/layout/WhatsAppFloat";
 import { siteConfig } from "@/config/site";
+import { organizationJsonLd, seoKeywords, websiteJsonLd } from "@/lib/seo";
 import { getSiteUrl } from "@/lib/site-url";
+import { JsonLd } from "@/components/seo/JsonLd";
 import "./globals.css";
 
 // Fontes auto-hospedadas pelo next/font (sem requisições ao Google no navegador)
@@ -30,7 +32,9 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
-// Metadados básicos. SEO completo é configurado na etapa 7.
+const gscVerification = process.env.NEXT_PUBLIC_GSC_VERIFICATION?.trim();
+
+// Metadados globais. A imagem Open Graph vem de app/opengraph-image.tsx.
 export const metadata: Metadata = {
   metadataBase: new URL(getSiteUrl()),
   title: {
@@ -38,6 +42,32 @@ export const metadata: Metadata = {
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
+  applicationName: siteConfig.name,
+  keywords: seoKeywords,
+  authors: [{ name: siteConfig.name }],
+  creator: siteConfig.name,
+  publisher: siteConfig.name,
+  alternates: { canonical: "/" },
+  formatDetection: { telephone: false, email: false, address: false },
+  openGraph: {
+    type: "website",
+    locale: siteConfig.locale,
+    url: "/",
+    siteName: siteConfig.name,
+    title: `${siteConfig.name} | Criação de sites profissionais`,
+    description: siteConfig.description,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${siteConfig.name} | Criação de sites profissionais`,
+    description: siteConfig.description,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large" },
+  },
+  ...(gscVerification ? { verification: { google: gscVerification } } : {}),
 };
 
 export const viewport: Viewport = {
@@ -54,6 +84,8 @@ export default function RootLayout({
       className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable}`}
     >
       <body className="min-h-dvh bg-bg font-sans text-fg antialiased">
+        <JsonLd data={organizationJsonLd()} />
+        <JsonLd data={websiteJsonLd()} />
         <SkipLink />
         <Header />
         {children}
