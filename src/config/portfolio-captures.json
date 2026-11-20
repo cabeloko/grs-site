@@ -1,0 +1,24 @@
+{
+  "fabiola-oliveira-advocacia": {
+    "capturedAt": "2026-11-20",
+    "desktop": {
+      "width": 1440,
+      "height": 2400
+    },
+    "mobile": {
+      "width": 780,
+      "height": 4800
+    }
+  },
+  "vinicius-goulart-personal-trainer": {
+    "capturedAt": "2026-11-20",
+    "desktop": {
+      "width": 1440,
+      "height": 2400
+    },
+    "mobile": {
+      "width": 780,
+      "height": 4800
+    }
+  }
+}

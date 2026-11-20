@@ -42,6 +42,13 @@ export const CAPTURE_VIEWPORTS = {
   mobile: { width: 390, height: 844 },
 } as const;
 
+/** Dimensões de cada captura, gravadas pelo script em portfolio-captures.json. */
+type Size = { width: number; height: number };
+export type CaptureManifest = Record<
+  string,
+  { capturedAt: string; desktop: Size; mobile: Size }
+>;
+
 export function portfolioImagePath(
   slug: string,
   variant: keyof typeof CAPTURE_VIEWPORTS,
