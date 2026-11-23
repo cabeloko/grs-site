@@ -72,7 +72,7 @@ function ProjectCard({ project, index }: { project: PortfolioProject; index: num
             {capture ? (
               <Image
                 src={portfolioImagePath(project.slug, "desktop")}
-                alt={`Página inicial do site ${project.name} em um computador`}
+                alt={`${project.name}: página inicial na versão para computador`}
                 width={capture.desktop.width}
                 height={capture.desktop.height}
                 sizes="(min-width: 1200px) 560px, (min-width: 1024px) 45vw, 92vw"

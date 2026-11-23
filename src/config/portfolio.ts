@@ -19,16 +19,17 @@ export type PortfolioProject = {
 
 export const portfolioProjects: PortfolioProject[] = [
   {
-    slug: "fabiola-oliveira-advocacia",
-    name: "Fabiola Oliveira Advocacia",
+    slug: "escritorio-de-advocacia",
+    // Título genérico: não exibir o nome do cliente
+    name: "Site para escritório de advocacia",
     url: "https://fabiolaoliveiraadv.vercel.app",
     category: "Site institucional / Advocacia",
     description:
       "Desenvolvimento de presença digital profissional para serviços jurídicos, com apresentação das áreas de atuação e facilidade de contato.",
   },
   {
-    slug: "vinicius-goulart-personal-trainer",
-    name: "Vinícius Goulart – Personal Trainer",
+    slug: "personal-trainer",
+    name: "Site para personal trainer",
     url: "https://v0-viniciusgoulart.vercel.app",
     category: "Site profissional / Saúde e bem-estar",
     description:
