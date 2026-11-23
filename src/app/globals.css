@@ -215,8 +215,35 @@
   animation: rise-in 0.45s var(--ease-out-quart);
 }
 
+/* Aura do botão flutuante de WhatsApp */
+@keyframes wa-aura {
+  0% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+  70% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.85);
+  }
+}
+.wa-aura {
+  animation: wa-aura 2.6s cubic-bezier(0.22, 0.61, 0.36, 1) infinite;
+  will-change: transform, opacity;
+}
+/* Sem custo de animação enquanto o botão está oculto */
+.wa-float[data-hidden] .wa-aura {
+  animation-play-state: paused;
+  opacity: 0;
+}
+
 /* Desliga animações e transições para quem prefere menos movimento */
 @media (prefers-reduced-motion: reduce) {
+  .wa-aura {
+    display: none;
+  }
   .trace-pulse {
     display: none;
   }

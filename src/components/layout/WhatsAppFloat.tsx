@@ -51,14 +51,26 @@ export function WhatsAppFloat() {
       aria-label="Conversar com a GRS pelo WhatsApp (abre em nova aba)"
       aria-hidden={hidden || undefined}
       tabIndex={hidden ? -1 : undefined}
+      data-hidden={hidden || undefined}
       className={cn(
-        "fixed right-4 bottom-[max(1rem,env(safe-area-inset-bottom))] z-40 flex size-13 items-center justify-center rounded-full sm:right-6 sm:bottom-6",
-        "bg-[#25D366] text-[#052e16] shadow-[0_10px_30px_-8px_rgb(37_211_102/0.55)]",
-        "transition-[opacity,transform] duration-300 ease-out-quart hover:-translate-y-0.5 hover:shadow-[0_14px_36px_-8px_rgb(37_211_102/0.7)]",
+        "wa-float group fixed right-4 bottom-[max(1rem,env(safe-area-inset-bottom))] z-40 size-14 rounded-full sm:right-6 sm:bottom-6",
+        "transition-[opacity,transform] duration-300 ease-out-quart",
         hidden ? "pointer-events-none translate-y-4 opacity-0" : "translate-y-0 opacity-100",
       )}
     >
-      <WhatsAppIcon className="size-6" />
+      {/* Aura: dois anéis que se expandem e desaparecem, defasados para um
+          pulso contínuo. Só transform/opacity; pausa quando oculto. */}
+      <span aria-hidden className="wa-aura absolute inset-0 rounded-full bg-[#25D366]" />
+      <span
+        aria-hidden
+        className="wa-aura absolute inset-0 rounded-full bg-[#25D366]"
+        style={{ animationDelay: "1.3s" }}
+      />
+
+      {/* Botão: verde oficial do WhatsApp com o glifo branco */}
+      <span className="relative flex size-full items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_8px_24px_-6px_rgb(37_211_102/0.6),inset_0_1px_0_rgb(255_255_255/0.25)] transition-transform duration-300 ease-out-quart group-hover:scale-[1.07] group-active:scale-95">
+        <WhatsAppIcon className="size-7" />
+      </span>
     </a>
   );
 }
