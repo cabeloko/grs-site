@@ -1,9 +1,14 @@
 /**
- * Projetos do portfólio.
+ * Modelos de site exibidos na seção "Modelos de site".
  *
- * Para adicionar um projeto:
- * 1. Inclua um novo item nesta lista com um `slug` único.
- * 2. Rode `npm run capture` para gerar as capturas em `public/portfolio/`.
+ * Para adicionar um modelo:
+ * 1. Prepare o HTML:  npm run modelo -- <arquivo.html> <slug>
+ *    (copia para public/modelos/<slug>.html com aviso de demonstração e noindex)
+ * 2. Inclua um item nesta lista com o mesmo `slug` e url "/modelos/<slug>.html".
+ * 3. Rode `npm run capture` para gerar as capturas em `public/portfolio/`.
+ *
+ * `url` pode ser um caminho deste site ("/modelos/...") ou um endereço
+ * externo ("https://..."), caso volte a exibir projetos publicados.
  *
  * Os caminhos das imagens são derivados do slug:
  *   /portfolio/<slug>-desktop.webp e /portfolio/<slug>-mobile.webp
@@ -19,21 +24,44 @@ export type PortfolioProject = {
 
 export const portfolioProjects: PortfolioProject[] = [
   {
-    slug: "escritorio-de-advocacia",
-    // Título genérico: não exibir o nome do cliente
-    name: "Site para escritório de advocacia",
-    url: "https://fabiolaoliveiraadv.vercel.app",
-    category: "Site institucional / Advocacia",
+    slug: "estudio-de-fotografia",
+    name: "Site para estúdio de fotografia",
+    url: "/modelos/estudio-de-fotografia.html",
+    category: "Modelo · Fotografia",
     description:
-      "Desenvolvimento de presença digital profissional para serviços jurídicos, com apresentação das áreas de atuação e facilidade de contato.",
+      "Galeria em mosaico, pacotes com valores, etapas do ensaio, depoimentos e formulário que envia o pedido pelo WhatsApp.",
   },
   {
-    slug: "personal-trainer",
-    name: "Site para personal trainer",
-    url: "https://v0-viniciusgoulart.vercel.app",
-    category: "Site profissional / Saúde e bem-estar",
+    slug: "nail-designer",
+    name: "Site para nail designer",
+    url: "/modelos/nail-designer.html",
+    category: "Modelo · Beleza e estética",
     description:
-      "Site para apresentação de serviços de treinamento personalizado, com informações sobre modalidades de atendimento e contato integrado.",
+      "Tabela de serviços organizada em abas, galeria de trabalhos, cuidados com higiene, horários e agendamento pelo WhatsApp.",
+  },
+  {
+    slug: "escola-de-musica",
+    name: "Site para escola de música",
+    url: "/modelos/escola-de-musica.html",
+    category: "Modelo · Educação",
+    description:
+      "Aulas por instrumento com mensalidades, trilha de evolução do aluno, galeria da escola e pedido de aula experimental.",
+  },
+  {
+    slug: "nutricionista",
+    name: "Site para nutricionista",
+    url: "/modelos/nutricionista.html",
+    category: "Modelo · Saúde e bem-estar",
+    description:
+      "Apresentação da profissional, passo a passo da consulta, especialidades, planos de acompanhamento, mapa e agendamento.",
+  },
+  {
+    slug: "psicologa",
+    name: "Site para psicóloga",
+    url: "/modelos/psicologa.html",
+    category: "Modelo · Saúde mental",
+    description:
+      "Temas atendidos, formação, abordagem explicada em linguagem simples e primeira sessão, seguindo as regras de divulgação do CFP.",
   },
 ];
 
@@ -55,4 +83,9 @@ export function portfolioImagePath(
   variant: keyof typeof CAPTURE_VIEWPORTS,
 ) {
   return `/portfolio/${slug}-${variant}.webp`;
+}
+
+/** true quando o item aponta para uma página deste próprio site. */
+export function isInternalUrl(url: string) {
+  return url.startsWith("/") && !url.startsWith("//");
 }

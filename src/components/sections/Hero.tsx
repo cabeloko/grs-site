@@ -57,7 +57,7 @@ export function Hero() {
                 className="size-4 transition-transform duration-200 group-hover/btn:translate-x-0.5"
               />
             </ButtonLink>
-            <ButtonLink href="#portfolio" variant="secondary" size="lg">
+            <ButtonLink href="#modelos" variant="secondary" size="lg">
               {heroContent.secondaryCta}
             </ButtonLink>
           </div>

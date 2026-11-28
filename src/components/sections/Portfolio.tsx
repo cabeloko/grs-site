@@ -1,4 +1,4 @@
-import { ArrowUpRight, ImageOff } from "lucide-react";
+import { ArrowUpRight, ImageOff, Info } from "lucide-react";
 import Image from "next/image";
 import type { CSSProperties } from "react";
 import { Reveal } from "@/components/motion/Reveal";
@@ -9,12 +9,14 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { portfolioContent } from "@/config/content";
 import {
   CAPTURE_VIEWPORTS,
+  isInternalUrl,
   portfolioImagePath,
   portfolioProjects,
   type CaptureManifest,
   type PortfolioProject,
 } from "@/config/portfolio";
 import captures from "@/config/portfolio-captures.json";
+import { getSiteUrl } from "@/lib/site-url";
 
 const manifest = captures as CaptureManifest;
 
@@ -31,7 +33,12 @@ function scrollPercent(width: number, height: number, ratio: number) {
   return Math.max(0, (1 - visible / height) * 100);
 }
 
-function hostname(url: string) {
+/**
+ * Texto da barra de endereço da moldura: domínio externo, ou o domínio deste
+ * site + caminho quando o item é uma página interna (ex.: um modelo).
+ */
+function displayUrl(url: string) {
+  if (isInternalUrl(url)) return `${new URL(getSiteUrl()).host}${url}`;
   return new URL(url).hostname;
 }
 
@@ -61,7 +68,7 @@ function ProjectCard({ project, index }: { project: PortfolioProject; index: num
               <span className="size-2.5 rounded-full bg-white/15" />
             </span>
             <span className="min-w-0 flex-1 truncate rounded-full bg-white/[0.04] px-3 py-1 text-center font-mono text-[0.6875rem] text-subtle">
-              {hostname(project.url)}
+              {displayUrl(project.url)}
             </span>
           </div>
 
@@ -75,7 +82,7 @@ function ProjectCard({ project, index }: { project: PortfolioProject; index: num
                 alt={`${project.name}: página inicial na versão para computador`}
                 width={capture.desktop.width}
                 height={capture.desktop.height}
-                sizes="(min-width: 1200px) 560px, (min-width: 1024px) 45vw, 92vw"
+                sizes="(min-width: 1280px) 370px, (min-width: 768px) 46vw, 92vw"
                 className="h-auto w-full transition-transform duration-[4500ms] ease-in-out motion-safe:group-hover:[transform:translateY(var(--scroll-desktop))]"
               />
             ) : (
@@ -115,11 +122,11 @@ function ProjectCard({ project, index }: { project: PortfolioProject; index: num
         </p>
         <h3
           id={`projeto-${project.slug}`}
-          className="mt-3 text-2xl font-semibold text-fg"
+          className="mt-3 text-xl font-semibold text-fg sm:text-2xl xl:text-xl"
         >
           {project.name}
         </h3>
-        <p className="mt-3 max-w-lg leading-relaxed text-muted">
+        <p className="mt-3 max-w-lg text-[0.9375rem] leading-relaxed text-muted">
           {project.description}
         </p>
       </div>
@@ -153,11 +160,11 @@ function PendingCapture() {
 
 export function Portfolio() {
   return (
-    <Section id="portfolio" labelledBy="portfolio-title">
+    <Section id="modelos" labelledBy="modelos-title">
       <Container>
         <Reveal>
           <SectionHeading
-            id="portfolio-title"
+            id="modelos-title"
             index="03"
             eyebrow={portfolioContent.eyebrow}
             title={portfolioContent.title}
@@ -165,13 +172,19 @@ export function Portfolio() {
           />
         </Reveal>
 
-        <ul className="mt-14 grid gap-16 lg:grid-cols-2 lg:gap-10">
+        {/* minmax(0,1fr): a coluna não cresce com o endereço longo da moldura */}
+        <ul className="mt-14 grid grid-cols-[minmax(0,1fr)] gap-x-8 gap-y-16 md:grid-cols-2 xl:grid-cols-3">
           {portfolioProjects.map((project, i) => (
-            <Reveal as="li" key={project.slug} delay={i * 0.1}>
+            <Reveal as="li" key={project.slug} delay={(i % 3) * 0.08}>
               <ProjectCard project={project} index={i} />
             </Reveal>
           ))}
         </ul>
+
+        <p className="mt-14 flex max-w-3xl items-start gap-3 text-sm leading-relaxed text-subtle">
+          <Info aria-hidden className="mt-0.5 size-4 shrink-0" />
+          {portfolioContent.disclaimer}
+        </p>
       </Container>
     </Section>
   );

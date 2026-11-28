@@ -13,7 +13,7 @@ Motion · Lucide · Vitest · Playwright (apenas desenvolvimento).
 1. [Requisitos](#requisitos)
 2. [Instalação e execução local](#instalação-e-execução-local)
 3. [Editar o conteúdo](#editar-o-conteúdo)
-4. [Portfólio: adicionar projetos e regerar capturas](#portfólio-adicionar-projetos-e-regerar-capturas)
+4. [Modelos de site: adicionar modelos e regerar capturas](#modelos-de-site-adicionar-modelos-e-regerar-capturas)
 5. [Variáveis de ambiente](#variáveis-de-ambiente)
 6. [Deploy na Vercel](#deploy-na-vercel)
 7. [Domínio próprio](#domínio-próprio)
@@ -44,7 +44,8 @@ npm run dev            # http://localhost:3000
 | `npm run lint`       | ESLint                                                          |
 | `npm run typecheck`  | TypeScript (`tsc --noEmit`)                                     |
 | `npm run test`       | Testes unitários (Vitest): mensagem do WhatsApp e telefone      |
-| `npm run capture`    | Captura as telas do portfólio (Playwright, manual)              |
+| `npm run modelo`     | Prepara um modelo HTML para a seção "Modelos de site"           |
+| `npm run capture`    | Captura as telas dos modelos (Playwright, manual)               |
 | `npm run icons`      | Regera favicon e ícones a partir do símbolo da marca            |
 
 ## Editar o conteúdo
@@ -55,7 +56,7 @@ Todo o conteúdo editável fica em **`src/config/`**. Não é preciso mexer nos 
 | ------------------------- | --------------------------------------------------------------------------------------------- |
 | `site.ts`                 | Nome, slogan, descrição, WhatsApp, e-mail, mensagem padrão do WhatsApp, **redes sociais**, CNPJ/CPF, data da política, itens do menu |
 | `content.ts`              | Textos do Hero, Soluções, Diferenciais, Como funciona, Portfólio, Contato e **FAQ**           |
-| `portfolio.ts`            | Projetos do portfólio                                                                         |
+| `portfolio.ts`            | Modelos de site exibidos na seção "Modelos" (título, categoria, descrição e endereço)        |
 | `portfolio-captures.json` | Gerado pelo script de captura (não editar à mão)                                              |
 | `form.ts`                 | Opções dos campos do formulário de orçamento e limites                                        |
 
@@ -69,24 +70,45 @@ Regras importantes:
 - **Logotipo:** o símbolo está em `src/components/brand/logo-mark.ts` e o logotipo completo em
   `src/components/brand/Logo.tsx`. Depois de trocar o símbolo, rode `npm run icons`.
 
-## Portfólio: adicionar projetos e regerar capturas
+## Modelos de site: adicionar modelos e regerar capturas
 
-1. Adicione o projeto em `src/config/portfolio.ts` (com `slug` único, nome, URL, categoria e descrição).
-2. Rode as capturas (precisa de acesso à internet):
+Os modelos são páginas HTML de arquivo único, publicadas em `public/modelos/` e abertas pelo botão
+"Ver modelo" (ex.: `/modelos/psicologa.html`).
+
+1. Prepare o arquivo HTML do modelo:
 
    ```bash
-   npm run capture                 # todos os projetos
-   npm run capture -- <slug>       # apenas um projeto
+   npm run modelo -- caminho/do/arquivo.html <slug>
    ```
 
-   O script usa Playwright para capturar cada site em desktop (1440x900) e mobile (390x844),
-   salva os arquivos WebP em `public/portfolio/` e atualiza `src/config/portfolio-captures.json`
-   com as dimensões das imagens.
-3. Revise as imagens e faça commit de `public/portfolio/` e do manifesto.
+   O script copia o arquivo para `public/modelos/<slug>.html` e adiciona:
+   - `<meta name="robots" content="noindex">`, para que os negócios fictícios dos modelos não
+     apareçam no Google com o seu domínio;
+   - um selo fixo "Modelo de demonstração · dados fictícios" com link de volta para a GRS.
 
-O script **nunca** roda no build da Vercel. Se alguma página ou recurso falhar ao carregar,
-ele encerra com erro e não gera imagem substituta. Enquanto um projeto não tiver captura, o card
-mostra "Captura pendente". Para usar outro Chromium, defina `PLAYWRIGHT_CHROMIUM_PATH`.
+   Pode ser rodado de novo sobre o mesmo arquivo sem duplicar nada.
+2. Cadastre o modelo em `src/config/portfolio.ts` (mesmo `slug`, título, categoria, descrição e
+   `url: "/modelos/<slug>.html"`).
+3. Gere as capturas (precisa de acesso à internet para fontes e fotos):
+
+   ```bash
+   npm run capture                 # todos os modelos
+   npm run capture -- <slug>       # apenas um
+   ```
+
+   O script usa Playwright para capturar cada página em desktop (1440x900) e mobile (390x844),
+   salva os arquivos WebP em `public/portfolio/` e atualiza `src/config/portfolio-captures.json`.
+   Os modelos em `public/modelos/` são abertos direto do arquivo, sem servidor. O selo de
+   demonstração é ocultado só na captura.
+4. Revise as imagens e faça commit de `public/modelos/`, `public/portfolio/` e do manifesto.
+
+Para remover um modelo, apague o item de `portfolio.ts`, o arquivo em `public/modelos/` e as duas
+imagens em `public/portfolio/`. O campo `url` também aceita endereços externos (`https://...`),
+caso queira voltar a exibir sites publicados.
+
+O script de captura **nunca** roda no build da Vercel. Se alguma página ou recurso falhar ao
+carregar, ele encerra com erro e não gera imagem substituta. Enquanto um item não tiver captura, o
+card mostra "Captura pendente". Para usar outro Chromium, defina `PLAYWRIGHT_CHROMIUM_PATH`.
 Na primeira execução local, instale o navegador:
 
 ```bash
@@ -165,9 +187,10 @@ Comportamento:
 
 ```
 assets/fonts/            Fontes TTF usadas só na imagem Open Graph
-public/portfolio/        Capturas do portfólio (geradas por npm run capture)
+public/modelos/          Modelos de site em HTML (preparados por npm run modelo)
+public/portfolio/        Capturas dos modelos (geradas por npm run capture)
 public/icons/            Ícones do manifesto (gerados por npm run icons)
-scripts/                 capture-portfolio.ts, generate-icons.ts
+scripts/                 add-template.ts, capture-portfolio.ts, generate-icons.ts
 src/app/                 Rotas, layout, metadados, OG image, sitemap, robots, manifest
 src/components/
   brand/                 Logo, símbolo e ícone de WhatsApp

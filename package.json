@@ -11,7 +11,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "icons": "tsx scripts/generate-icons.ts",
-    "capture": "tsx scripts/capture-portfolio.ts"
+    "capture": "tsx scripts/capture-portfolio.ts",
+    "modelo": "tsx scripts/add-template.ts"
   },
   "dependencies": {
     "lucide-react": "^1.77.0",

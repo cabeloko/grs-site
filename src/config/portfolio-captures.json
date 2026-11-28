@@ -1,6 +1,6 @@
 {
-  "escritorio-de-advocacia": {
-    "capturedAt": "2026-11-20",
+  "estudio-de-fotografia": {
+    "capturedAt": "2026-11-28",
     "desktop": {
       "width": 1440,
       "height": 2400
@@ -10,8 +10,41 @@
       "height": 4800
     }
   },
-  "personal-trainer": {
-    "capturedAt": "2026-11-20",
+  "nail-designer": {
+    "capturedAt": "2026-11-28",
+    "desktop": {
+      "width": 1440,
+      "height": 2400
+    },
+    "mobile": {
+      "width": 780,
+      "height": 4800
+    }
+  },
+  "escola-de-musica": {
+    "capturedAt": "2026-11-28",
+    "desktop": {
+      "width": 1440,
+      "height": 2400
+    },
+    "mobile": {
+      "width": 780,
+      "height": 4800
+    }
+  },
+  "nutricionista": {
+    "capturedAt": "2026-11-28",
+    "desktop": {
+      "width": 1440,
+      "height": 2400
+    },
+    "mobile": {
+      "width": 780,
+      "height": 4800
+    }
+  },
+  "psicologa": {
+    "capturedAt": "2026-11-28",
     "desktop": {
       "width": 1440,
       "height": 2400

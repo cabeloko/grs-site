@@ -54,7 +54,7 @@ export const navItems = [
   { id: "inicio", label: "Início" },
   { id: "solucoes", label: "Soluções" },
   { id: "diferenciais", label: "Diferenciais" },
-  { id: "portfolio", label: "Portfólio" },
+  { id: "modelos", label: "Modelos" },
   { id: "como-funciona", label: "Como funciona" },
   { id: "contato", label: "Contato" },
 ] as const;

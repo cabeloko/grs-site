@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<!--
+=====================================================================
+  GUIA RÁPIDO DE EDIÇÃO — Template "Psicóloga Helena Duarte"
+=====================================================================
+  Tudo fica neste único arquivo. Abra no VS Code (ou Bloco de Notas)
+  e use Ctrl+F para achar as palavras em MAIÚSCULAS abaixo.
+
+  1) CORES ........ procure ":root" (logo no início do <style>).
+                    Troque os códigos (#5b6d55 etc.). Cada linha tem
+                    um comentário dizendo onde a cor aparece.
+  2) FONTES ....... também no ":root" (--fonte-titulo, --fonte-texto).
+                    Se trocar a fonte, troque também o link do Google
+                    Fonts dentro do <head>.
+  3) WHATSAPP ..... procure "const CONFIG" (no final do arquivo).
+                    Troque o número UMA vez só: todos os botões do
+                    site se atualizam sozinhos. Formato: 55 + DDD +
+                    número, só números. Ex.: '5511987654321'.
+                    Para mudar a mensagem de um botão específico,
+                    edite o atributo data-msg="..." dele.
+  4) CRP .......... também no CONFIG (campo "crp"). Ele aparece no
+                    topo, no hero, na seção de formação e no rodapé.
+                    O número de CRP é OBRIGATÓRIO em toda divulgação.
+  5) TEXTOS ....... edite direto no HTML. Cada parte do site começa
+                    com um comentário "===== SEÇÃO: NOME =====".
+  6) FOTOS ........ procure "TROQUE:". Troque o endereço do src="..."
+                    pela sua foto (pode ser um arquivo na mesma pasta,
+                    ex.: src="minha-foto.jpg") e ajuste o alt="...".
+  7) ENDEREÇO/MAPA  no CONFIG (campo "endereco"). O mapa se ajusta
+                    sozinho. Troque também o endereço no bloco
+                    "application/ld+json" (SEO), no <head>.
+  8) REDES SOCIAIS  no CONFIG (campo "instagram", só o nome, sem @).
+                    Os links com data-instagram se atualizam sozinhos.
+  9) SEO .......... <title>, meta description e og: no <head>.
+
+  ATENÇÃO — ÉTICA PROFISSIONAL (Código de Ética do CFP e Resoluções
+  CFP nº 11/2018 e 09/2024): este modelo foi escrito para respeitar
+  as regras de divulgação da Psicologia. Ao editar, NÃO inclua:
+  depoimentos de pacientes, promessas de cura ou de resultado,
+  preços como chamariz (ex.: "promoção", "1ª sessão grátis"),
+  antes/depois ou títulos que a profissional não possua.
+  Atendimento online exige cadastro no e-Psi (site do CFP).
+=====================================================================
+-->
+<html lang="pt-BR">
+<head>
+<!-- grs:modelo:head -->
+<meta name="robots" content="noindex, nofollow">
+<!-- /grs:modelo:head -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Psicóloga Helena Duarte | Psicoterapia presencial e online em São Paulo</title>
+<meta name="description" content="Psicoterapia para adultos com a psicóloga Helena Duarte, na Vila Madalena (São Paulo) e online. Terapia Cognitivo-Comportamental para ansiedade, luto, relacionamentos e autoconhecimento.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Psicóloga Helena Duarte — Psicoterapia presencial e online">
+<meta property="og:description" content="Um espaço seguro para você se escutar com calma. Agende uma conversa inicial.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=1200&q=80">
+<meta property="og:locale" content="pt_BR">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js');</script>
+
+<!-- SEO: dados estruturados para o Google. Troque nome, CRP, endereço, telefone e horários. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Psicóloga Helena Duarte",
+  "description": "Psicoterapia para adultos, presencial e online, com abordagem em Terapia Cognitivo-Comportamental.",
+  "image": "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=1200&q=80",
+  "telephone": "+55 11 98765-4321",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Rua Harmonia, 850, sala 42",
+    "addressLocality": "São Paulo",
+    "addressRegion": "SP",
+    "postalCode": "05435-001",
+    "addressCountry": "BR"
+  },
+  "founder": {
+    "@type": "Person",
+    "name": "Helena Duarte",
+    "jobTitle": "Psicóloga — CRP 06/000000"
+  },
+  "areaServed": "Brasil",
+  "availableLanguage": "pt-BR",
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday"], "opens": "08:00", "closes": "21:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Friday", "opens": "08:00", "closes": "17:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "13:00" }
+  ],
+  "sameAs": ["https://instagram.com/psi.helenaduarte"]
+}
+</script>
+
+<style>
+/* ================= CORES E FONTES (troque aqui) ================= */
+:root {
+  --cor-primaria: #5b6d55;        /* verde-sálvia escuro: botões, links, destaques */
+  --cor-primaria-escura: #45553f; /* sálvia mais escuro: hover dos botões e seção da abordagem */
+  --cor-secundaria: #b86e50;      /* terracota suave: palavras em itálico e detalhes */
+  --cor-salvia-clara: #dfe6d8;    /* sálvia bem clarinho: fundos de seções e cartões */
+  --cor-fundo: #f6f1e9;           /* linho/areia: fundo principal do site */
+  --cor-fundo-alt: #fbf8f3;       /* areia mais clara: fundo de seções alternadas */
+  --cor-areia: #e9dfd0;           /* areia média: bordas e formas orgânicas */
+  --cor-texto: #2e3a2c;           /* texto principal (verde quase preto) */
+  --cor-texto-suave: #5d6758;     /* textos de apoio */
+  --cor-whatsapp: #25d366;        /* botão flutuante do WhatsApp */
+
+  --fonte-titulo: 'Newsreader', Georgia, serif;             /* títulos */
+  --fonte-texto: 'Outfit', 'Segoe UI', Arial, sans-serif;   /* texto corrido, botões */
+
+  --raio: 22px;                   /* arredondamento dos cartões */
+  --sombra: 0 18px 50px -24px rgba(46,58,44,.35);
+}
+
+/* ================= BASE ================= */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+body {
+  margin: 0; background: var(--cor-fundo); color: var(--cor-texto);
+  font-family: var(--fonte-texto); font-weight: 300; font-size: 1.06rem; line-height: 1.7;
+  overflow-x: hidden;
+}
+img { max-width: 100%; display: block; }
+a { color: var(--cor-primaria); }
+h1, h2, h3 { font-family: var(--fonte-titulo); font-weight: 400; line-height: 1.12; margin: 0 0 .5em; letter-spacing: -.01em; }
+h2 { font-size: clamp(2rem, 4.2vw, 3.1rem); }
+h3 { font-size: 1.45rem; }
+h1 em, h2 em { font-style: italic; color: var(--cor-secundaria); font-weight: 300; }
+p { margin: 0 0 1em; }
+:focus-visible { outline: 3px solid var(--cor-secundaria); outline-offset: 3px; border-radius: 6px; }
+.container { width: min(1160px, 100% - 40px); margin-inline: auto; }
+.secao { padding: clamp(72px, 10vw, 128px) 0; position: relative; }
+.rotulo {
+  display: inline-flex; align-items: center; gap: 10px; font-size: .78rem; font-weight: 500;
+  letter-spacing: .16em; text-transform: uppercase; color: var(--cor-primaria); margin-bottom: 18px;
+}
+.rotulo::before { content: ""; width: 28px; height: 1px; background: currentColor; }
+.lead { font-size: 1.15rem; color: var(--cor-texto-suave); max-width: 58ch; }
+.pular { position: absolute; left: -999px; top: 10px; background: #fff; padding: 10px 16px; z-index: 200; }
+.pular:focus { left: 10px; }
+
+/* Botões */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  padding: 15px 28px; border-radius: 999px; font-family: var(--fonte-texto); font-weight: 500;
+  font-size: 1rem; text-decoration: none; border: 1.5px solid transparent; cursor: pointer;
+  transition: background .25s, color .25s, transform .25s, border-color .25s;
+}
+.btn svg { width: 20px; height: 20px; flex-shrink: 0; }
+.btn-primario { background: var(--cor-primaria); color: #fff; }
+.btn-primario:hover { background: var(--cor-primaria-escura); transform: translateY(-2px); }
+.btn-contorno { border-color: var(--cor-primaria); color: var(--cor-primaria); background: transparent; }
+.btn-contorno:hover { background: var(--cor-primaria); color: #fff; }
+.btn-claro { background: var(--cor-fundo); color: var(--cor-primaria-escura); }
+.btn-claro:hover { background: #fff; transform: translateY(-2px); }
+
+/* ================= HEADER ================= */
+.header { position: fixed; inset: 0 0 auto; z-index: 100; transition: background .3s, box-shadow .3s; }
+.header.rolou { background: rgba(246,241,233,.94); backdrop-filter: blur(10px); box-shadow: 0 1px 0 var(--cor-areia); }
+.header-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; height: 82px; }
+.logo { text-decoration: none; color: var(--cor-texto); line-height: 1.1; }
+.logo strong { display: block; font-family: var(--fonte-titulo); font-weight: 400; font-size: 1.55rem; }
+.logo strong i { color: var(--cor-secundaria); }
+.logo span { font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: var(--cor-texto-suave); }
+.menu { display: flex; align-items: center; gap: 30px; }
+.menu a:not(.btn) { color: var(--cor-texto); text-decoration: none; font-size: .95rem; font-weight: 400; position: relative; }
+.menu a:not(.btn)::after { content: ""; position: absolute; left: 0; bottom: -4px; width: 0; height: 1px; background: var(--cor-secundaria); transition: width .3s; }
+.menu a:not(.btn):hover::after { width: 100%; }
+.menu .btn { padding: 11px 22px; font-size: .92rem; }
+.menu-btn { display: none; background: none; border: 0; width: 46px; height: 46px; cursor: pointer; position: relative; }
+.menu-btn span, .menu-btn span::before, .menu-btn span::after {
+  position: absolute; left: 11px; width: 24px; height: 1.5px; background: var(--cor-texto); content: ""; transition: transform .3s, opacity .3s;
+}
+.menu-btn span { top: 22px; }
+.menu-btn span::before { left: 0; top: -7px; }
+.menu-btn span::after { left: 0; top: 7px; }
+.menu-btn[aria-expanded="true"] span { background: transparent; }
+.menu-btn[aria-expanded="true"] span::before { transform: translateY(7px) rotate(45deg); }
+.menu-btn[aria-expanded="true"] span::after { transform: translateY(-7px) rotate(-45deg); }
+
+/* ================= HERO ================= */
+.hero { padding: 150px 0 90px; position: relative; overflow: hidden; }
+.hero-forma { position: absolute; z-index: 0; pointer-events: none; }
+.hero-forma.f1 { width: 560px; right: -180px; top: -140px; color: var(--cor-salvia-clara); }
+.hero-forma.f2 { width: 300px; left: -120px; bottom: -60px; color: var(--cor-areia); }
+.hero-grid { display: grid; grid-template-columns: 1.12fr .88fr; gap: clamp(40px, 6vw, 90px); align-items: center; position: relative; z-index: 1; }
+.hero h1 { font-size: clamp(2.6rem, 6vw, 4.6rem); font-weight: 300; margin-bottom: 26px; }
+.hero .lead { margin-bottom: 34px; }
+.hero-acoes { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+.hero-notas { display: flex; flex-wrap: wrap; gap: 10px 26px; margin-top: 38px; padding: 0; list-style: none; font-size: .92rem; color: var(--cor-texto-suave); }
+.hero-notas li { display: flex; align-items: center; gap: 8px; }
+.hero-notas svg { width: 18px; height: 18px; color: var(--cor-primaria); }
+.hero-visual { position: relative; }
+.arco { border-radius: 999px 999px 28px 28px; overflow: hidden; aspect-ratio: 4 / 5; box-shadow: var(--sombra); background: var(--cor-salvia-clara); }
+.arco img { width: 100%; height: 100%; object-fit: cover; }
+.hero-selo {
+  position: absolute; left: -34px; bottom: 44px; background: var(--cor-fundo-alt); border-radius: 18px;
+  padding: 16px 20px; box-shadow: var(--sombra); display: flex; gap: 14px; align-items: center; max-width: 270px;
+}
+.hero-selo .folha { width: 44px; height: 44px; border-radius: 50%; background: var(--cor-salvia-clara); display: grid; place-items: center; flex-shrink: 0; }
+.hero-selo .folha svg { width: 22px; height: 22px; color: var(--cor-primaria); }
+.hero-selo strong { display: block; font-family: var(--fonte-titulo); font-weight: 500; font-size: 1.05rem; line-height: 1.2; }
+.hero-selo small { font-size: .82rem; color: var(--cor-texto-suave); }
+
+/* ================= PARA QUEM É ================= */
+.paraquem { background: var(--cor-fundo-alt); }
+.paraquem-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(40px, 6vw, 80px); align-items: start; }
+.paraquem-intro { position: sticky; top: 110px; }
+.blob-img { border-radius: 58% 42% 50% 50% / 46% 54% 46% 54%; overflow: hidden; aspect-ratio: 5 / 4; margin-top: 30px; }
+.blob-img img { width: 100%; height: 100%; object-fit: cover; }
+.temas { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+.tema { background: var(--cor-fundo); border-radius: var(--raio); padding: 28px 26px; border: 1px solid var(--cor-areia); transition: transform .3s, box-shadow .3s; }
+.tema:hover { transform: translateY(-4px); box-shadow: var(--sombra); }
+.tema:last-child { grid-column: 1 / -1; background: var(--cor-salvia-clara); border-color: transparent; }
+.tema-icone { width: 50px; height: 50px; border-radius: 50%; background: #fff; display: grid; place-items: center; margin-bottom: 16px; }
+.tema-icone svg { width: 24px; height: 24px; color: var(--cor-secundaria); }
+.tema h3 { margin-bottom: .35em; }
+.tema p { margin: 0; color: var(--cor-texto-suave); font-size: .98rem; }
+
+/* ================= FORMAÇÃO (SOBRE) ================= */
+.formacao-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: clamp(40px, 7vw, 100px); align-items: center; }
+.retrato { position: relative; }
+.retrato-img { border-radius: 46% 54% 44% 56% / 38% 40% 60% 62%; overflow: hidden; aspect-ratio: 4 / 5; background: var(--cor-salvia-clara); }
+.retrato-img img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
+.retrato-crp {
+  position: absolute; right: 0; bottom: 8%; background: var(--cor-primaria); color: #fff;
+  border-radius: 999px; padding: 10px 20px; font-size: .9rem; font-weight: 500; letter-spacing: .04em;
+}
+.linha-tempo { list-style: none; padding: 0; margin: 30px 0 0; border-left: 1px solid var(--cor-areia); }
+.linha-tempo li { position: relative; padding: 0 0 22px 28px; }
+.linha-tempo li::before { content: ""; position: absolute; left: -6px; top: 8px; width: 11px; height: 11px; border-radius: 50%; background: var(--cor-fundo); border: 2px solid var(--cor-secundaria); }
+.linha-tempo strong { display: block; font-weight: 500; }
+.linha-tempo span { font-size: .95rem; color: var(--cor-texto-suave); }
+
+/* ================= ABORDAGEM (TCC) ================= */
+.abordagem { background: var(--cor-primaria-escura); color: #eef1ea; overflow: hidden; }
+.abordagem .rotulo { color: #d6dfcf; }
+.abordagem h2 em { color: #f0c3ad; }
+.abordagem .lead { color: #d3dacd; }
+.abordagem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 90px); align-items: center; }
+.ciclo { position: relative; max-width: 460px; margin-inline: auto; width: 100%; }
+.ciclo svg { width: 100%; height: auto; }
+.ciclo-legenda { text-align: center; font-size: .9rem; color: #c7d0c0; margin-top: 10px; }
+.passos-tcc { list-style: none; padding: 0; margin: 30px 0 0; display: grid; gap: 18px; }
+.passos-tcc li { display: grid; grid-template-columns: 44px 1fr; gap: 16px; align-items: start; }
+.passos-tcc b { width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(255,255,255,.35); display: grid; place-items: center; font-family: var(--fonte-titulo); font-weight: 400; font-size: 1.2rem; }
+.passos-tcc strong { display: block; font-weight: 500; color: #fff; }
+.passos-tcc span { font-size: .96rem; color: #d3dacd; }
+
+/* ================= DIFERENCIAIS ================= */
+.cuidados { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--cor-areia); border-radius: var(--raio); overflow: hidden; margin-top: 50px; border: 1px solid var(--cor-areia); }
+.cuidado { background: var(--cor-fundo); padding: 34px 28px; }
+.cuidado svg { width: 30px; height: 30px; color: var(--cor-primaria); margin-bottom: 16px; }
+.cuidado h3 { font-size: 1.25rem; }
+.cuidado p { margin: 0; font-size: .96rem; color: var(--cor-texto-suave); }
+
+/* ================= ATENDIMENTOS ================= */
+.atendimentos { background: var(--cor-fundo-alt); }
+.cabeca { display: flex; justify-content: space-between; align-items: end; gap: 30px; flex-wrap: wrap; margin-bottom: 50px; }
+.cabeca .lead { margin: 0; }
+.servicos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.servico { border-radius: 200px 200px var(--raio) var(--raio); background: var(--cor-fundo); padding: 56px 30px 34px; text-align: center; border: 1px solid var(--cor-areia); display: flex; flex-direction: column; }
+.servico:nth-child(2) { background: var(--cor-salvia-clara); border-color: transparent; }
+.servico h3 { font-size: 1.6rem; }
+.servico p { color: var(--cor-texto-suave); font-size: .98rem; }
+.servico ul { list-style: none; padding: 0; margin: auto 0 0; font-size: .92rem; border-top: 1px solid var(--cor-areia); padding-top: 18px; display: grid; gap: 6px; }
+.servico:nth-child(2) ul { border-color: rgba(69,85,63,.2); }
+.nota-valores { margin: 34px auto 0; text-align: center; max-width: 64ch; font-size: .95rem; color: var(--cor-texto-suave); }
+
+/* ================= PRIMEIRA SESSÃO ================= */
+.sessao-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(40px, 6vw, 90px); align-items: center; }
+.sessao-img { border-radius: var(--raio) 160px var(--raio) var(--raio); overflow: hidden; aspect-ratio: 4 / 5; }
+.sessao-img img { width: 100%; height: 100%; object-fit: cover; }
+.etapas { list-style: none; padding: 0; margin: 34px 0 0; counter-reset: etapa; }
+.etapas li { counter-increment: etapa; display: grid; grid-template-columns: 64px 1fr; gap: 18px; padding: 22px 0; border-top: 1px solid var(--cor-areia); }
+.etapas li:last-child { border-bottom: 1px solid var(--cor-areia); }
+.etapas li::before { content: "0" counter(etapa); font-family: var(--fonte-titulo); font-style: italic; font-size: 2rem; color: var(--cor-secundaria); line-height: 1; }
+.etapas h3 { font-size: 1.3rem; margin-bottom: .25em; }
+.etapas p { margin: 0; font-size: .98rem; color: var(--cor-texto-suave); }
+
+/* ================= ONLINE E PRESENCIAL ================= */
+.modalidades { background: var(--cor-salvia-clara); }
+.modalidades-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 50px; }
+.modalidade { background: var(--cor-fundo-alt); border-radius: var(--raio); padding: clamp(28px, 4vw, 44px); }
+.modalidade-topo { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+.modalidade-topo svg { width: 42px; height: 42px; color: var(--cor-secundaria); }
+.modalidade h3 { margin: 0; font-size: 1.7rem; }
+.modalidade ul { padding-left: 1.1em; margin: 0; color: var(--cor-texto-suave); }
+.modalidade li { margin-bottom: 6px; }
+.epsi { margin-top: 24px; display: flex; gap: 16px; align-items: flex-start; background: var(--cor-fundo); border-radius: 16px; padding: 18px 20px; border-left: 3px solid var(--cor-primaria); font-size: .93rem; }
+.epsi svg { width: 26px; height: 26px; flex-shrink: 0; color: var(--cor-primaria); margin-top: 2px; }
+.epsi p { margin: 0; }
+
+/* ================= REFLEXÕES ================= */
+.reflexoes { text-align: center; }
+.citacoes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; margin-top: 50px; text-align: left; }
+.citacao { margin: 0; padding: 34px 30px; border-radius: var(--raio); background: var(--cor-fundo-alt); border: 1px solid var(--cor-areia); position: relative; }
+.citacao:nth-child(2) { transform: translateY(30px); background: var(--cor-fundo); }
+.citacao svg { width: 34px; height: 34px; color: var(--cor-secundaria); opacity: .7; margin-bottom: 12px; }
+.citacao blockquote { margin: 0 0 18px; font-family: var(--fonte-titulo); font-size: 1.35rem; line-height: 1.4; font-weight: 300; font-style: italic; }
+.citacao figcaption { font-size: .88rem; color: var(--cor-texto-suave); letter-spacing: .04em; }
+
+/* ================= FAQ ================= */
+.faq { background: var(--cor-fundo-alt); }
+.faq-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(40px, 6vw, 90px); }
+.faq-lista details { border-bottom: 1px solid var(--cor-areia); }
+.faq-lista details:first-child { border-top: 1px solid var(--cor-areia); }
+.faq-lista summary {
+  list-style: none; cursor: pointer; padding: 22px 44px 22px 0; position: relative;
+  font-family: var(--fonte-titulo); font-size: 1.25rem; line-height: 1.35;
+}
+.faq-lista summary::-webkit-details-marker { display: none; }
+.faq-lista summary::after {
+  content: ""; position: absolute; right: 6px; top: 50%; width: 14px; height: 14px; margin-top: -10px;
+  border-right: 1.5px solid var(--cor-secundaria); border-bottom: 1.5px solid var(--cor-secundaria); transform: rotate(45deg); transition: transform .3s;
+}
+.faq-lista details[open] summary::after { transform: rotate(-135deg); margin-top: -3px; }
+.faq-lista details p { padding: 0 20px 22px 0; margin: 0; color: var(--cor-texto-suave); }
+.aviso-crise { margin-top: 30px; background: var(--cor-fundo); border-radius: 18px; padding: 22px 24px; font-size: .95rem; border: 1px solid var(--cor-areia); }
+.aviso-crise strong { color: var(--cor-secundaria); font-weight: 600; }
+
+/* ================= LOCALIZAÇÃO ================= */
+.local-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 28px; align-items: stretch; }
+.mapa { border-radius: var(--raio); overflow: hidden; min-height: 400px; background: var(--cor-salvia-clara); }
+.mapa iframe { width: 100%; height: 100%; min-height: 400px; border: 0; display: block; }
+.local-info { background: var(--cor-fundo-alt); border-radius: var(--raio); padding: clamp(28px, 4vw, 42px); border: 1px solid var(--cor-areia); }
+.local-info h3 { font-size: 1.3rem; margin-top: 26px; }
+.local-info h3:first-child { margin-top: 0; }
+.horarios { list-style: none; padding: 0; margin: 0; }
+.horarios li { display: flex; justify-content: space-between; gap: 16px; padding: 8px 0; border-bottom: 1px dashed var(--cor-areia); font-size: .97rem; }
+.horarios li span:last-child { font-weight: 500; }
+
+/* ================= CTA FINAL ================= */
+.cta-final { padding: 0 0 clamp(72px, 10vw, 120px); }
+.cta-caixa { position: relative; border-radius: 36px; overflow: hidden; min-height: 460px; display: grid; place-items: center; text-align: center; padding: 70px 24px; }
+.cta-caixa img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.cta-caixa::before { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(46,58,44,.55), rgba(46,58,44,.78)); z-index: 1; }
+.cta-conteudo { position: relative; z-index: 2; color: #fff; max-width: 640px; }
+.cta-conteudo h2 { color: #fff; }
+.cta-conteudo h2 em { color: #f3c9b3; }
+.cta-conteudo p { color: #e9ede5; font-size: 1.1rem; margin-bottom: 30px; }
+
+/* ================= RODAPÉ ================= */
+.rodape { background: var(--cor-texto); color: #cfd6c9; padding: 70px 0 30px; font-size: .95rem; }
+.rodape a { color: #eef1ea; text-decoration: none; }
+.rodape a:hover { text-decoration: underline; }
+.rodape-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 40px; }
+.rodape .logo { color: #fff; }
+.rodape .logo span { color: #b9c3b3; }
+.rodape h4 { font-family: var(--fonte-texto); font-weight: 500; font-size: .8rem; letter-spacing: .16em; text-transform: uppercase; color: #fff; margin: 0 0 14px; }
+.rodape ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+.rodape-base { border-top: 1px solid rgba(255,255,255,.12); margin-top: 50px; padding-top: 24px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: .85rem; color: #aab4a4; }
+
+/* ================= WHATSAPP FLUTUANTE ================= */
+.whats-flutuante {
+  position: fixed; right: 20px; bottom: 20px; z-index: 90; width: 60px; height: 60px; border-radius: 50%;
+  background: var(--cor-whatsapp); display: grid; place-items: center; box-shadow: 0 10px 30px -8px rgba(0,0,0,.4);
+  transition: transform .25s;
+}
+.whats-flutuante:hover { transform: scale(1.08); }
+.whats-flutuante svg { width: 32px; height: 32px; color: #fff; }
+
+/* ================= ANIMAÇÃO DE ENTRADA ================= */
+.js .reveal { opacity: 0; transform: translateY(26px); transition: opacity .9s ease, transform .9s ease; }
+.js .reveal.visivel { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .js .reveal { opacity: 1; transform: none; transition: none; }
+  *, *::before, *::after { transition-duration: 0s !important; }
+}
+
+/* ================= RESPONSIVO ================= */
+@media (max-width: 1024px) {
+  .cuidados { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 900px) {
+  .menu-btn { display: block; }
+  .menu {
+    position: fixed; inset: 82px 0 auto; background: var(--cor-fundo); flex-direction: column; align-items: stretch;
+    gap: 0; padding: 10px 20px 26px; box-shadow: 0 20px 30px -20px rgba(0,0,0,.2);
+    transform: translateY(-12px); opacity: 0; visibility: hidden; transition: transform .3s, opacity .3s, visibility .3s;
+  }
+  .menu.aberto { transform: none; opacity: 1; visibility: visible; }
+  .menu a:not(.btn) { padding: 14px 0; border-bottom: 1px solid var(--cor-areia); font-size: 1.05rem; }
+  .menu .btn { margin-top: 18px; padding: 15px; }
+  .header { background: rgba(246,241,233,.94); }
+  .hero { padding-top: 120px; }
+  .hero-grid, .paraquem-grid, .formacao-grid, .abordagem-grid, .sessao-grid, .faq-grid, .local-grid { grid-template-columns: 1fr; }
+  .hero-visual { max-width: 440px; margin-inline: auto; width: 100%; }
+  .hero-selo { left: 0; }
+  .paraquem-intro { position: static; }
+  .retrato { max-width: 400px; margin-inline: auto; width: 100%; }
+  .servicos, .citacoes, .modalidades-grid { grid-template-columns: 1fr; }
+  .citacao:nth-child(2) { transform: none; }
+  .servico { border-radius: 140px 140px var(--raio) var(--raio); }
+  .sessao-img { aspect-ratio: 16 / 11; }
+  .rodape-grid { grid-template-columns: 1fr 1fr; }
+  .rodape-grid > div:first-child { grid-column: 1 / -1; }
+}
+@media (max-width: 560px) {
+  body { font-size: 1rem; }
+  .temas, .cuidados { grid-template-columns: 1fr; }
+  .hero-acoes .btn { width: 100%; }
+  .hero-selo { position: relative; left: auto; bottom: auto; margin: -40px 16px 0; }
+  .etapas li { grid-template-columns: 48px 1fr; }
+  .rodape-grid { grid-template-columns: 1fr; }
+  .cta-caixa { border-radius: 24px; }
+}
+</style>
+</head>
+<body>
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+<!-- ===== SEÇÃO: HEADER ===== -->
+<header class="header">
+  <div class="container header-inner">
+    <a href="#inicio" class="logo" aria-label="Helena Duarte, psicóloga — início">
+      <strong>Helena <i>Duarte</i></strong>
+      <span>Psicóloga · CRP <span data-config="crp">06/000000</span></span>
+    </a>
+    <button class="menu-btn" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu"><span></span></button>
+    <nav id="menu" class="menu" aria-label="Menu principal">
+      <a href="#para-quem">Para quem</a>
+      <a href="#formacao">Formação</a>
+      <a href="#abordagem">Abordagem</a>
+      <a href="#primeira-sessao">Primeira sessão</a>
+      <a href="#duvidas">Dúvidas</a>
+      <a href="#" class="btn btn-primario" data-whatsapp>Agende uma conversa</a>
+    </nav>
+  </div>
+</header>
+
+<main id="conteudo">
+
+<!-- ===== SEÇÃO: HERO ===== -->
+<section class="hero" id="inicio">
+  <svg class="hero-forma f1" viewBox="0 0 200 200" aria-hidden="true"><path fill="currentColor" d="M44.6,-58.3C57.3,-49.7,66.6,-35.4,71.4,-19.5C76.2,-3.6,76.5,13.9,69.8,27.7C63.1,41.5,49.4,51.5,34.6,59.4C19.8,67.3,3.9,73,-12.7,72.6C-29.3,72.2,-46.6,65.7,-58.4,53.4C-70.2,41.1,-76.5,23,-76.4,5.6C-76.3,-11.8,-69.8,-28.5,-58.4,-37.6C-47,-46.7,-30.7,-48.2,-16.3,-56.1C-1.9,-64,10.6,-78.3,23.6,-77.7C36.6,-77.1,31.9,-66.9,44.6,-58.3Z" transform="translate(100 100)"/></svg>
+  <svg class="hero-forma f2" viewBox="0 0 200 200" aria-hidden="true"><path fill="currentColor" d="M38.1,-49.2C50.2,-41.8,61.2,-31,65.4,-17.8C69.6,-4.6,67,11,59.8,23.3C52.6,35.6,40.8,44.6,27.6,51.9C14.4,59.2,-0.2,64.8,-15.6,63.4C-31,62,-47.2,53.6,-56.7,40.5C-66.2,27.4,-69,9.6,-65.5,-6.3C-62,-22.2,-52.2,-36.2,-39.7,-43.6C-27.2,-51,-13.6,-51.8,0.4,-52.3C14.4,-52.8,26,-56.6,38.1,-49.2Z" transform="translate(100 100)"/></svg>
+  <div class="container hero-grid">
+    <div>
+      <p class="rotulo">Psicoterapia para adultos · presencial e online</p>
+      <h1>Um espaço seguro para você <em>se escutar</em> com calma.</h1>
+      <p class="lead">Na terapia, você encontra tempo e acolhimento para olhar para o que sente, entender seus padrões e construir, no seu ritmo, novas formas de lidar com a vida.</p>
+      <div class="hero-acoes">
+        <a href="#" class="btn btn-primario" data-whatsapp>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4C2.7 15.6 2.2 13.8 2.2 12 2.2 6.6 6.6 2.2 12 2.2c2.6 0 5.1 1 6.9 2.9 1.8 1.8 2.9 4.3 2.9 6.9 0 5.4-4.4 9.8-9.8 9.8zm8.4-18.2C18.2 1.3 15.2 0 12 0 5.4 0 0 5.4 0 12c0 2.1.6 4.2 1.6 6L0 24l6.2-1.6c1.8 1 3.8 1.5 5.8 1.5 6.6 0 12-5.4 12-12 0-3.2-1.2-6.2-3.6-8.4z"/></svg>
+          Agende uma conversa inicial
+        </a>
+        <a href="#primeira-sessao" class="btn btn-contorno">Como funciona</a>
+      </div>
+      <ul class="hero-notas">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Sessões de 50 minutos</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Sigilo profissional</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>Online para todo o Brasil</li>
+      </ul>
+    </div>
+    <div class="hero-visual">
+      <div class="arco">
+        <!-- TROQUE: foto do consultório (ambiente claro, calmo) -->
+        <img src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=1200&q=80" alt="Ambiente claro e tranquilo com poltrona, mesa redonda e plantas" width="900" height="1125" fetchpriority="high">
+      </div>
+      <div class="hero-selo">
+        <span class="folha"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 19c0-8 5-14 15-15-1 10-7 15-15 15z"/><path d="M5 19l7-7"/></svg></span>
+        <span><strong>Psicóloga clínica</strong><small>CRP <span data-config="crp">06/000000</span> · Terapia Cognitivo-Comportamental</small></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SEÇÃO: PARA QUEM É A TERAPIA ===== -->
+<section class="secao paraquem" id="para-quem">
+  <div class="container paraquem-grid">
+    <div class="paraquem-intro reveal">
+      <p class="rotulo">Para quem é a terapia</p>
+      <h2>Você não precisa estar <em>no limite</em> para procurar ajuda.</h2>
+      <p class="lead">A psicoterapia é um espaço para qualquer pessoa que queira compreender melhor o que vive. Alguns temas que costumam chegar ao consultório:</p>
+      <div class="blob-img">
+        <!-- TROQUE: foto simbólica (mãos, natureza, acolhimento) -->
+        <img src="https://images.unsplash.com/photo-1544027993-37dbfe43562a?auto=format&fit=crop&w=1200&q=80" alt="Duas mãos se aproximando, simbolizando acolhimento" loading="lazy" width="1200" height="960">
+      </div>
+    </div>
+    <div class="temas">
+      <article class="tema reveal">
+        <div class="tema-icone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 12h3l3-7 4 14 3-7h5"/></svg></div>
+        <h3>Ansiedade</h3>
+        <p>Preocupação constante, pensamentos acelerados, dificuldade para desligar e sintomas no corpo que atrapalham o dia a dia.</p>
+      </article>
+      <article class="tema reveal">
+        <div class="tema-icone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 21c-4-3-7-6-7-10a7 7 0 0 1 14 0c0 4-3 7-7 10z"/><path d="M12 8v5"/></svg></div>
+        <h3>Luto e perdas</h3>
+        <p>A morte de alguém querido, o fim de um ciclo, mudanças de cidade ou de trabalho. Um lugar para viver a dor sem pressa.</p>
+      </article>
+      <article class="tema reveal">
+        <div class="tema-icone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="8" cy="9" r="3.5"/><circle cx="16" cy="9" r="3.5"/><path d="M2 20c.8-3 3.2-5 6-5 1.5 0 2.9.6 4 1.5 1.1-.9 2.5-1.5 4-1.5 2.8 0 5.2 2 6 5"/></svg></div>
+        <h3>Relacionamentos</h3>
+        <p>Conflitos no casal, na família ou no trabalho, dificuldade de colocar limites e padrões que se repetem nas relações.</p>
+      </article>
+      <article class="tema reveal">
+        <div class="tema-icone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r=".6" fill="currentColor"/></svg></div>
+        <h3>Autoconhecimento</h3>
+        <p>Entender seus valores, suas escolhas e sua história. Para quem sente que quer se conhecer melhor, mesmo sem uma "queixa".</p>
+      </article>
+      <article class="tema reveal">
+        <div class="tema-icone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="9" cy="6" r="3"/><circle cx="17" cy="10" r="2.2"/><path d="M3 21v-2a6 6 0 0 1 12 0v2M14 21v-1.5a3.5 3.5 0 0 1 7 0V21"/></svg></div>
+        <h3>Orientação de pais</h3>
+        <p>Encontros para mães, pais e responsáveis que querem compreender as fases dos filhos, lidar com birras, limites, telas e a rotina da família — sem receitas prontas.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SEÇÃO: FORMAÇÃO E SOBRE ===== -->
+<section class="secao" id="formacao">
+  <div class="container formacao-grid">
+    <div class="retrato reveal">
+      <div class="retrato-img">
+        <!-- TROQUE: foto da psicóloga (retrato profissional, luz natural) -->
+        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=1200&q=80" alt="Retrato da psicóloga Helena Duarte, sorrindo" loading="lazy" width="960" height="1200">
+      </div>
+      <span class="retrato-crp">CRP <span data-config="crp">06/000000</span></span>
+    </div>
+    <div class="reveal">
+      <p class="rotulo">Formação e abordagem</p>
+      <h2>Olá, eu sou a <em>Helena</em>.</h2>
+      <p class="lead">Sou psicóloga clínica há mais de 10 anos e atendo adultos em psicoterapia individual. Acredito em uma clínica cuidadosa, baseada em evidências científicas e, ao mesmo tempo, profundamente humana.</p>
+      <p>Meu trabalho é construir com você uma relação de confiança, em que seja possível falar do que dói, do que confunde e do que você deseja para a sua vida. Cada processo é único e respeita o seu tempo.</p>
+      <!-- Troque pela formação REAL da profissional. Nunca informe títulos que ela não possua. -->
+      <ul class="linha-tempo">
+        <li><strong>Graduação em Psicologia</strong><span>Formada em 2014 · registro ativo no Conselho Regional de Psicologia</span></li>
+        <li><strong>Especialização em Terapia Cognitivo-Comportamental</strong><span>Formação clínica em TCC para adultos</span></li>
+        <li><strong>Aperfeiçoamento em Luto e Perdas</strong><span>Estudos sobre processos de luto e adaptação a mudanças</span></li>
+        <li><strong>Supervisão clínica contínua</strong><span>Acompanhamento de casos com supervisora, como parte do cuidado ético</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SEÇÃO: ABORDAGEM (TCC) ===== -->
+<section class="secao abordagem" id="abordagem">
+  <div class="container abordagem-grid">
+    <div class="reveal">
+      <p class="rotulo">A abordagem, em palavras simples</p>
+      <h2>Terapia Cognitivo-<br><em>Comportamental</em></h2>
+      <p class="lead">A TCC parte de uma ideia simples: a forma como interpretamos as situações influencia o que sentimos e como agimos. Juntas(os), observamos esse ciclo com curiosidade — sem julgamento.</p>
+      <ol class="passos-tcc">
+        <li><b>1</b><div><strong>Entender</strong><span>Mapeamos o que está acontecendo agora e como isso se conecta com a sua história.</span></div></li>
+        <li><b>2</b><div><strong>Perceber</strong><span>Você aprende a notar pensamentos automáticos e emoções no momento em que surgem.</span></div></li>
+        <li><b>3</b><div><strong>Experimentar</strong><span>Construímos, aos poucos, novas formas de responder — dentro e fora da sessão.</span></div></li>
+      </ol>
+    </div>
+    <div class="ciclo reveal">
+      <svg viewBox="0 0 400 380" role="img" aria-labelledby="ciclo-titulo">
+        <title id="ciclo-titulo">Ciclo da TCC: pensamentos influenciam emoções, que influenciam comportamentos, que influenciam pensamentos</title>
+        <defs>
+          <marker id="seta" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#f0c3ad"/></marker>
+        </defs>
+        <path d="M150 88 Q70 150 92 236" fill="none" stroke="#f0c3ad" stroke-width="1.5" stroke-dasharray="4 6" marker-end="url(#seta)"/>
+        <path d="M150 300 Q200 340 250 300" fill="none" stroke="#f0c3ad" stroke-width="1.5" stroke-dasharray="4 6" marker-end="url(#seta)"/>
+        <path d="M308 236 Q330 150 250 88" fill="none" stroke="#f0c3ad" stroke-width="1.5" stroke-dasharray="4 6" marker-end="url(#seta)"/>
+        <circle cx="200" cy="70" r="58" fill="#5b6d55"/>
+        <circle cx="96" cy="276" r="58" fill="#5b6d55"/>
+        <circle cx="304" cy="276" r="58" fill="#5b6d55"/>
+        <circle cx="200" cy="200" r="30" fill="none" stroke="rgba(255,255,255,.3)"/>
+        <text x="200" y="75" text-anchor="middle" fill="#fff" font-family="Newsreader, Georgia, serif" font-size="19">Pensamentos</text>
+        <text x="96" y="281" text-anchor="middle" fill="#fff" font-family="Newsreader, Georgia, serif" font-size="19">Emoções</text>
+        <text x="304" y="281" text-anchor="middle" fill="#fff" font-family="Newsreader, Georgia, serif" font-size="17">Comportamentos</text>
+        <text x="200" y="205" text-anchor="middle" fill="#d6dfcf" font-family="Outfit, Arial, sans-serif" font-size="13">você</text>
+      </svg>
+      <p class="ciclo-legenda">Um ciclo que se retroalimenta — e que pode ser compreendido.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SEÇÃO: DIFERENCIAIS ===== -->
+<section class="secao" id="cuidados">
+  <div class="container">
+    <div class="reveal">
+      <p class="rotulo">Como eu cuido do seu processo</p>
+      <h2>Detalhes que fazem <em>diferença</em>.</h2>
+    </div>
+    <div class="cuidados reveal">
+      <div class="cuidado">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        <h3>Sigilo e ética</h3>
+        <p>Tudo o que é dito em sessão é protegido pelo sigilo profissional previsto no Código de Ética.</p>
+      </div>
+      <div class="cuidado">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        <h3>Horários flexíveis</h3>
+        <p>Atendimentos pela manhã, à noite e aos sábados, para caber na sua rotina.</p>
+      </div>
+      <div class="cuidado">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 13h7M9 17h5"/></svg>
+        <h3>Recibo para reembolso</h3>
+        <p>Emissão de recibo em todas as sessões, para você solicitar reembolso ao seu plano de saúde.</p>
+      </div>
+      <div class="cuidado">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 21V10l9-6 9 6v11"/><path d="M9 21v-6h6v6"/></svg>
+        <h3>Ambiente acolhedor</h3>
+        <p>Consultório silencioso, com acessibilidade e fácil acesso ao metrô.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SEÇÃO: ATENDIMENTOS (SERVIÇOS) ===== -->
+<section class="secao atendimentos" id="atendimentos">
+  <div class="container">
+    <div class="cabeca reveal">
+      <div>
+        <p class="rotulo">Atendimentos</p>
+        <h2>Formas de <em>caminhar</em> juntas(os)</h2>
+      </div>
+      <p class="lead">Todos os atendimentos são individuais, com hora marcada e duração de 50 minutos.</p>
+    </div>
+    <div class="servicos">
+      <article class="servico reveal">
+        <h3>Psicoterapia individual</h3>
+        <p>Para adultos que desejam cuidar da saúde emocional, compreender o que vivem e desenvolver novos recursos.</p>
+        <ul><li>Adultos a partir de 18 anos</li><li>Presencial ou online</li><li>Frequência semanal</li></ul>
+      </article>
+      <article class="servico reveal">
+        <h3>Terapia online</h3>
+        <p>O mesmo cuidado do consultório, por videochamada segura, de onde você estiver no Brasil ou no exterior.</p>
+        <ul><li>Plataforma com privacidade</li><li>Brasileiros no exterior</li><li>Cadastro ativo no e-Psi</li></ul>
+      </article>
+      <article class="servico reveal">
+        <h3>Orientação de pais</h3>
+        <p>Encontros com os responsáveis para pensar juntos os desafios da criação dos filhos e a dinâmica da família.</p>
+        <ul><li>Mães, pais e cuidadores</li><li>Presencial ou online</li><li>Número de encontros combinado</li></ul>
+      </article>
+    </div>
+    <!-- Observação ética: o CFP proíbe usar preço como propaganda. Por isso os valores não aparecem aqui. -->
+    <p class="nota-valores reveal">Valores, formas de pagamento e emissão de recibo são informados com transparência na conversa inicial, pelo WhatsApp.</p>
+  </div>
+</section>
+
+<!-- ===== SEÇÃO: COMO FUNCIONA A PRIMEIRA SESSÃO ===== -->
+<section class="secao" id="primeira-sessao">
+  <div class="container sessao-grid">
+    <div class="sessao-img reveal">
+      <!-- TROQUE: foto acolhedora (xícara, mesa, plantas) -->
+      <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1200&q=80" alt="Xícaras de café sobre mesa de madeira, cercadas por plantas" loading="lazy" width="960" height="1200">
+    </div>
+    <div class="reveal">
+      <p class="rotulo">Como funciona a primeira sessão</p>
+      <h2>Começar pode ser <em>mais leve</em> do que parece.</h2>
+      <p class="lead">É normal chegar com dúvidas ou sem saber por onde começar. Veja o passo a passo:</p>
+      <ol class="etapas">
+        <li><div><h3>Você manda uma mensagem</h3><p>Pelo WhatsApp, conta brevemente o que procura e qual modalidade prefere (presencial ou online).</p></div></li>
+        <li><div><h3>Conversa inicial</h3><p>Uma conversa rápida para tirar dúvidas, alinhar horários, valores e verificar se o meu trabalho faz sentido para você.</p></div></li>
+        <li><div><h3>Primeira sessão</h3><p>Um encontro de acolhimento e escuta. Você fala no seu ritmo, e combinamos juntos a frequência e o contrato terapêutico.</p></div></li>
+        <li><div><h3>Continuidade</h3><p>Seguimos com sessões regulares, revendo periodicamente como o processo está sendo para você.</p></div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SEÇÃO: ATENDIMENTO ONLINE E PRESENCIAL ===== -->
+<section class="secao modalidades" id="online">
+  <div class="container">
+    <div class="reveal" style="max-width: 720px;">
+      <p class="rotulo">Presencial e online</p>
+      <h2>O cuidado chega <em>até você</em>, onde estiver.</h2>
+    </div>
+    <div class="modalidades-grid">
+      <article class="modalidade reveal">
+        <div class="modalidade-topo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+          <h3>Presencial</h3>
+        </div>
+        <ul>
+          <li>Consultório na Vila Madalena, São Paulo</li>
+          <li>Próximo à estação de metrô</li>
+          <li>Ambiente reservado, com isolamento acústico</li>
+          <li>Acessível para pessoas com mobilidade reduzida</li>
+        </ul>
+      </article>
+      <article class="modalidade reveal">
+        <div class="modalidade-topo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          <h3>Online</h3>
+        </div>
+        <ul>
+          <li>Videochamada em plataforma segura</li>
+          <li>Para qualquer cidade do Brasil e brasileiros no exterior</li>
+          <li>Basta um local reservado e boa conexão</li>
+          <li>Mesma duração e cuidado do presencial</li>
+        </ul>
+        <div class="epsi">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>
+          <p><strong>Cadastro e-Psi:</strong> pela Resolução CFP nº 09/2024, psicólogas(os) que atendem on-line precisam ter cadastro no e-Psi, a plataforma do Conselho Federal de Psicologia. Você pode consultar esse cadastro no site do CFP.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SEÇÃO: REFLEXÕES SOBRE TERAPIA ===== -->
+<!-- Por ética, NÃO use depoimentos de pacientes aqui. Use apenas reflexões e citações. -->
+<section class="secao reflexoes" id="reflexoes">
+  <div class="container">
+    <div class="reveal">
+      <p class="rotulo">Reflexões sobre terapia</p>
+      <h2>Palavras para <em>levar com você</em></h2>
+    </div>
+    <div class="citacoes">
+      <figure class="citacao reveal">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M10 7H6a3 3 0 0 0-3 3v4h5v-4H5.5A1.5 1.5 0 0 1 7 8.5h3zm11 0h-4a3 3 0 0 0-3 3v4h5v-4h-2.5A1.5 1.5 0 0 1 18 8.5h3z"/></svg>
+        <blockquote>"Quem olha para fora, sonha; quem olha para dentro, desperta."</blockquote>
+        <figcaption>— Carl Gustav Jung</figcaption>
+      </figure>
+      <figure class="citacao reveal">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M10 7H6a3 3 0 0 0-3 3v4h5v-4H5.5A1.5 1.5 0 0 1 7 8.5h3zm11 0h-4a3 3 0 0 0-3 3v4h5v-4h-2.5A1.5 1.5 0 0 1 18 8.5h3z"/></svg>
+        <blockquote>"Pedir ajuda não é sinal de fraqueza. É um gesto de cuidado consigo."</blockquote>
+        <figcaption>— Reflexão do consultório</figcaption>
+      </figure>
+      <figure class="citacao reveal">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M10 7H6a3 3 0 0 0-3 3v4h5v-4H5.5A1.5 1.5 0 0 1 7 8.5h3zm11 0h-4a3 3 0 0 0-3 3v4h5v-4h-2.5A1.5 1.5 0 0 1 18 8.5h3z"/></svg>
+        <blockquote>"A terapia não apaga a sua história. Ela ajuda você a ter novas conversas com ela."</blockquote>
+        <figcaption>— Reflexão do consultório</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SEÇÃO: PERGUNTAS FREQUENTES ===== -->
+<section class="secao faq" id="duvidas">
+  <div class="container faq-grid">
+    <div class="reveal">
+      <p class="rotulo">Perguntas frequentes</p>
+      <h2>Dúvidas <em>comuns</em> antes de começar</h2>
+      <p class="lead">Se a sua pergunta não estiver aqui, é só mandar uma mensagem.</p>
+      <a href="#" class="btn btn-contorno" data-whatsapp data-msg="Olá, Helena! Tenho uma dúvida antes de agendar a conversa inicial.">Tirar uma dúvida</a>
+      <div class="aviso-crise">
+        <strong>Importante:</strong> este consultório não realiza atendimento de urgência. Se você estiver em sofrimento intenso ou pensando em se machucar, ligue <strong>188</strong> (CVV, 24h, gratuito) ou procure o SAMU (<strong>192</strong>) ou o pronto-socorro mais próximo.
+      </div>
+    </div>
+    <div class="faq-lista reveal">
+      <details>
+        <summary>Como sei se preciso de terapia?</summary>
+        <p>Não existe um "nível certo" de sofrimento para começar. Se algo tem ocupado muito espaço nos seus pensamentos, afetado seu sono, seu trabalho ou suas relações — ou se você simplesmente deseja se conhecer melhor — a terapia pode ser um bom espaço.</p>
+      </details>
+      <details>
+        <summary>O que eu falo em sessão fica em sigilo?</summary>
+        <p>Sim. O sigilo é um dever ético da psicóloga, previsto no Código de Ética Profissional. As exceções são raras e previstas em lei, como situações de risco grave à vida, e sempre são conversadas com cuidado.</p>
+      </details>
+      <details>
+        <summary>Quanto tempo dura o processo de terapia?</summary>
+        <p>Depende de cada pessoa e do que ela busca. Não há como prever um número de sessões. Revisamos juntos, periodicamente, como o processo está caminhando e quais são os próximos passos.</p>
+      </details>
+      <details>
+        <summary>Com que frequência são as sessões?</summary>
+        <p>Geralmente semanais, com 50 minutos de duração. A frequência pode ser ajustada ao longo do processo, sempre em comum acordo.</p>
+      </details>
+      <details>
+        <summary>A terapia online funciona como a presencial?</summary>
+        <p>A terapia online é regulamentada pelo CFP e segue os mesmos princípios éticos. Para aproveitar bem, escolha um local reservado, use fone de ouvido e garanta uma conexão estável.</p>
+      </details>
+      <details>
+        <summary>Vocês atendem por plano de saúde?</summary>
+        <p>O atendimento é particular, com emissão de recibo para que você solicite reembolso ao seu plano, conforme as regras do seu contrato. Vale consultar sua operadora antes.</p>
+      </details>
+      <details>
+        <summary>E se eu precisar remarcar uma sessão?</summary>
+        <p>As regras de remarcação e cancelamento são combinadas logo no início, no contrato terapêutico, para que tudo fique claro para os dois lados.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SEÇÃO: LOCALIZAÇÃO E HORÁRIOS ===== -->
+<section class="secao" id="localizacao">
+  <div class="container">
+    <div class="reveal" style="margin-bottom: 40px;">
+      <p class="rotulo">Onde estou</p>
+      <h2>Um cantinho <em>tranquilo</em> na Vila Madalena</h2>
+    </div>
+    <div class="local-grid">
+      <div class="mapa reveal">
+        <!-- O mapa é atualizado automaticamente pelo endereço do CONFIG (final do arquivo) -->
+        <iframe data-mapa title="Mapa com a localização do consultório" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Rua%20Harmonia%2C%20850%20-%20Vila%20Madalena%2C%20S%C3%A3o%20Paulo%20-%20SP&amp;output=embed"></iframe>
+      </div>
+      <div class="local-info reveal">
+        <h3>Endereço</h3>
+        <p data-config="endereco">Rua Harmonia, 850, sala 42 - Vila Madalena, São Paulo - SP</p>
+        <h3>Horário de atendimento</h3>
+        <ul class="horarios">
+          <li><span>Segunda a quinta</span><span>8h às 21h</span></li>
+          <li><span>Sexta</span><span>8h às 17h</span></li>
+          <li><span>Sábado</span><span>9h às 13h</span></li>
+          <li><span>Domingo</span><span>Fechado</span></li>
+        </ul>
+        <h3>Contato</h3>
+        <p style="margin:0;"><a href="#" data-telefone>(11) 98765-4321</a><br><a href="#" data-instagram>@<span data-config="instagram">psi.helenaduarte</span></a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SEÇÃO: CTA FINAL ===== -->
+<section class="cta-final">
+  <div class="container">
+    <div class="cta-caixa reveal">
+      <!-- TROQUE: foto de natureza serena (fica ao fundo, com filtro escuro) -->
+      <img src="https://images.unsplash.com/photo-1508672019048-805c876b67e2?auto=format&fit=crop&w=1600&q=80" alt="Pessoa sentada em um píer diante de um lago calmo entre montanhas" loading="lazy" width="1600" height="1067">
+      <div class="cta-conteudo">
+        <h2>Que tal dar o <em>primeiro passo</em> hoje?</h2>
+        <p>Envie uma mensagem, sem compromisso. Conversamos sobre o que você procura e encontramos o melhor horário para começar.</p>
+        <a href="#" class="btn btn-claro" data-whatsapp>Agende uma conversa inicial</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===== SEÇÃO: RODAPÉ ===== -->
+<footer class="rodape">
+  <div class="container">
+    <div class="rodape-grid">
+      <div>
+        <a href="#inicio" class="logo"><strong>Helena <i>Duarte</i></strong><span>Psicóloga · CRP <span data-config="crp">06/000000</span></span></a>
+        <p style="margin-top:16px; max-width: 40ch;">Psicoterapia para adultos e orientação de pais, presencial em São Paulo e online. Atendimento com hora marcada.</p>
+      </div>
+      <div>
+        <h4>Contato</h4>
+        <ul>
+          <li><a href="#" data-whatsapp>WhatsApp</a></li>
+          <li><a href="#" data-telefone>(11) 98765-4321</a></li>
+          <li><a href="#" data-instagram>Instagram</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Endereço</h4>
+        <p data-config="endereco">Rua Harmonia, 850, sala 42 - Vila Madalena, São Paulo - SP</p>
+      </div>
+    </div>
+    <div class="rodape-base">
+      <span>© <span data-ano>2026</span> <span data-config="nomeNegocio">Psicóloga Helena Duarte</span> · CRP <span data-config="crp">06/000000</span></span>
+      <span>Este site tem caráter informativo e não substitui atendimento psicológico.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== SEÇÃO: WHATSAPP FLUTUANTE ===== -->
+<a href="#" class="whats-flutuante" data-whatsapp aria-label="Conversar pelo WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4C2.7 15.6 2.2 13.8 2.2 12 2.2 6.6 6.6 2.2 12 2.2c2.6 0 5.1 1 6.9 2.9 1.8 1.8 2.9 4.3 2.9 6.9 0 5.4-4.4 9.8-9.8 9.8zm8.4-18.2C18.2 1.3 15.2 0 12 0 5.4 0 0 5.4 0 12c0 2.1.6 4.2 1.6 6L0 24l6.2-1.6c1.8 1 3.8 1.5 5.8 1.5 6.6 0 12-5.4 12-12 0-3.2-1.2-6.2-3.6-8.4z"/></svg>
+</a>
+
+<script>
+/* ================= CONFIGURAÇÃO (troque aqui!) ================= */
+const CONFIG = {
+  nomeNegocio: 'Psicóloga Helena Duarte',
+  crp: '06/000000',                    // número do CRP (obrigatório por ética)
+  whatsapp: '5511987654321',           // 55 + DDD + número, só números
+  mensagemWhatsApp: 'Olá, Helena! Vim pelo site e gostaria de agendar uma conversa inicial.',
+  telefoneExibicao: '(11) 98765-4321',
+  instagram: 'psi.helenaduarte',       // sem o @
+  endereco: 'Rua Harmonia, 850, sala 42 - Vila Madalena, São Paulo - SP'
+};
+
+/* ===== Daqui para baixo não precisa mexer ===== */
+
+// Links de WhatsApp (todo elemento com data-whatsapp; mensagem própria via data-msg)
+document.querySelectorAll('[data-whatsapp]').forEach(function (el) {
+  const msg = el.dataset.msg || CONFIG.mensagemWhatsApp;
+  el.href = 'https://wa.me/' + CONFIG.whatsapp + '?text=' + encodeURIComponent(msg);
+  el.target = '_blank';
+  el.rel = 'noopener';
+});
+
+// Telefone (link para ligar)
+document.querySelectorAll('[data-telefone]').forEach(function (el) {
+  el.href = 'tel:+' + CONFIG.whatsapp;
+  el.textContent = CONFIG.telefoneExibicao;
+});
+
+// Instagram
+document.querySelectorAll('[data-instagram]').forEach(function (el) {
+  el.href = 'https://instagram.com/' + CONFIG.instagram;
+  el.target = '_blank';
+  el.rel = 'noopener';
+});
+
+// Textos preenchidos pelo CONFIG (data-config="nomeDoCampo")
+document.querySelectorAll('[data-config]').forEach(function (el) {
+  const valor = CONFIG[el.dataset.config];
+  if (valor) el.textContent = valor;
+});
+
+// Mapa pelo endereço
+document.querySelectorAll('[data-mapa]').forEach(function (el) {
+  el.src = 'https://www.google.com/maps?q=' + encodeURIComponent(CONFIG.endereco) + '&output=embed';
+});
+
+// Ano atual no rodapé
+document.querySelectorAll('[data-ano]').forEach(function (el) { el.textContent = new Date().getFullYear(); });
+
+// Header muda de fundo ao rolar
+const header = document.querySelector('.header');
+function checarRolagem() { header.classList.toggle('rolou', window.scrollY > 40); }
+window.addEventListener('scroll', checarRolagem, { passive: true });
+checarRolagem();
+
+// Menu mobile
+const menuBtn = document.querySelector('.menu-btn');
+const menu = document.getElementById('menu');
+function fecharMenu() {
+  menu.classList.remove('aberto');
+  menuBtn.setAttribute('aria-expanded', 'false');
+  menuBtn.setAttribute('aria-label', 'Abrir menu');
+}
+menuBtn.addEventListener('click', function () {
+  const aberto = menu.classList.toggle('aberto');
+  menuBtn.setAttribute('aria-expanded', String(aberto));
+  menuBtn.setAttribute('aria-label', aberto ? 'Fechar menu' : 'Abrir menu');
+});
+menu.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', fecharMenu); });
+document.addEventListener('keydown', function (e) { if (e.key === 'Escape') fecharMenu(); });
+
+// Animação de entrada ao rolar
+const itensReveal = document.querySelectorAll('.reveal');
+if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const obs = new IntersectionObserver(function (entradas) {
+    entradas.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add('visivel'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  itensReveal.forEach(function (el) { obs.observe(el); });
+} else {
+  itensReveal.forEach(function (el) { el.classList.add('visivel'); });
+}
+</script>
+<!-- grs:modelo:selo -->
+<style>
+.grs-selo{position:fixed;left:12px;bottom:12px;z-index:2147483000;display:flex;align-items:center;gap:10px;max-width:calc(100vw - 108px);padding:8px 8px 8px 14px;border-radius:999px;background:rgba(7,10,18,.92);color:#e9edf5;font:500 12.5px/1.3 system-ui,-apple-system,"Segoe UI",sans-serif;box-shadow:0 10px 30px -10px rgba(0,0,0,.6);border:1px solid rgba(148,163,184,.25)}
+.grs-selo span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.grs-selo a{flex:none;display:inline-flex;align-items:center;min-height:32px;padding:0 12px;border-radius:999px;background:#2e62f5;color:#fff;text-decoration:none;font-weight:600}
+.grs-selo a:hover{background:#2759ec}
+.grs-selo a:focus-visible{outline:2px solid #38d9f0;outline-offset:2px}
+@media print{.grs-selo{display:none}}
+</style>
+<div class="grs-selo" role="note" aria-label="Aviso: modelo de demonstração">
+  <span>Modelo de demonstração · dados fictícios</span>
+  <a href="/#modelos">Voltar à GRS</a>
+</div>
+<!-- /grs:modelo:selo -->
+</body>
+</html>

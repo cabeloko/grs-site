@@ -10,7 +10,7 @@ export const heroContent = {
     "Desenvolvemos sites profissionais, modernos e personalizados para fortalecer sua marca, destacar seu negócio e transformar visitantes em oportunidades.",
   support: "Atendimento para todo o Brasil.",
   primaryCta: "Solicitar orçamento",
-  secondaryCta: "Conhecer projetos",
+  secondaryCta: "Ver modelos de site",
 };
 
 export type ServiceIcon =
@@ -209,10 +209,14 @@ export const processContent = {
 };
 
 export const portfolioContent = {
-  eyebrow: "Portfólio",
-  title: "Projetos publicados",
-  subtitle: "Sites desenvolvidos pela GRS e disponíveis on-line.",
-  visitLabel: "Visitar site",
+  eyebrow: "Modelos",
+  title: "Modelos de site",
+  subtitle:
+    "Exemplos de layout que podem ser personalizados com a identidade, os textos e as fotos do seu negócio.",
+  /** Aviso obrigatório: os modelos usam conteúdo de demonstração. */
+  disclaimer:
+    "Os nomes, endereços, números, depoimentos e fotos dos modelos são fictícios ou de banco de imagens, apenas para demonstração.",
+  visitLabel: "Ver modelo",
 };
 
 export const contactContent = {

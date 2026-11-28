@@ -1,9 +1,10 @@
 /**
- * Captura as telas dos projetos do portfólio com Playwright.
+ * Captura as telas dos modelos/projetos com Playwright.
  *
  * Uso: npm run capture
- *   - Lê os projetos de src/config/portfolio.ts
- *   - Captura cada site em desktop (1440x900) e mobile (390x844)
+ *   - Lê os itens de src/config/portfolio.ts
+ *   - Captura cada página em desktop (1440x900) e mobile (390x844)
+ *     (modelos em public/modelos/ são abertos direto do arquivo)
  *   - Salva em public/portfolio/<slug>-desktop.webp e <slug>-mobile.webp
  *
  * Opcional: npm run capture -- <slug>  (captura só um projeto)
@@ -12,12 +13,14 @@
  * Se uma captura falhar, o script encerra com erro e NÃO gera imagem
  * substituta.
  */
-import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { access, mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
+import { pathToFileURL } from "node:url";
 import { chromium, devices, type Browser } from "playwright";
 import sharp from "sharp";
 import {
   CAPTURE_VIEWPORTS,
+  isInternalUrl,
   portfolioProjects,
   type CaptureManifest,
   type PortfolioProject,
@@ -40,6 +43,24 @@ const CAPTURE_HEIGHT = {
 /** Executável do Chromium: variável de ambiente ou o padrão do Playwright. */
 const executablePath = process.env.PLAYWRIGHT_CHROMIUM_PATH || undefined;
 
+/**
+ * Endereço a capturar. Páginas internas (ex.: "/modelos/x.html") são abertas
+ * direto do arquivo em public/, sem precisar de servidor rodando.
+ */
+async function resolveTarget(url: string) {
+  if (!isInternalUrl(url)) return url;
+  const file = path.join(root, "public", decodeURI(url.split(/[?#]/)[0]));
+  try {
+    await access(file);
+  } catch {
+    throw new Error(`Arquivo não encontrado para ${url}: ${path.relative(root, file)}`);
+  }
+  return pathToFileURL(file).href;
+}
+
+/** Selo de demonstração dos modelos: oculto só na captura. */
+const HIDE_ON_CAPTURE = ".grs-selo{display:none!important}";
+
 async function captureVariant(
   browser: Browser,
   project: PortfolioProject,
@@ -57,30 +78,39 @@ async function captureVariant(
 
   // Registra recursos que falharam (ex.: imagens ou fontes bloqueadas pela
   // rede). Uma captura incompleta não representaria o site real.
+  // Só conta a página principal: conteúdos incorporados (ex.: mapa do Google
+  // em iframe) ficam fora da área capturada.
   const failed: string[] = [];
+  const isMainFrame = (frame: { parentFrame(): unknown }) => frame.parentFrame() === null;
   page.on("requestfailed", (req) => {
     const type = req.resourceType();
+    if (!isMainFrame(req.frame())) return;
     if (["document", "stylesheet", "image", "font", "script"].includes(type)) {
       failed.push(`${type} ${req.url()} (${req.failure()?.errorText ?? "erro"})`);
     }
   });
   page.on("response", (res) => {
     const type = res.request().resourceType();
+    if (!isMainFrame(res.frame())) return;
     if (res.status() >= 400 && ["stylesheet", "image", "font", "script"].includes(type)) {
       failed.push(`${type} ${res.url()} (HTTP ${res.status()})`);
     }
   });
 
   try {
-    const response = await page.goto(project.url, {
+    const target = await resolveTarget(project.url);
+    const response = await page.goto(target, {
       waitUntil: "networkidle",
       timeout: 60_000,
     });
-    if (!response || !response.ok()) {
+    // Arquivos locais (file://) não têm status HTTP
+    const isFile = target.startsWith("file:");
+    if (!isFile && (!response || !response.ok())) {
       throw new Error(
         `Resposta inválida (${response?.status() ?? "sem resposta"}) em ${project.url}`,
       );
     }
+    await page.addStyleTag({ content: HIDE_ON_CAPTURE });
 
     // Rola a página para disparar lazy-load e animações de entrada
     await page.evaluate(async () => {
