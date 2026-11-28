@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<!--
+=====================================================================
+  GUIA RÁPIDO DE EDIÇÃO — Template "Clínica de estética" (Clínica Lume)
+=====================================================================
+  Tudo fica neste único arquivo. Para editar textos e fotos, abra com a
+  extensão "Editor Visual de HTML": clique no texto e digite. Para o
+  resto, abra no Bloco de Notas/VS Code e use Ctrl+F nas palavras abaixo.
+
+  1) WHATSAPP, TELEFONE, E-MAIL, INSTAGRAM E ENDEREÇO
+     -> No final do arquivo, dentro do <script>, procure "const CONFIG".
+        Troque o número (só números, com 55 + DDD: '5511999999999'), a
+        mensagem padrão, o telefone, o e-mail, o Instagram e o endereço.
+        Todos os botões de WhatsApp, o formulário e o botão flutuante se
+        atualizam sozinhos. Para mudar a mensagem de um botão específico,
+        edite o atributo data-msg="..." dele.
+
+  2) CORES
+     -> Procure ":root" no <style>. --acc é a cor de destaque, --bg o fundo,
+        --ink o texto, --dark as seções escuras. Troque os códigos #rrggbb.
+
+  3) FONTES
+     -> Troque o link do Google Fonts no <head> e as variáveis --ftit
+        (títulos) e --ftx (textos) no ":root".
+
+  4) TEXTOS E PREÇOS
+     -> Cada parte começa com "===== SEÇÃO: NOME =====". Edite direto.
+        Troque também <title>, meta description e o JSON-LD no <head>.
+
+  5) FOTOS
+     -> Procure "images.unsplash.com". São fotos ilustrativas de banco de
+        imagens. Troque o endereço em src="..." pela foto do cliente
+        (ex.: src="fotos/loja.jpg") e ajuste o alt="...". O bloco recorta
+        a foto sozinho (object-fit: cover). Use o mesmo tratamento de cor.
+
+  6) DEPOIMENTOS
+     -> São fictícios. Troque pelos de clientes reais, com autorização.
+=====================================================================
+-->
+<head>
+<!-- grs:modelo:head -->
+<meta name="robots" content="noindex, nofollow">
+<!-- /grs:modelo:head -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clínica Lume | Estética facial e corporal</title>
+<meta name="description" content="Clínica de estética facial e corporal com limpeza de pele, peeling, drenagem, radiofrequência e protocolos personalizados.">
+<meta name="theme-color" content="#fbf6f2">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Clínica Lume — Estética facial e corporal">
+<meta property="og:description" content="Clínica de estética facial e corporal com limpeza de pele, peeling, drenagem, radiofrequência e protocolos personalizados.">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:image" content="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=1200&q=75">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Hind:wght@400;500;600&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HealthAndBeautyBusiness",
+  "name": "Clínica Lume",
+  "description": "Clínica de estética facial e corporal com limpeza de pele, peeling, drenagem, radiofrequência e protocolos personalizados.",
+  "telephone": "+55-12-98108-5504",
+  "email": "contato@exemplo.com.br",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Rua Haddock Lobo, 760 - sala 31, Cerqueira César, São Paulo/SP",
+    "addressCountry": "BR"
+  }
+}
+</script>
+<style>
+/* =========================================================
+   CORES E FONTES — troque aqui e o site inteiro muda
+   ========================================================= */
+:root{
+  --bg:#fbf6f2;--paper:#f0e3da;--ink:#2d211d;--soft:#6c5a52;--acc:#7b4637;--onacc:#ffffff;--acc2:#e6bca8;
+  --dark:#3c2a25;--dark2:#4d3932;--ondark:#fbf6f2;--ondark2:#c6bdb9;
+  --line:rgba(45,33,29,0.14);--line2:rgba(45,33,29,0.38);--linedk:rgba(255,255,255,.17);
+  --ftit:'Tenor Sans', Georgia, serif;
+  --ftx:'Hind', 'Segoe UI', sans-serif;
+  --tw:400;--tt:none;--ls:-.005em;--lh:1.1;--em:normal;--rbtn:2px;--raio:4px;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--ftx);font-size:1.0625rem;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img,svg{max-width:100%;display:block}
+a{color:inherit}
+p{margin:0 0 1rem}
+h1,h2,h3,h4{margin:0;font-family:var(--ftit);font-weight:var(--tw);text-transform:var(--tt);letter-spacing:var(--ls);line-height:var(--lh);overflow-wrap:break-word}
+em{font-style:var(--em);color:var(--acc)}
+.dk em{color:var(--acc2)}
+:focus-visible{outline:2px solid var(--acc);outline-offset:3px}
+.dk :focus-visible{outline-color:var(--acc2)}
+::selection{background:var(--acc);color:var(--onacc)}
+.container{width:100%;max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,48px)}
+.pular{position:absolute;left:-999px;top:0;background:var(--ink);color:var(--bg);padding:10px 16px;z-index:300}
+.pular:focus{left:12px;top:12px}
+section{padding:clamp(72px,10vw,136px) 0;position:relative}
+.dk{background:var(--dark);color:var(--ondark)}
+.pp{background:var(--paper)}
+.rotulo{display:flex;align-items:center;gap:12px;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--soft);margin-bottom:20px}
+.rotulo::before{content:"";width:32px;height:2px;background:var(--acc);flex:none}
+.dk .rotulo{color:var(--ondark2)}.dk .rotulo::before{background:var(--acc2)}
+.titulo{font-size:clamp(2rem,4.6vw,3.7rem)}
+.lead{font-size:1.14rem;color:var(--soft);max-width:34em}
+.dk .lead{color:var(--ondark2)}
+.cab{max-width:44rem;margin-bottom:clamp(36px,5vw,64px)}
+.cab .lead{margin-top:18px}
+/* botões */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 26px;border-radius:var(--rbtn);font-family:var(--ftx);font-weight:600;font-size:.98rem;text-decoration:none;border:2px solid transparent;cursor:pointer;line-height:1.2;transition:transform .2s,background .2s,color .2s,border-color .2s;text-align:center}
+.btn svg{width:20px;height:20px;flex:none}
+.btn-p{background:var(--acc);color:var(--onacc)}
+.btn-p:hover{transform:translateY(-2px);filter:brightness(1.06)}
+.btn-s{border-color:currentColor;background:transparent}
+.btn-s:hover{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.dk .btn-s:hover{background:var(--ondark);color:var(--dark);border-color:var(--ondark)}
+.dk .btn-p{background:var(--acc2);color:var(--dark)}
+.acoes{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+/* topo */
+.topo{position:sticky;top:0;z-index:60;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.topo .container{display:flex;align-items:center;justify-content:space-between;gap:20px;height:70px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--ftit);font-weight:var(--tw);text-transform:var(--tt);letter-spacing:var(--ls);font-size:1.28rem;line-height:1}
+.logo svg{width:30px;height:30px;color:var(--acc)}
+.menu{display:flex;align-items:center;gap:26px}
+.menu a:not(.btn){text-decoration:none;font-size:.95rem;font-weight:500;color:var(--soft);transition:color .2s}
+.menu a:not(.btn):hover{color:var(--ink)}
+.menu .btn{padding:11px 20px;font-size:.9rem}
+.burger{display:none;background:none;border:0;width:44px;height:44px;cursor:pointer;color:var(--ink);padding:0}
+.burger span,.burger span::before,.burger span::after{display:block;width:24px;height:2px;background:currentColor;margin:0 auto;position:relative;transition:.25s}
+.burger span::before,.burger span::after{content:"";position:absolute;left:0}
+.burger span::before{top:-7px}.burger span::after{top:7px}
+.burger[aria-expanded=true] span{background:transparent}
+.burger[aria-expanded=true] span::before{top:0;transform:rotate(45deg)}
+.burger[aria-expanded=true] span::after{top:0;transform:rotate(-45deg)}
+/* arte */
+.arte{position:relative;overflow:hidden;background:var(--paper)}
+.arte svg,.arte img{width:100%;height:100%}.arte img{object-fit:cover}.hB .arte img{-webkit-mask-image:linear-gradient(to right,transparent,#000 45%);mask-image:linear-gradient(to right,transparent,#000 45%)}
+.f-arco{border-radius:999px 999px 0 0}
+.f-circulo{border-radius:50%}
+.f-pilula{border-radius:999px}
+.f-folha{border-radius:0 38% 0 38%}
+.f-ret{border-radius:var(--raio)}
+.f-gota{border-radius:50% 50% 50% 0}
+.selo{position:absolute;display:grid;place-content:center;text-align:center;width:128px;height:128px;border-radius:50%;background:var(--acc);color:var(--onacc);font-family:var(--ftit);line-height:1.05;padding:10px;z-index:3}
+.selo b{display:block;font-size:2rem;font-weight:var(--tw)}
+.selo small{font-family:var(--ftx);font-size:.72rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+/* HERO A (texto + moldura) */
+.hero{padding:clamp(40px,6vw,88px) 0 clamp(60px,8vw,110px)}
+.hA .hg{display:grid;grid-template-columns:1.08fr .92fr;gap:clamp(32px,6vw,88px);align-items:center}
+.hA h1{font-size:clamp(2.6rem,6.2vw,5.4rem)}
+.hA .lead{margin-top:22px}
+.hA .moldura{position:relative}
+.hA .arte{aspect-ratio:4/5}
+.hA .selo{left:-28px;bottom:36px}
+.hmeta{display:flex;flex-wrap:wrap;gap:12px 44px;margin:46px 0 0;padding:26px 0 0;list-style:none;border-top:1px solid var(--line)}
+.hmeta li{display:flex;flex-direction:column}
+.hmeta b{font-family:var(--ftit);font-weight:var(--tw);font-size:1.9rem;line-height:1.1;text-transform:var(--tt)}
+.hmeta span{font-size:.85rem;color:var(--soft)}
+/* HERO B (cartaz) */
+.hB{padding:0;background:var(--dark);color:var(--ondark);overflow:hidden}
+.hB .hg{position:relative;padding-top:clamp(56px,9vw,120px)}
+.hB h1{font-size:clamp(3rem,10.5vw,9.4rem);line-height:.92;max-width:11ch;position:relative;z-index:2}
+.hB .arte{position:absolute;right:calc(clamp(20px,5vw,48px) * -1);top:0;width:min(46vw,560px);height:100%;min-height:380px;opacity:.7;z-index:1;background:transparent;border-radius:0 0 0 var(--raio)}
+.hB .lead{color:var(--ondark2);margin-top:28px;position:relative;z-index:2;max-width:30em}
+.hB .acoes{position:relative;z-index:2}
+.hB .hmeta{margin-top:clamp(48px,7vw,96px);padding:26px 0 36px;border-top:1px solid var(--linedk);position:relative;z-index:2}
+.hB .hmeta span{color:var(--ondark2)}
+/* HERO C (faixa colorida) */
+.hC{padding:0}
+.hC .hg{display:grid;grid-template-columns:1.2fr .8fr}
+.hC .esq{background:var(--acc);color:var(--onacc);padding:clamp(44px,6vw,84px) clamp(20px,5vw,64px) clamp(44px,6vw,84px) max(clamp(20px,5vw,48px),calc((100vw - 1200px)/2 + 48px));display:flex;flex-direction:column;justify-content:center}
+.hC h1{font-size:clamp(2.6rem,5.8vw,5rem)}
+.hC em{color:inherit;text-decoration:underline;text-decoration-thickness:.06em;text-underline-offset:.12em}
+.hC .lead{color:inherit;opacity:.92;margin-top:22px}.hC .rotulo::before{background:currentColor}
+.hC .btn-p{background:var(--ink);color:var(--bg)}
+.hC .btn-s:hover{background:var(--onacc);color:var(--acc);border-color:var(--onacc)}
+.hC .dir{position:relative;background:var(--paper);display:flex;flex-direction:column}
+.hC .dir .arte{flex:1;min-height:260px}
+.hC .stats{list-style:none;margin:0;padding:0;display:grid}
+.hC .stats li{padding:22px clamp(20px,3vw,40px);border-top:1px solid var(--line);display:flex;align-items:baseline;gap:16px}
+.hC .stats b{font-family:var(--ftit);font-weight:var(--tw);font-size:2.2rem;line-height:1;min-width:2.6ch}
+.hC .stats span{color:var(--soft);font-size:.92rem}
+/* HERO D (arte à esquerda) */
+.hD .hg{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(32px,6vw,88px);align-items:center}
+.hD .arte{aspect-ratio:5/6}
+.hD h1{font-size:clamp(2.4rem,5vw,4.3rem)}
+.hD .lead{margin-top:22px}
+.hD .moldura{position:relative}
+.hD .selo{right:-24px;top:32px}
+.marq{overflow:hidden;border-block:1px solid var(--line);padding:14px 0;margin-top:clamp(48px,7vw,88px);white-space:nowrap;font-family:var(--ftit);text-transform:var(--tt);letter-spacing:var(--ls);font-size:1.15rem;color:var(--soft)}
+.marq div{display:inline-flex;gap:38px;animation:mq 38s linear infinite;padding-right:38px}
+.marq i{font-style:normal;color:var(--acc)}
+@keyframes mq{to{transform:translateX(-50%)}}
+/* serviços: lista */
+.menuw{display:grid;grid-template-columns:repeat(2,1fr);gap:0 clamp(32px,6vw,88px)}
+.menuw h3.gr{font-size:1.35rem;margin:0 0 6px;padding-bottom:14px;border-bottom:2px solid var(--ink)}
+.grp{margin-bottom:40px}
+.item{display:grid;grid-template-columns:1fr auto;gap:2px 20px;padding:17px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.item h4{font-size:1.1rem;font-family:var(--ftx);font-weight:600;text-transform:none;letter-spacing:0}
+.item p{grid-column:1;margin:0;color:var(--soft);font-size:.93rem;line-height:1.5}
+.item .pr{grid-row:1/3;grid-column:2;font-family:var(--ftit);font-weight:var(--tw);font-size:1.25rem;color:var(--acc);white-space:nowrap;align-self:center}
+.dk .item{border-color:var(--linedk)}.dk .item p{color:var(--ondark2)}.dk .item .pr{color:var(--acc2)}.dk .menuw h3.gr{border-color:var(--ondark)}
+/* serviços: abas */
+.abas{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:34px}
+.aba{font:inherit;font-weight:600;font-size:.95rem;padding:11px 20px;border-radius:var(--rbtn);border:2px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer;transition:.2s}
+.aba[aria-selected=true]{background:var(--ink);color:var(--bg)}
+.dk .aba{border-color:var(--ondark);color:var(--ondark)}.dk .aba[aria-selected=true]{background:var(--ondark);color:var(--dark)}
+.painel{display:none;grid-template-columns:repeat(2,1fr);gap:0 clamp(32px,6vw,88px)}
+.painel.on{display:grid}
+/* serviços: cartões desiguais */
+.cards{display:grid;grid-template-columns:repeat(6,1fr);gap:18px}
+.cd{grid-column:span 2;padding:30px;border-radius:var(--raio);background:var(--paper);border:1px solid var(--line);display:flex;flex-direction:column;gap:10px;min-height:230px}
+.cd:nth-child(1){grid-column:span 4;background:var(--acc);color:var(--onacc);border-color:transparent}
+.cd:nth-child(1) p{color:inherit;opacity:.9}.cd:nth-child(1) .pr{color:inherit}
+.cd:nth-child(4){grid-column:span 4}.cd:nth-child(5){grid-column:span 3;background:var(--dark);color:var(--ondark);border-color:transparent}.cd:nth-child(6){grid-column:span 3}
+.cd:nth-child(5) p{color:var(--ondark2)}.cd:nth-child(5) .pr{color:var(--acc2)}
+.cd h4{font-family:var(--ftit);font-weight:var(--tw);text-transform:var(--tt);letter-spacing:var(--ls);font-size:1.45rem;line-height:1.1}
+.cd p{margin:0;color:var(--soft);font-size:.96rem}
+.cd .pr{margin-top:auto;font-weight:700;font-size:1.15rem;color:var(--acc)}
+/* serviços: planos */
+.planos{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line);border-radius:var(--raio);overflow:hidden;background:var(--paper)}
+.plano{padding:clamp(28px,3.4vw,44px);display:flex;flex-direction:column;border-right:1px solid var(--line)}
+.plano:last-child{border-right:0}
+.plano.dest{background:var(--dark);color:var(--ondark);position:relative}
+.plano h4{font-size:1.5rem}
+.plano .tag{font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--acc);margin-bottom:10px}
+.plano.dest .tag{color:var(--acc2)}
+.plano .valor{font-family:var(--ftit);font-weight:var(--tw);font-size:clamp(2.4rem,4vw,3.4rem);line-height:1;margin:18px 0 4px}
+.plano .valor small{font-family:var(--ftx);font-size:.95rem;font-weight:500;color:var(--soft);letter-spacing:0}
+.plano.dest .valor small{color:var(--ondark2)}
+.plano ul{list-style:none;margin:22px 0 28px;padding:0;display:grid;gap:10px;font-size:.97rem}
+.plano li{display:flex;gap:10px;align-items:flex-start}
+.plano li svg{width:18px;height:18px;margin-top:4px;flex:none;color:var(--acc)}
+.plano.dest li svg{color:var(--acc2)}
+.plano .btn{margin-top:auto}
+.plano.dest .btn-p{background:var(--acc2);color:var(--dark)}
+/* diferenciais */
+.dg{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(36px,6vw,96px);align-items:start}
+.dg .cab{position:sticky;top:110px;margin:0}
+.fatos{display:grid;gap:0}
+.fato{display:grid;grid-template-columns:minmax(120px,.5fr) 1fr;gap:10px 28px;padding:28px 0;border-top:1px solid var(--line);align-items:baseline}
+.fato:last-child{border-bottom:1px solid var(--line)}
+.fato .big{font-family:var(--ftit);font-weight:var(--tw);text-transform:var(--tt);font-size:clamp(2rem,3.6vw,3rem);line-height:1;color:var(--acc)}
+.fato h3{font-size:1.25rem;margin-bottom:6px;font-family:var(--ftx);text-transform:none;letter-spacing:0;font-weight:700}
+.fato p{margin:0;color:var(--soft)}
+.dk .fato{border-color:var(--linedk)}.dk .fato .big{color:var(--acc2)}.dk .fato p{color:var(--ondark2)}
+.linha{position:relative;display:grid;gap:0;max-width:52rem;margin-left:auto;padding-left:6px}
+.linha::before{content:"";position:absolute;left:19px;top:8px;bottom:8px;width:2px;background:var(--line)}
+.dk .linha::before{background:var(--linedk)}
+.passo{position:relative;padding:0 0 38px 64px}
+.passo:last-child{padding-bottom:0}
+.passo .pt{position:absolute;left:0;top:0;width:40px;height:40px;border-radius:50%;background:var(--acc);color:var(--onacc);display:grid;place-items:center;font-weight:700;font-size:.9rem;font-family:var(--ftx)}
+.dk .passo .pt{background:var(--acc2);color:var(--dark)}
+.passo small{display:block;font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--acc);margin-bottom:2px}
+.dk .passo small{color:var(--acc2)}
+.passo h3{font-size:1.45rem;margin-bottom:6px}
+.passo p{margin:0;color:var(--soft)}.dk .passo p{color:var(--ondark2)}
+.dc{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(28px,4vw,56px) clamp(32px,6vw,88px)}
+.dc .it{display:grid;grid-template-columns:auto 1fr;gap:6px 18px}
+.dc .it svg{width:26px;height:26px;color:var(--acc2);margin-top:3px;grid-row:1/3}
+.dc .it h3{font-size:1.2rem;font-family:var(--ftx);text-transform:none;letter-spacing:0;font-weight:700}
+.dc .it p{margin:0;color:var(--ondark2)}
+.dc .it .big{grid-column:2;font-family:var(--ftit);text-transform:var(--tt);font-weight:var(--tw);font-size:2.4rem;line-height:1;color:var(--acc2)}
+/* galeria */
+.mosaico{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:clamp(130px,17vw,220px);gap:14px}
+.tile{position:relative;overflow:hidden;border-radius:var(--raio);margin:0;background:var(--paper)}
+.tile svg,.tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.tile figcaption{position:absolute;left:12px;bottom:12px;background:var(--bg);color:var(--ink);font-size:.8rem;font-weight:600;padding:5px 12px;border-radius:var(--rbtn);z-index:2}
+.t1{grid-column:span 5;grid-row:span 2}.t2{grid-column:span 4}.t3{grid-column:span 3}.t4{grid-column:span 3}.t5{grid-column:span 4}.t6{grid-column:span 12}
+.nota-foto{margin:18px 0 0;font-size:.85rem;color:var(--soft)}
+/* depoimentos */
+.nota{display:inline-flex;align-items:center;gap:10px;font-weight:600;margin-bottom:6px}
+.nota svg{width:18px;height:18px;color:var(--acc)}
+.estrelas{display:inline-flex;gap:2px;color:var(--acc)}
+.dk .estrelas,.dk .nota svg{color:var(--acc2)}
+.q1{display:grid;grid-template-columns:1.25fr .75fr;gap:clamp(32px,6vw,88px);align-items:start}
+.q1 .destaque blockquote{font-family:var(--ftit);text-transform:none;font-weight:var(--tw);font-size:clamp(1.55rem,3vw,2.3rem);line-height:1.25;margin:0 0 24px;letter-spacing:var(--ls)}
+.q1 .outras{display:grid;gap:0}
+.q1 .outras figure{margin:0;padding:24px 0;border-top:1px solid var(--line)}
+.q1 .outras figure:last-child{border-bottom:1px solid var(--line)}
+.dk .q1 .outras figure{border-color:var(--linedk)}
+.autor{font-weight:700;font-size:.95rem}
+.autor span{display:block;font-weight:400;color:var(--soft);font-size:.86rem}
+.dk .autor span{color:var(--ondark2)}
+.q2{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:start}
+.q2 figure{margin:0;padding:32px 28px;border-radius:var(--raio);background:var(--paper);border:1px solid var(--line)}
+.q2 figure:nth-child(2){margin-top:44px;background:var(--acc);color:var(--onacc);border-color:transparent}
+.q2 figure:nth-child(2) .autor span{color:inherit;opacity:.85}
+.q2 figure:nth-child(2) .aspas{color:inherit}
+.q2 figure:nth-child(3){margin-top:88px}
+.aspas{font-family:var(--ftit);font-size:3.6rem;line-height:.6;color:var(--acc);display:block;height:28px;font-weight:var(--tw)}
+.q2 blockquote{margin:12px 0 22px;font-size:1.04rem}
+.q3 figure{margin:0;display:grid;grid-template-columns:1fr minmax(160px,.38fr);gap:10px 40px;padding:34px 0;border-top:1px solid var(--line);align-items:center}
+.q3 figure:last-child{border-bottom:1px solid var(--line)}
+.q3 blockquote{margin:0;font-family:var(--ftit);text-transform:none;font-weight:var(--tw);font-size:clamp(1.25rem,2.4vw,1.8rem);line-height:1.3}
+/* faq */
+.fg{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(32px,6vw,96px);align-items:start}
+.fg .cab{position:sticky;top:110px;margin:0}
+details{border-top:1px solid var(--line)}
+details:last-child{border-bottom:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;align-items:center;padding:22px 0;font-weight:600;font-size:1.1rem}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:1.7rem;line-height:1;font-weight:400;color:var(--acc);transition:transform .25s;flex:none}
+details[open] summary::after{transform:rotate(45deg)}
+details p{margin:0 0 24px;color:var(--soft);max-width:38em}
+.dk details{border-color:var(--linedk)}.dk details p{color:var(--ondark2)}.dk summary::after{color:var(--acc2)}
+/* contato */
+.cg{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,6vw,96px);align-items:start}
+.info h2{margin-bottom:26px}
+.horas{width:100%;border-collapse:collapse;margin:0 0 26px;font-size:1rem}
+.horas td{padding:11px 0;border-bottom:1px solid var(--linedk)}
+.horas td:last-child{text-align:right;font-weight:600}
+.end{display:flex;gap:14px;align-items:flex-start;margin-bottom:22px;color:var(--ondark2)}
+.end svg{width:24px;height:24px;flex:none;color:var(--acc2);margin-top:3px}
+.end a{color:var(--ondark)}
+.mapa{margin-top:26px;border-radius:var(--raio);overflow:hidden;aspect-ratio:16/9;position:relative;background:var(--dark2)}
+.mapa svg{width:100%;height:100%}
+.mapa a{position:absolute;right:12px;bottom:12px;background:var(--bg);color:var(--ink);padding:8px 14px;border-radius:var(--rbtn);font-weight:600;font-size:.85rem;text-decoration:none}
+form.fm{background:var(--bg);color:var(--ink);padding:clamp(26px,4vw,44px);border-radius:var(--raio);display:grid;gap:16px}
+form.fm h3{font-size:1.7rem}
+form.fm p{color:var(--soft);margin:0}
+.fm label{display:grid;gap:6px;font-weight:600;font-size:.9rem}
+.fm input,.fm select,.fm textarea{font:inherit;font-weight:400;padding:13px 14px;border:1.5px solid var(--line2);border-radius:calc(var(--rbtn) * .5 + 4px);background:var(--paper);color:var(--ink);width:100%}
+.fm input:focus,.fm select:focus,.fm textarea:focus{outline:2px solid var(--acc);outline-offset:1px;border-color:var(--acc)}
+.fm textarea{min-height:96px;resize:vertical}
+.fm .btn-p{background:var(--acc);color:var(--onacc)}
+.fm small{color:var(--soft)}
+/* rodapé */
+.rodape{background:var(--ink);color:var(--bg);padding:48px 0 40px;font-size:.92rem}
+.rodape .container{display:flex;flex-wrap:wrap;gap:20px 48px;justify-content:space-between;align-items:center}
+.rodape a{text-decoration:none;opacity:.85}.rodape a:hover{opacity:1;text-decoration:underline}
+.rodape nav{display:flex;flex-wrap:wrap;gap:8px 24px}
+.rodape p{margin:0;opacity:.7}
+.zap{position:fixed;right:18px;bottom:18px;z-index:70;width:60px;height:60px;border-radius:50%;background:#1fa855;color:#fff;display:grid;place-items:center;box-shadow:0 8px 24px rgba(0,0,0,.28);transition:transform .2s}
+.zap:hover{transform:scale(1.07)}
+.zap svg{width:32px;height:32px}
+/* revelar */
+.js .rv{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.js .rv.vis{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.js .rv{opacity:1;transform:none;transition:none}.marq div{animation:none}html{scroll-behavior:auto}}
+/* responsivo */
+@media (max-width:980px){
+  .hA .hg,.hD .hg,.dg,.fg,.cg,.q1{grid-template-columns:1fr}
+  .hA .arte{aspect-ratio:4/3}.hD .arte{aspect-ratio:4/3}
+  .hD .moldura{order:2}
+  .hA .selo{left:auto;right:12px;bottom:-30px;width:104px;height:104px}.hD .selo{right:12px;top:auto;bottom:-30px;width:104px;height:104px}
+  .hC .hg{grid-template-columns:1fr}.hC .esq{padding:56px clamp(20px,5vw,48px)}
+  .hB .arte{width:70vw;opacity:.5}
+  .dg .cab,.fg .cab{position:static}
+  .q2{grid-template-columns:1fr}.q2 figure:nth-child(n){margin-top:0}
+  .cards{grid-template-columns:1fr 1fr}.cd:nth-child(n){grid-column:span 1;min-height:0}.cd:nth-child(1){grid-column:span 2}
+  .planos{grid-template-columns:1fr}.plano{border-right:0;border-bottom:1px solid var(--line)}.plano:last-child{border-bottom:0}
+  .mosaico{grid-template-columns:repeat(6,1fr)}.t1{grid-column:span 6;grid-row:span 2}.t2,.t3,.t4,.t5{grid-column:span 3}.t6{grid-column:span 6}
+}
+@media (max-width:760px){
+  .menu{position:fixed;inset:70px 0 auto 0;background:var(--bg);flex-direction:column;align-items:stretch;gap:0;padding:8px 20px 24px;border-bottom:1px solid var(--line);transform:translateY(-130%);transition:transform .3s;max-height:calc(100vh - 70px);overflow:auto}
+  .menu.aberto{transform:none}
+  .menu a:not(.btn){padding:15px 0;border-bottom:1px solid var(--line);font-size:1.05rem}
+  .menu .btn{margin-top:16px;padding:15px}
+  .burger{display:block}
+  .menuw,.painel.on,.dc{grid-template-columns:1fr}
+  .cards{grid-template-columns:1fr}.cd:nth-child(n){grid-column:span 1}
+  .fato{grid-template-columns:1fr}
+  .q3 figure{grid-template-columns:1fr}
+  .hB h1{font-size:clamp(2.8rem,15vw,5rem)}
+  .hA h1,.hC h1,.hD h1{font-size:clamp(2.1rem,9.6vw,3.2rem)}
+  .logo{white-space:nowrap;font-size:1.1rem}
+  .hB .arte{opacity:.3;width:90vw}
+  .acoes .btn{flex:1 1 100%}
+  .hmeta{gap:14px 28px}
+  .item{gap:2px 14px}
+}
+
+</style>
+</head>
+<body>
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+<header class="topo"><div class="container"><a class="logo" href="#inicio"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 16l.8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8z"/></svg><span>Clínica Lume</span></a>
+<button class="burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu"><span></span></button>
+<nav class="menu" id="menu" aria-label="Principal"><a href="#servicos">Tratamentos</a><a href="#diferenciais">Nosso cuidado</a><a href="#depoimentos">Clientes</a><a href="#faq">Dúvidas</a><a class="btn btn-p wa" href="#contato">Chamar no WhatsApp</a></nav></div></header>
+<main id="conteudo">
+<!-- ===== SEÇÃO: INÍCIO ===== -->
+<section class="hero hC" id="inicio"><div class="hg">
+<div class="esq"><p class="rotulo" style="color:inherit;opacity:.85">Estética com avaliação individual</p><h1>Cuidado que <em>aparece</em> sem exagero</h1><p class="lead">Protocolos montados a partir da sua avaliação: pele, rotina e objetivos. Tecnologia com acompanhamento de profissional habilitado.</p><div class="acoes"><a class="btn btn-p wa" href="#contato" data-msg="Olá! Quero agendar uma avaliação de estética."><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm5.8 14.17c-.25.7-1.45 1.34-2 1.4-.5.06-1.13.09-1.82-.11-.42-.13-.96-.31-1.65-.6-2.9-1.25-4.8-4.18-4.94-4.37-.15-.19-1.18-1.57-1.18-3s.75-2.13 1.02-2.42c.27-.29.58-.36.78-.36h.56c.18 0 .42-.07.65.5.25.58.84 2.02.91 2.17.07.15.12.32.02.51-.1.2-.15.32-.3.49-.15.17-.31.38-.44.51-.15.15-.3.3-.13.6.17.29.76 1.25 1.63 2.03 1.12 1 2.06 1.3 2.36 1.45.29.15.46.12.63-.07.17-.2.73-.85.93-1.14.19-.29.39-.24.65-.15.27.1 1.7.8 2 .95.29.15.49.22.56.34.07.12.07.7-.18 1.4z"/></svg>Agendar avaliação</a><a class="btn btn-s" href="#servicos">Ver tratamentos</a></div></div>
+<div class="dir"><div class="arte" data-troque="foto-principal"><img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=1000&q=75" alt="Foto ilustrativa: clínica de estética" decoding="async"></div><ul class="stats"><li><b>8 anos</b><span>de clínica</span></li><li><b>40</b><span>protocolos</span></li><li><b>1 hora</b><span>de avaliação</span></li></ul></div></div></section>
+<!-- ===== SEÇÃO: SERVICOS ===== -->
+<section id="servicos" class=""><div class="container"><div class="cab rv"><p class="rotulo">Tratamentos</p><h2 class="titulo">O que podemos <em>fazer por você</em></h2><p class="lead">Valores de referência por sessão. Pacotes com 4 ou 6 sessões têm desconto.</p></div><div class="abas rv" role="tablist"><button class="aba" role="tab" id="t0" aria-controls="p0" aria-selected="true">Facial</button><button class="aba" role="tab" id="t1" aria-controls="p1" aria-selected="false">Corporal</button><button class="aba" role="tab" id="t2" aria-controls="p2" aria-selected="false">Pacotes</button></div><div class="painel on" id="p0" role="tabpanel" aria-labelledby="t0"><article class="item"><h4>Limpeza de pele profunda</h4><p>Extração, esfoliação e máscara calmante.</p><span class="pr">R$ 190</span></article><article class="item"><h4>Peeling de diamante</h4><p>Renovação suave da textura da pele.</p><span class="pr">R$ 220</span></article><article class="item"><h4>Radiofrequência facial</h4><p>Firmeza e contorno sem agulhas.</p><span class="pr">R$ 260</span></article><article class="item"><h4>Hidratação com ácido hialurônico</h4><p>Viço e luminosidade.</p><span class="pr">R$ 280</span></article></div><div class="painel" id="p1" role="tabpanel" aria-labelledby="t1"><article class="item"><h4>Drenagem linfática</h4><p>Redução de inchaço e retenção.</p><span class="pr">R$ 170</span></article><article class="item"><h4>Massagem modeladora</h4><p>Reduz medidas e melhora o contorno.</p><span class="pr">R$ 180</span></article><article class="item"><h4>Criolipólise</h4><p>Gordura localizada em abdômen e flancos.</p><span class="pr">R$ 480</span></article><article class="item"><h4>Radiofrequência corporal</h4><p>Flacidez de coxas, braços e abdômen.</p><span class="pr">R$ 280</span></article></div><div class="painel" id="p2" role="tabpanel" aria-labelledby="t2"><article class="item"><h4>Protocolo noiva</h4><p>3 meses de tratamento pré-casamento.</p><span class="pr">R$ 1.480</span></article><article class="item"><h4>Protocolo pele de verão</h4><p>6 sessões de limpeza e hidratação.</p><span class="pr">R$ 990</span></article><article class="item"><h4>Protocolo gestante</h4><p>Massagem relaxante e hidratação corporal.</p><span class="pr">R$ 780</span></article><article class="item"><h4>Day spa</h4><p>Facial, corporal e relaxamento em uma tarde.</p><span class="pr">R$ 640</span></article></div></div></section>
+<!-- ===== SEÇÃO: DIF ===== -->
+<section id="diferenciais" class="pp"><div class="container dg"><div class="cab rv"><p class="rotulo">Nosso cuidado</p><h2 class="titulo">Estética com <em>critério</em></h2><p class="lead">Por que a nossa avaliação faz diferença.</p></div><div class="fatos"><div class="fato rv"><div class="big">60 min</div><div><h3>de avaliação</h3><p>Analisamos pele, rotina e histórico antes de propor qualquer protocolo.</p></div></div><div class="fato rv"><div class="big">RT</div><div><h3>responsável técnico</h3><p>Profissional habilitado acompanha os procedimentos e os equipamentos.</p></div></div><div class="fato rv"><div class="big">Sem</div><div><h3>promessa milagrosa</h3><p>Explicamos o que o tratamento entrega, em quantas sessões e com quais cuidados.</p></div></div><div class="fato rv"><div class="big">30 dias</div><div><h3>retorno incluído</h3><p>Reavaliação gratuita após cada pacote para ajustar o plano.</p></div></div></div></div></section>
+<!-- ===== SEÇÃO: GALERIA ===== -->
+<section id="galeria"><div class="container"><div class="cab rv"><p class="rotulo">Clínica</p><h2 class="titulo">Um espaço para <em>desacelerar</em></h2><p class="lead">Cabines individuais, recepção e sala de relaxamento.</p></div><div class="mosaico"><figure class="tile t1 rv" data-troque="foto-1"><img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&w=900&q=75" alt="Foto ilustrativa: clínica de estética" loading="lazy" decoding="async"></figure><figure class="tile t2 rv" data-troque="foto-2"><img src="https://images.unsplash.com/photo-1731514771613-991a02407132?auto=format&fit=crop&w=900&q=75" alt="Foto ilustrativa: clínica de estética" loading="lazy" decoding="async"></figure><figure class="tile t3 rv" data-troque="foto-3"><img src="https://images.unsplash.com/photo-1706795033728-9232ef548a16?auto=format&fit=crop&w=900&q=75" alt="Foto ilustrativa: clínica de estética" loading="lazy" decoding="async"></figure><figure class="tile t4 rv" data-troque="foto-4"><img src="https://images.unsplash.com/photo-1531299244174-d247dd4e5a66?auto=format&fit=crop&w=900&q=75" alt="Foto ilustrativa: clínica de estética" loading="lazy" decoding="async"></figure><figure class="tile t5 rv" data-troque="foto-5"><img src="https://images.unsplash.com/photo-1702312721918-62235a0b77d2?auto=format&fit=crop&w=900&q=75" alt="Foto ilustrativa: clínica de estética" loading="lazy" decoding="async"></figure><figure class="tile t6 rv" data-troque="foto-6"><img src="https://images.unsplash.com/photo-1647004692483-c5d942fe1137?auto=format&fit=crop&w=900&q=75" alt="Foto ilustrativa: clínica de estética" loading="lazy" decoding="async"></figure></div><p class="nota-foto">As fotos são ilustrativas (banco de imagens). Para usar as do seu cliente, troque o endereço em <code>src="..."</code> de cada foto e ajuste o <code>alt</code>.</p></div></section>
+<!-- ===== SEÇÃO: DEPO ===== -->
+<section id="depoimentos" class=""><div class="container"><div class="cab rv"><p class="rotulo">Clientes</p><h2 class="titulo">Quem <em>cuida</em> aqui</h2><div class="nota"><span class="estrelas" role="img" aria-label="5 de 5 estrelas"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.5l-5.9 3.2 1.2-6.6L2.5 9.500l6.600-.9z"/></svg><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.5l-5.9 3.2 1.2-6.6L2.5 9.500l6.600-.9z"/></svg><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.5l-5.9 3.2 1.2-6.6L2.5 9.500l6.600-.9z"/></svg><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.5l-5.9 3.2 1.2-6.6L2.5 9.500l6.600-.9z"/></svg><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.5l-5.9 3.2 1.2-6.6L2.5 9.500l6.600-.9z"/></svg></span> <span>4,9 · 238 avaliações</span></div></div><div class="q1"><div class="destaque rv"><blockquote>“Fiz o protocolo noiva e cheguei ao casamento com a pele que eu sonhava. Muito honestos nas indicações.”</blockquote><div class="autor">Vanessa Guimarães<span>Protocolo noiva</span></div></div><div class="outras"><figure class="rv"><blockquote style="margin:0 0 14px">O atendimento é tranquilo. Nunca fui pressionada a fechar pacote que eu não precisava.</blockquote><div class="autor">Rosana Almeida<span>Limpeza de pele</span></div></figure><figure class="rv"><blockquote style="margin:0 0 14px">A drenagem às sextas virou o meu ritual de fim de semana.</blockquote><div class="autor">Carolina Mendes<span>Drenagem linfática</span></div></figure></div></div><p class="nota-foto">Depoimentos fictícios, apenas para ilustrar o modelo. Troque pelos de clientes reais (com autorização).</p></div></section>
+<!-- ===== SEÇÃO: FAQ ===== -->
+<section id="faq" class="pp"><div class="container fg"><div class="cab rv"><p class="rotulo">Dúvidas</p><h2 class="titulo">Antes da <em>avaliação</em></h2><p class="lead">Algumas respostas rápidas.</p></div><div><details class="rv"><summary>A avaliação é gratuita?</summary><p>Sim, na primeira visita. Em até uma hora desenhamos o seu protocolo.</p></details><details class="rv"><summary>Os procedimentos doem?</summary><p>A maioria é confortável. Para os que causam sensibilidade, usamos anestésico tópico e explicamos antes.</p></details><details class="rv"><summary>Posso fazer tratamento grávida?</summary><p>Alguns sim, como massagens e hidratações. Os protocolos são ajustados para gestantes com orientação.</p></details><details class="rv"><summary>Quantas sessões eu preciso?</summary><p>Depende do objetivo. Combinamos na avaliação, com metas por mês.</p></details><details class="rv"><summary>Como é o pagamento?</summary><p>Aceitamos Pix e cartão em até 10x, e pacotes com desconto à vista.</p></details></div></div></section>
+<section id="contato" class="dk"><div class="container cg">
+<div class="info rv"><p class="rotulo">Contato</p><h2 class="titulo">Comece pela <em>avaliação</em></h2><div style="height:26px"></div>
+<table class="horas"><caption class="sr" style="position:absolute;left:-999px">Horário de funcionamento</caption><tbody><tr><td>Segunda a sexta</td><td>9h às 20h</td></tr><tr><td>Sábado</td><td>9h às 16h</td></tr><tr><td>Domingo</td><td>fechado</td></tr></tbody></table>
+<div class="end"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.200-7-11.500a7 7 0 0 1 14 0C19 14.800 12 21 12 21z"/><circle cx="12" cy="9.500" r="2.500"/></svg><div><span data-cfg="endereco">Rua Haddock Lobo, 760 - sala 31, Cerqueira César, São Paulo/SP</span><br><a href="#contato" data-cfg="mapa">Ver no mapa</a></div></div>
+<div class="end"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg><div><a href="#contato" data-cfg="telefone">(11) 99999-9999</a><br><a href="#contato" data-cfg="instagram">@clinicalume</a></div></div>
+<div class="mapa"><svg viewBox="0 0 640 360" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="640" height="360" fill="#4d3932"/><g stroke="#6c534a" stroke-width="10" opacity=".45" fill="none"><path d="M-10 90 L650 150"/><path d="M-10 260 L650 220"/><path d="M200 -10 L260 370"/><path d="M450 -10 L400 370"/></g><g stroke="#6c534a" stroke-width="3" opacity=".35" fill="none"><path d="M0 180H640"/><path d="M330 0V360"/><path d="M100 0L130 360"/><path d="M560 0L520 360"/></g><circle cx="330" cy="170" r="48" fill="#e6bca8" opacity=".25"/><circle cx="330" cy="170" r="12" fill="#e6bca8"/><circle cx="330" cy="170" r="5" fill="#3c2a25"/></svg><a href="#contato" data-cfg="mapa">Abrir no Google Maps</a></div></div>
+<form class="fm rv" id="form-contato"><h3>Agende pelo WhatsApp</h3><p>Conte o que gostaria de melhorar.</p>
+<label>Seu nome<input name="nome" required autocomplete="name" placeholder="Como podemos te chamar?"></label>
+<label>Assunto<select name="assunto"><option>Avaliação facial</option><option>Tratamento corporal</option><option>Pacote noiva</option><option>Outro assunto</option></select></label>
+<label>Mensagem (opcional)<textarea name="msg" placeholder="Ex.: manchas no rosto, limpeza de pele"></textarea></label>
+<button class="btn btn-p" type="submit"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm5.8 14.17c-.25.7-1.45 1.34-2 1.4-.5.06-1.13.09-1.82-.11-.42-.13-.96-.31-1.65-.6-2.9-1.25-4.8-4.18-4.94-4.37-.15-.19-1.18-1.57-1.18-3s.75-2.13 1.02-2.42c.27-.29.58-.36.78-.36h.56c.18 0 .42-.07.65.5.25.58.84 2.02.91 2.17.07.15.12.32.02.51-.1.2-.15.32-.3.49-.15.17-.31.38-.44.51-.15.15-.3.3-.13.6.17.29.76 1.25 1.63 2.03 1.12 1 2.06 1.3 2.36 1.45.29.15.46.12.63-.07.17-.2.73-.85.93-1.14.19-.29.39-.24.65-.15.27.1 1.7.8 2 .95.29.15.49.22.56.34.07.12.07.7-.18 1.4z"/></svg>Enviar pelo WhatsApp</button>
+<small>Ao enviar, abrimos o WhatsApp com sua mensagem pronta. Nenhum dado fica guardado neste site.</small></form>
+</div></section>
+</main>
+<footer class="rodape"><div class="container"><div><strong>Clínica Lume</strong><p>Clínica de estética · CNPJ 00.000.000/0001-00 (exemplo)</p></div><nav aria-label="Rodapé"><a href="#servicos">Tratamentos</a><a href="#galeria">Galeria</a><a href="#faq">Dúvidas</a><a href="#contato">Contato</a></nav><p>© <span id="ano">2026</span> Clínica Lume. Todos os direitos reservados.</p></div></footer>
+<a class="zap wa" href="#contato" aria-label="Falar no WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm5.8 14.17c-.25.7-1.45 1.34-2 1.4-.5.06-1.13.09-1.82-.11-.42-.13-.96-.31-1.65-.6-2.9-1.25-4.8-4.18-4.94-4.37-.15-.19-1.18-1.57-1.18-3s.75-2.13 1.02-2.42c.27-.29.58-.36.78-.36h.56c.18 0 .42-.07.65.5.25.58.84 2.02.91 2.17.07.15.12.32.02.51-.1.2-.15.32-.3.49-.15.17-.31.38-.44.51-.15.15-.3.3-.13.6.17.29.76 1.25 1.63 2.03 1.12 1 2.06 1.3 2.36 1.45.29.15.46.12.63-.07.17-.2.73-.85.93-1.14.19-.29.39-.24.65-.15.27.1 1.7.8 2 .95.29.15.49.22.56.34.07.12.07.7-.18 1.4z"/></svg></a>
+<script>
+
+const CONFIG = {
+  numero: '5511999999999',
+  mensagem: 'Olá! Vi o site da Clínica Lume e quero agendar uma avaliação.',
+  telefone: '(11) 99999-9999',
+  email: 'contato@exemplo.com.br',
+  instagram: '@clinicalume',
+  endereco: 'Rua Haddock Lobo, 760 - sala 31, Cerqueira César, São Paulo/SP'
+};
+(function(){
+  document.documentElement.classList.add('js');
+  var base = 'https://wa.me/' + CONFIG.numero + '?text=';
+  document.querySelectorAll('.wa').forEach(function(a){
+    var m = a.getAttribute('data-msg') || CONFIG.mensagem;
+    a.href = base + encodeURIComponent(m);
+    a.target = '_blank'; a.rel = 'noopener';
+  });
+  document.querySelectorAll('[data-cfg=telefone]').forEach(function(a){a.textContent = CONFIG.telefone; if(a.tagName==='A') a.href='tel:+55'+CONFIG.telefone.replace(/\D/g,'');});
+  document.querySelectorAll('[data-cfg=email]').forEach(function(a){a.textContent = CONFIG.email; if(a.tagName==='A') a.href='mailto:'+CONFIG.email;});
+  document.querySelectorAll('[data-cfg=instagram]').forEach(function(a){a.textContent = CONFIG.instagram; if(a.tagName==='A') a.href='https://instagram.com/'+CONFIG.instagram.replace('@','');});
+  document.querySelectorAll('[data-cfg=endereco]').forEach(function(a){a.textContent = CONFIG.endereco;});
+  document.querySelectorAll('[data-cfg=mapa]').forEach(function(a){a.href='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(CONFIG.endereco); a.target='_blank'; a.rel='noopener';});
+  var ano = document.getElementById('ano'); if(ano) ano.textContent = new Date().getFullYear();
+  /* menu mobile */
+  var b = document.querySelector('.burger'), mn = document.querySelector('.menu');
+  if(b){
+    b.addEventListener('click', function(){var o = mn.classList.toggle('aberto'); b.setAttribute('aria-expanded', o);});
+    mn.querySelectorAll('a').forEach(function(a){a.addEventListener('click', function(){mn.classList.remove('aberto'); b.setAttribute('aria-expanded', false);});});
+  }
+  /* abas */
+  document.querySelectorAll('.aba').forEach(function(t){
+    t.addEventListener('click', function(){
+      document.querySelectorAll('.aba').forEach(function(x){x.setAttribute('aria-selected', x===t);});
+      document.querySelectorAll('.painel').forEach(function(p){p.classList.toggle('on', p.id === t.getAttribute('aria-controls'));});
+    });
+  });
+  /* revelar ao rolar */
+  var els = document.querySelectorAll('.rv');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add('vis'); io.unobserve(x.target);}});},{threshold:.12});
+    els.forEach(function(el){io.observe(el);});
+  } else { els.forEach(function(el){el.classList.add('vis');}); }
+  /* formulário -> WhatsApp */
+  var f = document.getElementById('form-contato');
+  if(f){
+    f.addEventListener('submit', function(ev){
+      ev.preventDefault();
+      var d = new FormData(f);
+      var txt = 'Olá! Meu nome é ' + d.get('nome') + '. Tenho interesse em: ' + d.get('assunto') + '.' + (d.get('msg') ? ' ' + d.get('msg') : '');
+      window.open(base + encodeURIComponent(txt), '_blank', 'noopener');
+    });
+  }
+})();
+
+</script>
+<!-- grs:modelo:selo -->
+<script>
+(function () {
+  var GRS = "https://wa.me/5512981085504?text=Ol%C3%A1!%20Vi%20o%20modelo%20de%20site%20para%20cl%C3%ADnica%20de%20est%C3%A9tica%20no%20site%20da%20GRS%20e%20quero%20um%20site%20parecido%20para%20o%20meu%20neg%C3%B3cio.";
+  var TEL = "tel:+5512981085504";
+  var FONE = "(12) 98108-5504";
+  var WA = /^https?:\/\/(wa\.me|api\.whatsapp\.com|web\.whatsapp\.com)\//i;
+  var NUMERO = /\(\d{2}\)\s?\d{4,5}-\d{4}/g;
+  function trocar() {
+    document.querySelectorAll('a[href]').forEach(function (a) {
+      if (WA.test(a.href)) { a.href = GRS; a.target = '_blank'; a.rel = 'noopener noreferrer'; }
+      else if (/^tel:/i.test(a.getAttribute('href'))) { a.href = TEL; }
+    });
+    // Telefones escritos na página (fora de <script> e <style>)
+    var andar = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (n) {
+        var p = n.parentNode && n.parentNode.nodeName;
+        return p === 'SCRIPT' || p === 'STYLE' ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    for (var n = andar.nextNode(); n; n = andar.nextNode()) {
+      if (NUMERO.test(n.nodeValue)) { NUMERO.lastIndex = 0; n.nodeValue = n.nodeValue.replace(NUMERO, FONE); }
+      NUMERO.lastIndex = 0;
+    }
+  }
+  trocar();
+  document.addEventListener('DOMContentLoaded', trocar);
+  var abrir = window.open;
+  window.open = function (u) {
+    var args = Array.prototype.slice.call(arguments);
+    if (typeof u === 'string' && WA.test(u)) args[0] = GRS;
+    return abrir.apply(window, args);
+  };
+})();
+</script>
+<style>
+/* Evita rolagem lateral no celular (ex.: menu escondido fora da tela) */
+html{overflow-x:clip}
+.grs-selo{position:fixed;left:12px;bottom:12px;z-index:2147483000;display:flex;align-items:center;gap:10px;max-width:calc(100vw - 108px);padding:8px 8px 8px 14px;border-radius:999px;background:rgba(7,10,18,.92);color:#e9edf5;font:500 12.5px/1.3 system-ui,-apple-system,"Segoe UI",sans-serif;box-shadow:0 10px 30px -10px rgba(0,0,0,.6);border:1px solid rgba(148,163,184,.25)}
+.grs-selo span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.grs-selo a{flex:none;display:inline-flex;align-items:center;min-height:32px;padding:0 12px;border-radius:999px;background:#2e62f5;color:#fff;text-decoration:none;font-weight:600}
+.grs-selo a:hover{background:#2759ec}
+.grs-selo a:focus-visible{outline:2px solid #38d9f0;outline-offset:2px}
+@media print{.grs-selo{display:none}}
+</style>
+<div class="grs-selo" role="note" aria-label="Aviso: modelo de demonstração">
+  <span>Modelo de demonstração · dados fictícios</span>
+  <a href="/#modelos">Voltar à GRS</a>
+</div>
+<!-- /grs:modelo:selo -->
+</body>
+</html>

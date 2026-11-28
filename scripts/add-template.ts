@@ -15,6 +15,9 @@
  *      WhatsApp da GRS (src/config/site.ts), com uma mensagem que cita o
  *      modelo. O título vem de src/config/portfolio.ts (pelo slug) ou do
  *      3º argumento opcional:  npm run modelo -- arquivo.html padaria "padaria"
+ *   5. Troca os telefones do modelo pelo da GRS: links tel:, números escritos
+ *      na página no formato (00) 0000-0000 / (00) 00000-0000 e o campo
+ *      "telephone" dos dados estruturados (JSON-LD)
  *
  * Pode ser executado de novo sobre o mesmo arquivo: os trechos inseridos
  * ficam entre marcadores e são substituídos, nunca duplicados.
@@ -52,15 +55,31 @@ function whatsappMessage(label?: string) {
  * Links de telefone (tel:) e textos do modelo não são alterados.
  */
 function whatsappSnippet(label?: string) {
-  const url = `https://wa.me/${siteConfig.contact.whatsappNumber}?text=${encodeURIComponent(whatsappMessage(label))}`;
+  const { whatsappNumber, whatsappDisplay } = siteConfig.contact;
+  const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage(label))}`;
   return `<script>
 (function () {
   var GRS = ${JSON.stringify(url)};
+  var TEL = ${JSON.stringify(`tel:+${whatsappNumber}`)};
+  var FONE = ${JSON.stringify(whatsappDisplay)};
   var WA = /^https?:\\/\\/(wa\\.me|api\\.whatsapp\\.com|web\\.whatsapp\\.com)\\//i;
+  var NUMERO = /\\(\\d{2}\\)\\s?\\d{4,5}-\\d{4}/g;
   function trocar() {
     document.querySelectorAll('a[href]').forEach(function (a) {
       if (WA.test(a.href)) { a.href = GRS; a.target = '_blank'; a.rel = 'noopener noreferrer'; }
+      else if (/^tel:/i.test(a.getAttribute('href'))) { a.href = TEL; }
     });
+    // Telefones escritos na página (fora de <script> e <style>)
+    var andar = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (n) {
+        var p = n.parentNode && n.parentNode.nodeName;
+        return p === 'SCRIPT' || p === 'STYLE' ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    for (var n = andar.nextNode(); n; n = andar.nextNode()) {
+      if (NUMERO.test(n.nodeValue)) { NUMERO.lastIndex = 0; n.nodeValue = n.nodeValue.replace(NUMERO, FONE); }
+      NUMERO.lastIndex = 0;
+    }
   }
   trocar();
   document.addEventListener('DOMContentLoaded', trocar);
@@ -79,6 +98,8 @@ function whatsappSnippet(label?: string) {
 const bodySnippet = (label?: string) => `${BODY_START}
 ${whatsappSnippet(label)}
 <style>
+/* Evita rolagem lateral no celular (ex.: menu escondido fora da tela) */
+html{overflow-x:clip}
 .grs-selo{position:fixed;left:12px;bottom:12px;z-index:2147483000;display:flex;align-items:center;gap:10px;max-width:calc(100vw - 108px);padding:8px 8px 8px 14px;border-radius:999px;background:rgba(7,10,18,.92);color:#e9edf5;font:500 12.5px/1.3 system-ui,-apple-system,"Segoe UI",sans-serif;box-shadow:0 10px 30px -10px rgba(0,0,0,.6);border:1px solid rgba(148,163,184,.25)}
 .grs-selo span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .grs-selo a{flex:none;display:inline-flex;align-items:center;min-height:32px;padding:0 12px;border-radius:999px;background:#2e62f5;color:#fff;text-decoration:none;font-weight:600}
@@ -133,6 +154,9 @@ async function main() {
 
   html = stripBlock(html, HEAD_START, HEAD_END);
   html = stripBlock(html, BODY_START, BODY_END);
+
+  // Telefone dos dados estruturados (JSON-LD) → telefone da GRS
+  html = html.replace(/("telephone"\s*:\s*")[^"]*(")/g, `$1${siteConfig.contact.whatsappE164}$2`);
 
   // <head> real (não <header>, nem citações dentro de comentários)
   const head = findTagOutsideComments(html, /<head(?:\s[^>]*)?>/gi, "first");

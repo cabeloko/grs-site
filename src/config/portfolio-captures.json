@@ -53,5 +53,49 @@
       "width": 780,
       "height": 4800
     }
+  },
+  "confeitaria": {
+    "capturedAt": "2026-11-28",
+    "desktop": {
+      "width": 1440,
+      "height": 2400
+    },
+    "mobile": {
+      "width": 780,
+      "height": 4800
+    }
+  },
+  "pet-shop": {
+    "capturedAt": "2026-11-28",
+    "desktop": {
+      "width": 1440,
+      "height": 2400
+    },
+    "mobile": {
+      "width": 780,
+      "height": 4800
+    }
+  },
+  "clinica-de-estetica": {
+    "capturedAt": "2026-11-28",
+    "desktop": {
+      "width": 1440,
+      "height": 2400
+    },
+    "mobile": {
+      "width": 780,
+      "height": 4800
+    }
+  },
+  "clinica-odontologica": {
+    "capturedAt": "2026-11-28",
+    "desktop": {
+      "width": 1440,
+      "height": 2400
+    },
+    "mobile": {
+      "width": 780,
+      "height": 4800
+    }
   }
 }

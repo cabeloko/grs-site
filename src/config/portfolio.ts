@@ -63,6 +63,38 @@ export const portfolioProjects: PortfolioProject[] = [
     description:
       "Temas atendidos, formação, abordagem explicada em linguagem simples e primeira sessão, seguindo as regras de divulgação do CFP.",
   },
+  {
+    slug: "confeitaria",
+    name: "Site para confeitaria",
+    url: "/modelos/confeitaria.html",
+    category: "Modelo · Alimentação",
+    description:
+      "Vitrine de produtos com preços de referência, passo a passo da encomenda, datas especiais, depoimentos e mapa.",
+  },
+  {
+    slug: "pet-shop",
+    name: "Site para pet shop",
+    url: "/modelos/pet-shop.html",
+    category: "Modelo · Pet",
+    description:
+      "Serviços em destaque, tabela de banho e tosa por porte, veterinário e vacinas, leva e traz e pacotes mensais.",
+  },
+  {
+    slug: "clinica-de-estetica",
+    name: "Site para clínica de estética",
+    url: "/modelos/clinica-de-estetica.html",
+    category: "Modelo · Beleza e estética",
+    description:
+      "Tratamentos faciais e corporais organizados em abas, diferenciais, galeria do espaço e agendamento pelo WhatsApp.",
+  },
+  {
+    slug: "clinica-odontologica",
+    name: "Site para clínica odontológica",
+    url: "/modelos/clinica-odontologica.html",
+    category: "Modelo · Saúde",
+    description:
+      "Tratamentos com valores de referência, equipe com CRO, primeira consulta passo a passo, convênios e mapa.",
+  },
 ];
 
 /** Dimensões das capturas (usadas no script e no next/image). */

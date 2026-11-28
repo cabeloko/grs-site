@@ -88,10 +88,13 @@ Os modelos são páginas HTML de arquivo único, publicadas em `public/modelos/`
    - um script que redireciona todos os links e formulários de WhatsApp do modelo para o WhatsApp
      da GRS (`src/config/site.ts`), com a mensagem "Olá! Vi o modelo de site para … no site da GRS
      e quero um site parecido para o meu negócio." O título vem do cadastro em `portfolio.ts`
-     (pelo slug) ou de um 3º argumento: `npm run modelo -- arquivo.html padaria "padaria"`.
+     (pelo slug) ou de um 3º argumento: `npm run modelo -- arquivo.html padaria "padaria"`;
+   - a troca dos telefones do modelo pelo da GRS: links `tel:`, números escritos na página no
+     formato `(00) 0000-0000` / `(00) 00000-0000` e o campo `"telephone"` dos dados estruturados;
+   - `overflow-x: clip` no `<html>`, para evitar rolagem lateral no celular.
 
    Pode ser rodado de novo sobre o mesmo arquivo sem duplicar nada. Se o WhatsApp da GRS mudar,
-   rode o comando de novo para cada modelo.
+   rode o comando de novo para cada modelo (WhatsApp e telefone são atualizados juntos).
 2. Cadastre o modelo em `src/config/portfolio.ts` (mesmo `slug`, título, categoria, descrição e
    `url: "/modelos/<slug>.html"`).
 3. Gere as capturas (precisa de acesso à internet para fontes e fotos):

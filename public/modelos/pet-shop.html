@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<!--
+=====================================================================
+  GUIA RÁPIDO DE EDIÇÃO — Template "Patas Felizes Pet Shop & Vet"
+=====================================================================
+  Tudo o que você precisa trocar está marcado. Use Ctrl+F para achar.
+
+  1) WHATSAPP, NOME, TELEFONE, INSTAGRAM, ENDEREÇO
+     -> Procure por "const CONFIG" (lá no final, dentro do <script>).
+        Troque só ali: TODOS os botões de WhatsApp, o mapa e os
+        contatos do rodapé são atualizados sozinhos.
+        Número no formato: 55 + DDD + número, sem espaços. Ex.: '5511987654321'
+
+  2) CORES E FONTES
+     -> Procure por ":root" (no <style>). Cada cor tem um comentário
+        explicando onde ela aparece. Para trocar a fonte, troque o link
+        do Google Fonts no <head> e as variáveis --fonte-titulo / --fonte-texto.
+
+  3) TEXTOS
+     -> Edite direto no HTML. Cada seção começa com um comentário
+        "===== SEÇÃO: NOME =====" para você se localizar.
+
+  4) FOTOS
+     -> Procure por "TROQUE: foto". Troque o endereço do src="..." pela
+        foto do cliente (pode ser um arquivo na mesma pasta, ex.: src="banho.jpg").
+        Sempre atualize o alt="..." descrevendo a foto.
+
+  5) PREÇOS
+     -> Seções "BANHO E TOSA", "VETERINÁRIO" e "PACOTES". É só editar os valores.
+
+  6) ENDEREÇO / MAPA / HORÁRIO
+     -> Endereço: no CONFIG (o mapa se ajusta sozinho).
+        Horário: seção "LOCALIZAÇÃO".
+
+  7) REDES SOCIAIS
+     -> Instagram: no CONFIG. Outros links (Facebook, TikTok) no RODAPÉ.
+
+  8) SEO (Google)
+     -> No <head>: <title>, meta description, Open Graph e o bloco
+        "application/ld+json" (dados do negócio para o Google).
+=====================================================================
+-->
+<html lang="pt-BR">
+<head>
+<!-- grs:modelo:head -->
+<meta name="robots" content="noindex, nofollow">
+<!-- /grs:modelo:head -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Patas Felizes Pet Shop &amp; Vet | Banho e Tosa, Veterinário e Táxi Dog</title>
+<meta name="description" content="Banho e tosa com carinho, consultas veterinárias, vacinas e leva e traz para o seu pet. Agende pelo WhatsApp com a Patas Felizes Pet Shop & Vet.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Patas Felizes Pet Shop & Vet">
+<meta property="og:description" content="Banho e tosa, veterinário, vacinas e táxi dog. Seu pet volta cheiroso e feliz!">
+<meta property="og:image" content="https://images.unsplash.com/photo-1625316708582-7c38734be31d?auto=format&fit=crop&w=1200&q=80">
+<meta property="og:locale" content="pt_BR">
+<meta name="theme-color" content="#C2410C">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- FONTES: Fredoka (títulos arredondados) + Nunito (textos) -->
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<!-- DADOS PARA O GOOGLE (troque nome, telefone, endereço e horários) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": ["PetStore", "VeterinaryCare"],
+  "name": "Patas Felizes Pet Shop & Vet",
+  "image": "https://images.unsplash.com/photo-1625316708582-7c38734be31d?auto=format&fit=crop&w=1200&q=80",
+  "telephone": "+55-12-98108-5504",
+  "priceRange": "$$",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Rua das Acácias, 245",
+    "addressLocality": "São Paulo",
+    "addressRegion": "SP",
+    "postalCode": "04000-000",
+    "addressCountry": "BR"
+  },
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "19:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "08:00", "closes": "16:00" }
+  ]
+}
+</script>
+
+<style>
+/* =================================================================
+   CORES E FONTES — troque aqui e o site inteiro muda
+   ================================================================= */
+:root {
+  --cor-primaria: #C2410C;         /* laranja: botões e destaques principais */
+  --cor-primaria-escura: #9A330A;  /* laranja escuro: botão ao passar o mouse */
+  --cor-pessego: #FFB38A;          /* pêssego: blobs e fundos decorativos */
+  --cor-secundaria: #5BB8E8;       /* azul-céu: faixas e detalhes */
+  --cor-secundaria-escura: #0B5E8E;/* azul escuro: textos sobre fundo claro */
+  --cor-destaque: #FFD66B;         /* amarelo manteiga: selos e etiquetas */
+  --cor-fundo: #FFF8EE;            /* creme: fundo do site */
+  --cor-fundo-2: #FFEFD9;          /* creme mais forte: seções alternadas */
+  --cor-texto: #2E2A3B;            /* texto principal */
+  --cor-texto-suave: #5E5870;      /* textos secundários */
+  --cor-branco: #FFFFFF;
+
+  --fonte-titulo: 'Fredoka', 'Nunito', sans-serif;  /* títulos */
+  --fonte-texto: 'Nunito', system-ui, sans-serif;   /* textos */
+
+  --raio: 28px;                    /* arredondamento dos cantos */
+  --sombra: 0 14px 40px -18px rgba(46, 42, 59, .35);
+  --largura-max: 1180px;
+}
+
+/* ---------- Base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+body {
+  margin: 0; font-family: var(--fonte-texto); font-size: 1.0625rem; line-height: 1.65;
+  color: var(--cor-texto); background: var(--cor-fundo); overflow-x: hidden;
+}
+img { max-width: 100%; display: block; }
+a { color: var(--cor-secundaria-escura); }
+h1, h2, h3, h4 { font-family: var(--fonte-titulo); line-height: 1.12; margin: 0 0 .5em; font-weight: 600; }
+h2 { font-size: clamp(2rem, 4.5vw, 3rem); }
+h3 { font-size: 1.35rem; }
+p { margin: 0 0 1em; }
+:focus-visible { outline: 3px solid var(--cor-secundaria-escura); outline-offset: 3px; border-radius: 8px; }
+.container { width: min(100% - 32px, var(--largura-max)); margin-inline: auto; }
+.secao { padding: clamp(64px, 10vw, 120px) 0; position: relative; }
+.etiqueta {
+  display: inline-flex; align-items: center; gap: 8px; font-weight: 800; font-size: .85rem;
+  letter-spacing: .08em; text-transform: uppercase; color: var(--cor-secundaria-escura);
+  background: var(--cor-branco); padding: 6px 14px; border-radius: 999px; margin-bottom: 16px;
+  box-shadow: 0 4px 14px -8px rgba(11, 94, 142, .5);
+}
+.lead { font-size: 1.15rem; color: var(--cor-texto-suave); max-width: 60ch; }
+.cabecalho-secao { max-width: 680px; margin-bottom: 48px; }
+.cabecalho-secao.centro { text-align: center; margin-inline: auto; }
+.cabecalho-secao.centro .lead { margin-inline: auto; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.pata { width: 1em; height: 1em; fill: currentColor; flex-shrink: 0; }
+
+/* ---------- Botões ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  font-family: var(--fonte-texto); font-weight: 800; font-size: 1.05rem; text-decoration: none;
+  padding: 15px 28px; border-radius: 999px; border: 0; cursor: pointer;
+  transition: transform .2s, background-color .2s, box-shadow .2s;
+}
+.btn svg { width: 22px; height: 22px; fill: currentColor; }
+.btn-primario { background: var(--cor-primaria); color: var(--cor-branco); box-shadow: 0 10px 24px -10px var(--cor-primaria); }
+.btn-primario:hover { background: var(--cor-primaria-escura); transform: translateY(-2px); }
+.btn-contorno { background: var(--cor-branco); color: var(--cor-texto); box-shadow: inset 0 0 0 2px var(--cor-texto); }
+.btn-contorno:hover { background: var(--cor-destaque); transform: translateY(-2px); }
+
+/* =================================================================
+   HEADER
+   ================================================================= */
+.header {
+  position: fixed; inset: 0 0 auto; z-index: 50; padding: 14px 0;
+  transition: background-color .3s, box-shadow .3s, padding .3s;
+}
+.header.rolou { background: rgba(255, 248, 238, .95); box-shadow: 0 6px 24px -14px rgba(0,0,0,.3); padding: 8px 0; }
+.header .container { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.logo {
+  display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--cor-texto);
+  font-family: var(--fonte-titulo); font-weight: 700; font-size: 1.45rem; line-height: 1;
+}
+.logo-icone {
+  width: 44px; height: 44px; border-radius: 50% 50% 46% 54% / 55% 48% 52% 45%;
+  background: var(--cor-primaria); color: var(--cor-branco); display: grid; place-items: center; font-size: 1.3rem;
+}
+.logo small { display: block; font-size: .72rem; font-family: var(--fonte-texto); font-weight: 800; letter-spacing: .12em; color: var(--cor-secundaria-escura); text-transform: uppercase; margin-top: 3px; }
+.menu { display: flex; align-items: center; gap: 28px; }
+.menu ul { list-style: none; display: flex; gap: 22px; margin: 0; padding: 0; }
+.menu a:not(.btn) { color: var(--cor-texto); text-decoration: none; font-weight: 700; position: relative; }
+.menu a:not(.btn)::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -4px; height: 3px; border-radius: 3px;
+  background: var(--cor-pessego); transform: scaleX(0); transition: transform .25s;
+}
+.menu a:not(.btn):hover::after { transform: scaleX(1); }
+.menu .btn { padding: 11px 22px; font-size: .98rem; }
+.hamburguer {
+  display: none; width: 48px; height: 48px; border-radius: 50%; border: 0; cursor: pointer;
+  background: var(--cor-branco); box-shadow: var(--sombra); position: relative;
+}
+.hamburguer span, .hamburguer span::before, .hamburguer span::after {
+  position: absolute; left: 50%; width: 22px; height: 3px; border-radius: 3px; background: var(--cor-texto);
+  transform: translateX(-50%); transition: transform .3s, top .3s, opacity .2s;
+}
+.hamburguer span { top: 50%; margin-top: -1.5px; }
+.hamburguer span::before, .hamburguer span::after { content: ""; left: 0; transform: none; }
+.hamburguer span::before { top: -7px; }
+.hamburguer span::after { top: 7px; }
+.hamburguer[aria-expanded="true"] span { background: transparent; }
+.hamburguer[aria-expanded="true"] span::before { top: 0; transform: rotate(45deg); }
+.hamburguer[aria-expanded="true"] span::after { top: 0; transform: rotate(-45deg); }
+
+@media (max-width: 960px) {
+  .hamburguer { display: block; }
+  .menu {
+    position: fixed; inset: 0 0 0 auto; width: min(86vw, 340px); background: var(--cor-fundo);
+    flex-direction: column; align-items: flex-start; justify-content: center; padding: 32px;
+    transform: translateX(100%); transition: transform .35s ease; box-shadow: -20px 0 50px -20px rgba(0,0,0,.35);
+    visibility: hidden; z-index: 55;
+  }
+  .menu.aberto { transform: none; visibility: visible; }
+  .menu ul { flex-direction: column; gap: 18px; }
+  .menu a:not(.btn) { font-size: 1.35rem; font-family: var(--fonte-titulo); }
+  .hamburguer { z-index: 60; }
+}
+
+/* =================================================================
+   HERO
+   ================================================================= */
+.hero { padding: 130px 0 90px; position: relative; overflow: hidden; }
+.hero::before { /* blob azul de fundo */
+  content: ""; position: absolute; width: 620px; height: 620px; right: -180px; top: -120px; z-index: -1;
+  background: var(--cor-secundaria); opacity: .18; border-radius: 42% 58% 63% 37% / 45% 40% 60% 55%;
+}
+.hero .container { display: grid; grid-template-columns: 1.05fr 1fr; gap: 56px; align-items: center; }
+.hero h1 { font-size: clamp(2.5rem, 6vw, 4.3rem); font-weight: 700; letter-spacing: -.01em; }
+.hero h1 .marca {
+  color: var(--cor-primaria); position: relative; white-space: nowrap;
+}
+.hero h1 .marca::after {
+  content: ""; position: absolute; left: -4px; right: -4px; bottom: .08em; height: .28em; z-index: -1;
+  background: var(--cor-destaque); border-radius: 999px;
+}
+.hero .lead { margin-bottom: 30px; }
+.hero-acoes { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 34px; }
+.hero-provas { display: flex; flex-wrap: wrap; gap: 22px; align-items: center; font-weight: 700; color: var(--cor-texto-suave); font-size: .98rem; }
+.hero-provas strong { color: var(--cor-texto); font-family: var(--fonte-titulo); font-size: 1.5rem; display: block; line-height: 1; }
+.estrelas { color: #E09B00; letter-spacing: 2px; }
+.hero-foto { position: relative; justify-self: center; width: min(100%, 500px); }
+.hero-foto .blob-fundo {
+  position: absolute; inset: -6% -8% -4% -4%; background: var(--cor-pessego);
+  border-radius: 58% 42% 50% 50% / 45% 55% 45% 55%; z-index: -1;
+}
+.hero-foto img {
+  width: 100%; aspect-ratio: 1 / 1.08; object-fit: cover;
+  border-radius: 46% 54% 44% 56% / 52% 44% 56% 48%; border: 8px solid var(--cor-branco); box-shadow: var(--sombra);
+}
+.selo {
+  position: absolute; background: var(--cor-branco); border-radius: 20px; padding: 12px 16px; box-shadow: var(--sombra);
+  display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: .92rem; line-height: 1.25;
+}
+.selo .bolinha { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; font-size: 1.2rem; flex-shrink: 0; }
+.selo-1 { left: -18px; bottom: 14%; }
+.selo-1 .bolinha { background: var(--cor-destaque); }
+.selo-2 { right: -10px; top: 10%; }
+.selo-2 .bolinha { background: #D6EEFA; }
+.selo span small { display: block; font-weight: 600; color: var(--cor-texto-suave); }
+
+@media (max-width: 860px) {
+  .hero { padding-top: 110px; }
+  .hero .container { grid-template-columns: 1fr; gap: 48px; }
+  .hero-foto { width: min(88%, 420px); }
+  .selo-1 { left: -12px; }
+  .selo-2 { right: -12px; }
+}
+
+/* ---------- Faixa ondulada de serviços rápidos ---------- */
+.faixa {
+  background: var(--cor-texto); color: var(--cor-branco); padding: 22px 0; overflow: hidden;
+  font-family: var(--fonte-titulo); font-size: 1.25rem; font-weight: 500;
+}
+.faixa ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 34px; }
+.faixa li { display: flex; align-items: center; gap: 10px; }
+.faixa .pata { color: var(--cor-destaque); }
+
+/* =================================================================
+   SOBRE
+   ================================================================= */
+.sobre .container { display: grid; grid-template-columns: .9fr 1.1fr; gap: 64px; align-items: center; }
+.sobre-foto { position: relative; }
+.sobre-foto img { width: 100%; aspect-ratio: 4 / 3.4; object-fit: cover; border-radius: 180px 40px 180px 40px; box-shadow: var(--sombra); }
+.sobre-foto .anos {
+  position: absolute; right: -14px; bottom: -22px; width: 130px; height: 130px; border-radius: 50%;
+  background: var(--cor-destaque); display: grid; place-content: center; text-align: center;
+  font-weight: 800; font-size: .85rem; line-height: 1.15; transform: rotate(-8deg); box-shadow: var(--sombra);
+}
+.sobre-foto .anos strong { font-family: var(--fonte-titulo); font-size: 2.6rem; line-height: 1; }
+.checklist { list-style: none; padding: 0; margin: 24px 0 0; display: grid; grid-template-columns: 1fr 1fr; gap: 12px 24px; }
+.checklist li { display: flex; gap: 10px; align-items: flex-start; font-weight: 700; }
+.checklist li::before {
+  content: "✓"; width: 26px; height: 26px; border-radius: 50%; background: var(--cor-secundaria); color: var(--cor-branco);
+  display: grid; place-items: center; font-size: .85rem; flex-shrink: 0; margin-top: 1px;
+}
+@media (max-width: 860px) {
+  .sobre .container { grid-template-columns: 1fr; gap: 56px; }
+  .checklist { grid-template-columns: 1fr; }
+}
+
+/* =================================================================
+   SERVIÇOS (bento)
+   ================================================================= */
+.servicos { background: var(--cor-fundo-2); border-radius: 60px 60px 0 0; }
+.bento { display: grid; grid-template-columns: repeat(6, 1fr); gap: 20px; }
+.card {
+  background: var(--cor-branco); border-radius: var(--raio); padding: 30px; box-shadow: var(--sombra);
+  display: flex; flex-direction: column; gap: 6px; transition: transform .25s;
+}
+.card:hover { transform: translateY(-4px) rotate(-.4deg); }
+.card .icone {
+  width: 58px; height: 58px; border-radius: 45% 55% 50% 50% / 55% 45% 55% 45%; display: grid; place-items: center;
+  font-size: 1.7rem; margin-bottom: 10px;
+}
+.card p { color: var(--cor-texto-suave); margin: 0; }
+.card .preco { margin-top: auto; padding-top: 16px; font-weight: 800; color: var(--cor-primaria); }
+.card .preco small { font-weight: 700; color: var(--cor-texto-suave); }
+.card-grande { grid-column: span 3; background: var(--cor-secundaria-escura); color: var(--cor-branco); }
+.card-grande p, .card-grande .preco small { color: #D6EEFA; }
+.card-grande .preco { color: var(--cor-destaque); }
+.card-grande .icone { background: rgba(255,255,255,.15); }
+.card-medio { grid-column: span 3; }
+.card-pequeno { grid-column: span 2; }
+.bg-pessego { background: #FFE2D2; }
+.bg-amarelo { background: #FFF1C7; }
+.bg-azul { background: #D6EEFA; }
+@media (max-width: 900px) { .card-grande, .card-medio { grid-column: span 6; } .card-pequeno { grid-column: span 3; } }
+@media (max-width: 600px) { .card-pequeno { grid-column: span 6; } }
+
+/* =================================================================
+   BANHO E TOSA (tabela de preços)
+   ================================================================= */
+.banho .container { display: grid; grid-template-columns: 1fr 1.25fr; gap: 56px; align-items: start; }
+.banho-foto { position: sticky; top: 100px; }
+.banho-foto img { width: 100%; aspect-ratio: 4 / 4.6; object-fit: cover; border-radius: 40px 40px 200px 40px; box-shadow: var(--sombra); }
+.portes { display: flex; gap: 10px; flex-wrap: wrap; margin: 20px 0 22px; }
+.portes span { background: var(--cor-branco); padding: 6px 14px; border-radius: 999px; font-size: .9rem; font-weight: 700; box-shadow: 0 3px 10px -6px rgba(0,0,0,.3); }
+.portes b { color: var(--cor-primaria); }
+.tabela-precos { width: 100%; border-collapse: separate; border-spacing: 0; background: var(--cor-branco); border-radius: var(--raio); overflow: hidden; box-shadow: var(--sombra); }
+.tabela-precos th, .tabela-precos td { padding: 16px 14px; text-align: center; }
+.tabela-precos thead th { background: var(--cor-primaria); color: var(--cor-branco); font-family: var(--fonte-titulo); font-weight: 600; font-size: 1.1rem; }
+.tabela-precos thead th:first-child { text-align: left; }
+.tabela-precos tbody th { text-align: left; font-weight: 700; }
+.tabela-precos tbody th small { display: block; font-weight: 600; color: var(--cor-texto-suave); font-size: .85rem; }
+.tabela-precos tbody tr:nth-child(even) { background: #FFF6EC; }
+.tabela-precos td { font-weight: 800; white-space: nowrap; }
+.nota { font-size: .92rem; color: var(--cor-texto-suave); margin-top: 16px; }
+@media (max-width: 860px) {
+  .banho .container { grid-template-columns: 1fr; }
+  .banho-foto { position: static; }
+  .banho-foto img { aspect-ratio: 16 / 11; }
+}
+@media (max-width: 480px) {
+  .tabela-precos th, .tabela-precos td { padding: 12px 6px; font-size: .9rem; }
+  .tabela-precos tbody th { padding-left: 12px; }
+}
+
+/* =================================================================
+   VETERINÁRIO E VACINAS
+   ================================================================= */
+.vet { background: #EAF6FC; overflow: hidden; }
+.vet::before {
+  content: ""; position: absolute; width: 420px; height: 420px; left: -160px; bottom: -160px;
+  background: var(--cor-destaque); opacity: .45; border-radius: 55% 45% 40% 60% / 50% 60% 40% 50%;
+}
+.vet .container { position: relative; }
+.vet-topo { display: grid; grid-template-columns: 1.2fr 1fr; gap: 56px; align-items: center; margin-bottom: 56px; }
+.vet-topo img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 50% 50% 40px 40px / 40% 40% 40px 40px; box-shadow: var(--sombra); }
+.consultas { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
+.consultas li {
+  display: flex; justify-content: space-between; align-items: center; gap: 12px; background: var(--cor-branco);
+  padding: 16px 20px; border-radius: 18px; font-weight: 700;
+}
+.consultas li span small { display: block; font-weight: 600; color: var(--cor-texto-suave); font-size: .88rem; }
+.consultas li b { color: var(--cor-primaria); white-space: nowrap; }
+.vacinas-titulo { display: flex; align-items: center; gap: 12px; margin-bottom: 22px; }
+.vacinas { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+.vacina {
+  background: var(--cor-branco); border-radius: 22px; padding: 22px; border: 2px dashed #9FD3EE; text-align: left;
+}
+.vacina h4 { font-size: 1.2rem; margin-bottom: 4px; }
+.vacina p { margin: 0 0 10px; font-size: .95rem; color: var(--cor-texto-suave); }
+.vacina b { color: var(--cor-secundaria-escura); }
+@media (max-width: 860px) { .vet-topo { grid-template-columns: 1fr; } }
+
+/* =================================================================
+   LEVA E TRAZ (táxi dog)
+   ================================================================= */
+.taxi-box {
+  background: var(--cor-destaque); border-radius: 48px; padding: clamp(32px, 6vw, 64px);
+  display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; position: relative; overflow: hidden;
+}
+.taxi-box::after {
+  content: ""; position: absolute; right: -80px; top: -80px; width: 280px; height: 280px; border-radius: 50%;
+  background: var(--cor-pessego); opacity: .55;
+}
+.taxi-box > * { position: relative; z-index: 1; }
+.taxi-ilustracao { /* bloco decorativo em CSS no lugar de foto */
+  aspect-ratio: 1.3 / 1; border-radius: 40px; background: linear-gradient(160deg, #D6EEFA 0%, #9FD3EE 100%);
+  display: grid; place-items: center; position: relative; overflow: hidden;
+}
+.taxi-ilustracao::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 22%; background: #7BB8D8; }
+.taxi-ilustracao svg { width: 72%; position: relative; z-index: 1; margin-top: 8%; }
+.passos { list-style: none; counter-reset: passo; padding: 0; margin: 24px 0 28px; display: grid; gap: 14px; }
+.passos li { counter-increment: passo; display: flex; gap: 14px; align-items: flex-start; font-weight: 700; }
+.passos li::before {
+  content: counter(passo); width: 36px; height: 36px; border-radius: 50%; background: var(--cor-texto); color: var(--cor-destaque);
+  font-family: var(--fonte-titulo); display: grid; place-items: center; flex-shrink: 0;
+}
+.passos li span { font-weight: 600; display: block; color: #4A4458; }
+@media (max-width: 860px) { .taxi-box { grid-template-columns: 1fr; } }
+
+/* =================================================================
+   PACOTES MENSAIS
+   ================================================================= */
+.pacotes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: stretch; }
+.pacote {
+  background: var(--cor-branco); border-radius: var(--raio); padding: 34px 28px; box-shadow: var(--sombra);
+  display: flex; flex-direction: column; position: relative;
+}
+.pacote h3 { font-size: 1.6rem; margin-bottom: 4px; }
+.pacote .para { color: var(--cor-texto-suave); font-weight: 700; margin-bottom: 18px; }
+.pacote .valor { font-family: var(--fonte-titulo); font-size: 2.6rem; font-weight: 700; line-height: 1; margin-bottom: 4px; }
+.pacote .valor small { font-size: 1rem; font-family: var(--fonte-texto); color: var(--cor-texto-suave); font-weight: 700; }
+.pacote .economia { color: var(--cor-secundaria-escura); font-weight: 800; font-size: .95rem; margin-bottom: 20px; }
+.pacote ul { list-style: none; padding: 0; margin: 0 0 26px; display: grid; gap: 10px; }
+.pacote li { display: flex; gap: 10px; }
+.pacote li .pata { color: var(--cor-pessego); margin-top: 5px; }
+.pacote .btn { margin-top: auto; }
+.pacote.destaque { background: var(--cor-primaria); color: var(--cor-branco); transform: translateY(-14px); }
+.pacote.destaque .para, .pacote.destaque .valor small { color: #FFE2D2; }
+.pacote.destaque .economia { color: var(--cor-destaque); }
+.pacote.destaque li .pata { color: var(--cor-destaque); }
+.pacote.destaque .btn { background: var(--cor-branco); color: var(--cor-primaria); box-shadow: none; }
+.pacote.destaque .btn:hover { background: var(--cor-destaque); color: var(--cor-texto); }
+.fita {
+  position: absolute; top: -16px; left: 50%; transform: translateX(-50%) rotate(-3deg); background: var(--cor-destaque);
+  color: var(--cor-texto); font-weight: 800; font-size: .85rem; padding: 7px 16px; border-radius: 999px; white-space: nowrap;
+}
+@media (max-width: 900px) {
+  .pacotes-grid { grid-template-columns: 1fr; max-width: 460px; margin-inline: auto; }
+  .pacote.destaque { transform: none; margin-top: 8px; }
+}
+
+/* =================================================================
+   DIFERENCIAIS
+   ================================================================= */
+.diferenciais { background: var(--cor-texto); color: var(--cor-branco); border-radius: 60px; margin-inline: 12px; }
+.diferenciais .etiqueta { background: rgba(255,255,255,.1); color: var(--cor-destaque); box-shadow: none; }
+.diferenciais .lead { color: #CFCAD9; }
+.dif-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 56px; align-items: center; }
+.dif-lista { display: grid; grid-template-columns: 1fr 1fr; gap: 28px 32px; }
+.dif-item h3 { font-size: 1.2rem; display: flex; align-items: center; gap: 12px; }
+.dif-item h3 span {
+  width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; font-size: 1.3rem;
+  background: rgba(255, 214, 107, .15); flex-shrink: 0;
+}
+.dif-item p { color: #CFCAD9; margin: 0; font-size: 1rem; }
+@media (max-width: 900px) { .dif-grid { grid-template-columns: 1fr; } }
+@media (max-width: 560px) { .dif-lista { grid-template-columns: 1fr; } .diferenciais { margin-inline: 0; border-radius: 40px; } }
+
+/* =================================================================
+   GALERIA — Clientes de 4 patas (polaroids)
+   ================================================================= */
+.galeria-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; }
+.polaroid {
+  margin: 0; background: var(--cor-branco); padding: 12px 12px 16px; border-radius: 16px; box-shadow: var(--sombra);
+  transition: transform .3s;
+}
+.polaroid:nth-child(odd) { transform: rotate(-2.5deg); }
+.polaroid:nth-child(even) { transform: rotate(2deg) translateY(18px); }
+.polaroid:hover { transform: rotate(0) scale(1.03); }
+.polaroid img { width: 100%; aspect-ratio: 1 / 1.1; object-fit: cover; border-radius: 10px; }
+.polaroid figcaption { font-family: var(--fonte-titulo); font-weight: 600; font-size: 1.15rem; text-align: center; padding-top: 12px; }
+.polaroid figcaption small { display: block; font-family: var(--fonte-texto); font-size: .85rem; color: var(--cor-texto-suave); font-weight: 700; }
+.galeria-cta { text-align: center; margin-top: 60px; }
+@media (max-width: 900px) { .galeria-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; } }
+
+/* =================================================================
+   DEPOIMENTOS (balões)
+   ================================================================= */
+.depo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; align-items: start; }
+.depo-grid .balao:nth-child(2) { margin-top: 40px; }
+.balao {
+  background: var(--cor-branco); border-radius: 30px 30px 30px 6px; padding: 28px; box-shadow: var(--sombra); margin: 0;
+  position: relative;
+}
+.balao blockquote { margin: 0 0 18px; font-size: 1.02rem; }
+.balao figcaption { display: flex; align-items: center; gap: 12px; font-weight: 800; }
+.balao figcaption small { display: block; font-weight: 600; color: var(--cor-texto-suave); }
+.avatar {
+  width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; font-family: var(--fonte-titulo);
+  font-weight: 600; font-size: 1.2rem; flex-shrink: 0;
+}
+@media (max-width: 900px) { .depo-grid { grid-template-columns: 1fr; max-width: 560px; margin-inline: auto; } .depo-grid .balao:nth-child(2) { margin-top: 0; } }
+
+/* =================================================================
+   FAQ
+   ================================================================= */
+.faq { background: var(--cor-fundo-2); }
+.faq .container { display: grid; grid-template-columns: .8fr 1.2fr; gap: 56px; }
+.faq-lista { display: grid; gap: 14px; }
+.faq details { background: var(--cor-branco); border-radius: 22px; padding: 4px 24px; box-shadow: 0 6px 18px -12px rgba(0,0,0,.3); }
+.faq summary {
+  cursor: pointer; list-style: none; font-weight: 800; font-size: 1.08rem; padding: 18px 36px 18px 0; position: relative;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after {
+  content: "+"; position: absolute; right: 0; top: 50%; transform: translateY(-50%); width: 30px; height: 30px; border-radius: 50%;
+  background: var(--cor-destaque); display: grid; place-items: center; font-size: 1.3rem; transition: transform .25s;
+}
+.faq details[open] summary::after { transform: translateY(-50%) rotate(45deg); }
+.faq details p { color: var(--cor-texto-suave); padding-bottom: 8px; }
+@media (max-width: 860px) { .faq .container { grid-template-columns: 1fr; gap: 24px; } }
+
+/* =================================================================
+   LOCALIZAÇÃO
+   ================================================================= */
+.local .container { display: grid; grid-template-columns: 1fr 1.3fr; gap: 40px; align-items: stretch; }
+.info-card { background: var(--cor-branco); border-radius: var(--raio); padding: 34px; box-shadow: var(--sombra); }
+.info-card h3 { display: flex; gap: 10px; align-items: center; margin-top: 24px; }
+.info-card h3:first-of-type { margin-top: 0; }
+.horarios { list-style: none; padding: 0; margin: 0; }
+.horarios li { display: flex; justify-content: space-between; gap: 16px; padding: 8px 0; border-bottom: 2px dotted #EBDDCB; }
+.horarios li b { white-space: nowrap; }
+.mapa { border-radius: var(--raio); overflow: hidden; box-shadow: var(--sombra); min-height: 380px; border: 6px solid var(--cor-branco); }
+.mapa iframe { width: 100%; height: 100%; min-height: 380px; border: 0; display: block; }
+@media (max-width: 860px) { .local .container { grid-template-columns: 1fr; } }
+
+/* =================================================================
+   CTA FINAL
+   ================================================================= */
+.cta-final { text-align: center; padding-bottom: clamp(80px, 10vw, 120px); }
+.cta-caixa {
+  background: var(--cor-pessego); border-radius: 60px; padding: clamp(48px, 8vw, 90px) 24px; position: relative; overflow: hidden;
+}
+.cta-caixa::before, .cta-caixa::after {
+  content: ""; position: absolute; border-radius: 50%; background: var(--cor-destaque);
+}
+.cta-caixa::before { width: 200px; height: 200px; left: -60px; bottom: -80px; }
+.cta-caixa::after { width: 140px; height: 140px; right: -30px; top: -40px; background: var(--cor-secundaria); opacity: .6; }
+.cta-caixa > * { position: relative; z-index: 1; }
+.cta-caixa h2 { max-width: 16ch; margin-inline: auto; }
+.cta-caixa p { max-width: 50ch; margin: 0 auto 30px; font-size: 1.12rem; }
+
+/* =================================================================
+   RODAPÉ
+   ================================================================= */
+.rodape { background: var(--cor-texto); color: #CFCAD9; padding: 64px 0 28px; }
+.rodape .container { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 40px; }
+.rodape .logo { color: var(--cor-branco); margin-bottom: 16px; }
+.rodape .logo small { color: var(--cor-destaque); }
+.rodape h4 { color: var(--cor-branco); font-size: 1.15rem; }
+.rodape ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+.rodape a { color: #CFCAD9; text-decoration: none; }
+.rodape a:hover { color: var(--cor-destaque); text-decoration: underline; }
+.redes { display: flex; gap: 12px; margin-top: 18px; }
+.redes a { width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,.08); display: grid; place-items: center; }
+.redes a:hover { background: var(--cor-primaria); }
+.redes svg { width: 20px; height: 20px; fill: var(--cor-branco); }
+.copy { border-top: 1px solid rgba(255,255,255,.1); margin-top: 48px; padding-top: 22px; text-align: center; font-size: .9rem; grid-column: 1 / -1; }
+@media (max-width: 760px) { .rodape .container { grid-template-columns: 1fr; } }
+
+/* ---------- Botão flutuante WhatsApp ---------- */
+.whats-flutuante {
+  position: fixed; right: 18px; bottom: 18px; z-index: 40; width: 62px; height: 62px; border-radius: 50%;
+  background: #1FAF54; display: grid; place-items: center; box-shadow: 0 10px 28px -8px rgba(0,0,0,.45);
+  transition: transform .2s;
+}
+.whats-flutuante:hover { transform: scale(1.08); }
+.whats-flutuante svg { width: 32px; height: 32px; fill: #fff; }
+
+/* ---------- Animações de entrada ---------- */
+.js .revelar { opacity: 0; translate: 0 28px; transition: opacity .7s ease, translate .7s ease; }
+.js .revelar.visivel { opacity: 1; translate: none; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .js .revelar { opacity: 1; translate: none; transition: none; }
+  *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- Ícones reutilizáveis (pata e WhatsApp) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-pata" viewBox="0 0 24 24"><ellipse cx="6" cy="9" rx="2.2" ry="2.8"/><ellipse cx="10" cy="5.2" rx="2.2" ry="2.8"/><ellipse cx="14.2" cy="5.2" rx="2.2" ry="2.8"/><ellipse cx="18.2" cy="9" rx="2.2" ry="2.8"/><path d="M12.1 11c-3 0-6.3 4.4-6.3 7.1 0 1.9 1.5 2.9 3.2 2.9 1.4 0 2.1-.8 3.1-.8s1.8.8 3.1.8c1.7 0 3.2-1 3.2-2.9 0-2.7-3.3-7.1-6.3-7.1z"/></symbol>
+  <symbol id="i-whats" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></symbol>
+</svg>
+
+<!-- ===== SEÇÃO: HEADER / MENU ===== -->
+<header class="header" id="topo">
+  <div class="container">
+    <a href="#inicio" class="logo" aria-label="Patas Felizes - voltar ao início">
+      <span class="logo-icone"><svg class="pata"><use href="#i-pata"/></svg></span>
+      <span>Patas Felizes<small>Pet Shop &amp; Vet</small></span>
+    </a>
+    <button class="hamburguer" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu"><span></span></button>
+    <nav class="menu" id="menu" aria-label="Menu principal">
+      <ul>
+        <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#banho">Banho &amp; Tosa</a></li>
+        <li><a href="#vet">Veterinário</a></li>
+        <li><a href="#pacotes">Pacotes</a></li>
+        <li><a href="#local">Onde estamos</a></li>
+      </ul>
+      <a href="#" class="btn btn-primario" data-whatsapp data-msg="Olá! Quero agendar um horário para o meu pet 🐾">Agendar agora</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<!-- ===== SEÇÃO: HERO ===== -->
+<section class="hero" id="inicio">
+  <div class="container">
+    <div class="revelar">
+      <span class="etiqueta"><svg class="pata"><use href="#i-pata"/></svg> Banho, tosa e veterinário no mesmo lugar</span>
+      <h1>Seu pet volta <span class="marca">cheiroso</span>, cuidado e muito mais feliz</h1>
+      <p class="lead">Banho e tosa sem estresse, consultas veterinárias e vacinas com quem ama bicho de verdade. E se a rotina estiver corrida, a gente busca e leva em casa.</p>
+      <div class="hero-acoes">
+        <a href="#" class="btn btn-primario" data-whatsapp data-msg="Olá! Quero agendar banho e tosa para o meu pet 🐶">
+          <svg aria-hidden="true"><use href="#i-whats"/></svg> Agendar pelo WhatsApp
+        </a>
+        <a href="#banho" class="btn btn-contorno">Ver preços</a>
+      </div>
+      <div class="hero-provas">
+        <div><strong>+2.400</strong>pets atendidos</div>
+        <div><span class="estrelas" aria-hidden="true">★★★★★</span><strong>4,9</strong>no Google</div>
+      </div>
+    </div>
+    <div class="hero-foto revelar">
+      <div class="blob-fundo" aria-hidden="true"></div>
+      <!-- TROQUE: foto de destaque (um pet feliz, de preferência cliente real) -->
+      <img src="https://images.unsplash.com/photo-1625316708582-7c38734be31d?auto=format&fit=crop&w=1200&q=80" alt="Cachorro schnauzer sorridente com o pelo bem tosado em fundo amarelo" width="600" height="650">
+      <div class="selo selo-1"><span class="bolinha" aria-hidden="true">🛁</span><span>Banho em até 2h<small>com secagem suave</small></span></div>
+      <div class="selo selo-2"><span class="bolinha" aria-hidden="true">🩺</span><span>Vet no local<small>seg. a sáb.</small></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SEÇÃO: FAIXA DE SERVIÇOS ===== -->
+<div class="faixa" aria-label="Resumo dos serviços">
+  <ul>
+    <li><svg class="pata" aria-hidden="true"><use href="#i-pata"/></svg> Banho &amp; Tosa</li>
+    <li><svg class="pata" aria-hidden="true"><use href="#i-pata"/></svg> Consultas</li>
+    <li><svg class="pata" aria-hidden="true"><use href="#i-pata"/></svg> Vacinas</li>
+    <li><svg class="pata" aria-hidden="true"><use href="#i-pata"/></svg> Táxi Dog</li>
+    <li><svg class="pata" aria-hidden="true"><use href="#i-pata"/></svg> Rações e acessórios</li>
+  </ul>
+</div>
+
+<!-- ===== SEÇÃO: SOBRE ===== -->
+<section class="secao sobre" id="sobre">
+  <div class="container">
+    <div class="sobre-foto revelar">
+      <!-- TROQUE: foto da equipe ou de pets na loja -->
+      <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1200&q=80" alt="Dois cachorrinhos correndo felizes em uma estrada de terra" width="600" height="510" loading="lazy">
+      <div class="anos"><strong>8</strong>anos cuidando<br>do bairro</div>
+    </div>
+    <div class="revelar">
+      <span class="etiqueta">Quem somos</span>
+      <h2>Aqui seu pet é tratado como da família</h2>
+      <p class="lead">A Patas Felizes nasceu do amor de uma médica-veterinária e de um tosador apaixonado por bichos. Há 8 anos cuidamos de cães e gatos do bairro com paciência, higiene impecável e zero pressa.</p>
+      <p>Nada de gaiola apertada ou secador barulhento o dia todo: cada pet tem seu tempo, seu cantinho e um profissional dedicado. Você recebe foto no WhatsApp assim que ele fica pronto.</p>
+      <ul class="checklist">
+        <li>Produtos hipoalergênicos</li>
+        <li>Ambiente climatizado</li>
+        <li>Equipe treinada em manejo gentil</li>
+        <li>Veterinária responsável no local</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SEÇÃO: SERVIÇOS ===== -->
+<section class="secao servicos" id="servicos">
+  <div class="container">
+    <div class="cabecalho-secao revelar">
+      <span class="etiqueta">O que fazemos</span>
+      <h2>Tudo que seu pet precisa, sem correria</h2>
+      <p class="lead">Do banho semanal à vacina anual: resolva tudo num lugar só e com quem já conhece o seu bichinho.</p>
+    </div>
+    <div class="bento">
+      <article class="card card-grande revelar">
+        <div class="icone" aria-hidden="true">🛁</div>
+        <h3>Banho &amp; Tosa</h3>
+        <p>Banho com shampoo neutro, hidratação, corte de unhas, limpeza de ouvidos e perfume suave. Tosa higiênica, na máquina ou na tesoura.</p>
+        <p class="preco"><small>a partir de</small> R$ 45</p>
+      </article>
+      <article class="card card-medio revelar">
+        <div class="icone bg-azul" aria-hidden="true">🩺</div>
+        <h3>Consultas veterinárias</h3>
+        <p>Check-up, dermatologia, retorno e orientação de alimentação. Atendimento com hora marcada, sem fila.</p>
+        <p class="preco"><small>a partir de</small> R$ 120</p>
+      </article>
+      <article class="card card-pequeno revelar">
+        <div class="icone bg-amarelo" aria-hidden="true">💉</div>
+        <h3>Vacinas</h3>
+        <p>V10, antirrábica, gripe canina e felinas, com carteirinha em dia.</p>
+        <p class="preco"><small>a partir de</small> R$ 60</p>
+      </article>
+      <article class="card card-pequeno revelar">
+        <div class="icone bg-pessego" aria-hidden="true">🚐</div>
+        <h3>Leva e traz</h3>
+        <p>Buscamos e devolvemos seu pet em casa, com segurança.</p>
+        <p class="preco"><small>a partir de</small> R$ 15</p>
+      </article>
+      <article class="card card-pequeno revelar">
+        <div class="icone bg-azul" aria-hidden="true">🦴</div>
+        <h3>Pet shop</h3>
+        <p>Rações, petiscos, brinquedos e acessórios com entrega no bairro.</p>
+        <p class="preco"><small>peça pelo WhatsApp</small></p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SEÇÃO: BANHO E TOSA (TABELA DE PREÇOS) ===== -->
+<section class="secao banho" id="banho">
+  <div class="container">
+    <div class="banho-foto revelar">
+      <!-- TROQUE: foto de banho/tosa no próprio pet shop -->
+      <img src="https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&w=1200&q=80" alt="Golden retriever tomando banho, tranquilo, com a tosadora secando o pelo" width="600" height="690" loading="lazy">
+    </div>
+    <div class="revelar">
+      <span class="etiqueta">Banho &amp; Tosa</span>
+      <h2>Preços por porte, sem surpresa no caixa</h2>
+      <p class="lead">Todos os banhos incluem corte de unhas, limpeza de ouvidos, escovação e laço ou bandana de presente.</p>
+      <div class="portes" aria-label="Legenda de portes">
+        <span><b>P</b> até 10 kg</span><span><b>M</b> 10 a 25 kg</span><span><b>G</b> acima de 25 kg</span>
+      </div>
+      <table class="tabela-precos">
+        <caption class="sr-only">Tabela de preços de banho e tosa por porte</caption>
+        <thead>
+          <tr><th scope="col">Serviço</th><th scope="col">P</th><th scope="col">M</th><th scope="col">G</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Banho<small>pelo curto</small></th><td>R$ 45</td><td>R$ 60</td><td>R$ 80</td></tr>
+          <tr><th scope="row">Banho<small>pelo longo</small></th><td>R$ 55</td><td>R$ 75</td><td>R$ 100</td></tr>
+          <tr><th scope="row">Banho + tosa higiênica</th><td>R$ 65</td><td>R$ 85</td><td>R$ 110</td></tr>
+          <tr><th scope="row">Tosa na máquina</th><td>R$ 80</td><td>R$ 105</td><td>R$ 140</td></tr>
+          <tr><th scope="row">Tosa na tesoura</th><td>R$ 100</td><td>R$ 130</td><td>R$ 170</td></tr>
+          <tr><th scope="row">Hidratação extra</th><td>R$ 20</td><td>R$ 25</td><td>R$ 35</td></tr>
+        </tbody>
+      </table>
+      <p class="nota">Gatos: banho a partir de R$ 70, com horário exclusivo e ambiente silencioso. Valores podem variar conforme nós no pelo e comportamento — sempre avisamos antes.</p>
+      <a href="#" class="btn btn-primario" data-whatsapp data-msg="Olá! Quero agendar banho/tosa. Meu pet é porte: ">
+        <svg aria-hidden="true"><use href="#i-whats"/></svg> Agendar banho &amp; tosa
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SEÇÃO: VETERINÁRIO E VACINAS ===== -->
+<section class="secao vet" id="vet">
+  <div class="container">
+    <div class="vet-topo">
+      <div class="revelar">
+        <span class="etiqueta">Clínica veterinária</span>
+        <h2>Consultas e vacinas com hora marcada</h2>
+        <p class="lead">Atendimento com a Dra. Camila Rocha (CRMV-SP 00000), com calma, carinho e explicação clara de cada passo do tratamento.</p>
+        <ul class="consultas">
+          <li><span>Consulta clínica geral<small>check-up completo + orientação</small></span><b>R$ 120</b></li>
+          <li><span>Retorno em até 15 dias<small>para a mesma queixa</small></span><b>R$ 60</b></li>
+          <li><span>Consulta de filhote<small>vermifugação + plano vacinal</small></span><b>R$ 140</b></li>
+          <li><span>Consulta domiciliar<small>ideal para gatos e pets idosos</small></span><b>R$ 190</b></li>
+        </ul>
+      </div>
+      <div class="revelar">
+        <!-- TROQUE: foto da veterinária atendendo -->
+        <img src="https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?auto=format&fit=crop&w=1200&q=80" alt="Veterinária examinando com carinho um gato rajado" width="600" height="450" loading="lazy">
+      </div>
+    </div>
+    <div class="vacinas-titulo revelar">
+      <h3 style="margin:0">💉 Carteirinha de vacinas em dia</h3>
+    </div>
+    <div class="vacinas">
+      <div class="vacina revelar"><h4>V10 / V8</h4><p>Protege contra cinomose, parvovirose, leptospirose e mais.</p><b>R$ 90</b></div>
+      <div class="vacina revelar"><h4>Antirrábica</h4><p>Obrigatória, anual, para cães e gatos.</p><b>R$ 60</b></div>
+      <div class="vacina revelar"><h4>Gripe canina</h4><p>Indicada para quem frequenta creche, hotel e parques.</p><b>R$ 95</b></div>
+      <div class="vacina revelar"><h4>V4 / V5 felina</h4><p>Proteção completa para gatos, inclusive os que não saem de casa.</p><b>R$ 110</b></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SEÇÃO: LEVA E TRAZ (TÁXI DOG) ===== -->
+<section class="secao" id="taxi">
+  <div class="container">
+    <div class="taxi-box revelar">
+      <!-- Ilustração em CSS/SVG (pode trocar por foto da van: <img src="..." alt="...">) -->
+      <div class="taxi-ilustracao" aria-hidden="true">
+        <svg viewBox="0 0 200 110">
+          <rect x="10" y="30" width="150" height="55" rx="16" fill="#C2410C"/>
+          <path d="M160 48h14a14 14 0 0 1 14 14v23h-28z" fill="#9A330A"/>
+          <rect x="24" y="40" width="34" height="22" rx="6" fill="#D6EEFA"/>
+          <rect x="66" y="40" width="34" height="22" rx="6" fill="#D6EEFA"/>
+          <rect x="108" y="40" width="34" height="22" rx="6" fill="#D6EEFA"/>
+          <circle cx="83" cy="52" r="7" fill="#8B5E3C"/><ellipse cx="77" cy="46" rx="3" ry="5" fill="#6B4428"/><ellipse cx="89" cy="46" rx="3" ry="5" fill="#6B4428"/>
+          <text x="85" y="78" font-family="Fredoka, sans-serif" font-size="11" font-weight="700" fill="#FFD66B" text-anchor="middle">TÁXI DOG</text>
+          <circle cx="45" cy="88" r="13" fill="#2E2A3B"/><circle cx="45" cy="88" r="5" fill="#fff"/>
+          <circle cx="160" cy="88" r="13" fill="#2E2A3B"/><circle cx="160" cy="88" r="5" fill="#fff"/>
+        </svg>
+      </div>
+      <div>
+        <span class="etiqueta">Leva e traz</span>
+        <h2>Sem tempo? A gente busca o seu pet em casa</h2>
+        <ol class="passos">
+          <li><div>Agende pelo WhatsApp<span>Escolha o dia, o serviço e o horário de busca.</span></div></li>
+          <li><div>Buscamos com segurança<span>Van climatizada, caixas de transporte higienizadas e cinto pet.</span></div></li>
+          <li><div>Devolvemos cheiroso<span>Você recebe foto e aviso quando estivermos a caminho.</span></div></li>
+        </ol>
+        <p><strong>Até 3 km: R$ 15 por trecho</strong> · grátis nos pacotes mensais Família e Premium.</p>
+        <a href="#" class="btn btn-primario" data-whatsapp data-msg="Olá! Quero usar o Leva e Traz. Meu endereço é: ">
+          <svg aria-hidden="true"><use href="#i-whats"/></svg> Pedir o táxi dog
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SEÇÃO: PACOTES MENSAIS ===== -->
+<section class="secao" id="pacotes" style="padding-top:0">
+  <div class="container">
+    <div class="cabecalho-secao centro revelar">
+      <span class="etiqueta">Pacotes mensais</span>
+      <h2>Banho toda semana, preço de amigo</h2>
+      <p class="lead">Seu pet sempre limpinho e você economiza até 25%. Valores para porte P — consulte M e G.</p>
+    </div>
+    <div class="pacotes-grid">
+      <article class="pacote revelar">
+        <h3>Básico</h3>
+        <p class="para">2 banhos por mês</p>
+        <p class="valor">R$ 80<small>/mês</small></p>
+        <p class="economia">Economize R$ 10</p>
+        <ul>
+          <li><svg class="pata" aria-hidden="true"><use href="#i-pata"/></svg> 2 banhos completos</li>
+          <li><svg class="pata" aria-hidden="true"><use href="#i-pata"/></svg> Corte de unhas e ouvidos</li>
+          <li><svg class="pata" aria-hidden="true"><use href="#i-pata"/></svg> Agendamento prioritário</li>
+        </ul>
+        <a href="#" class="btn btn-contorno" data-whatsapp data-msg="Olá! Tenho interesse no pacote Básico (2 banhos/mês).">Quero o Básico</a>
+      </article>
+      <article class="pacote destaque revelar">
+        <span class="fita">⭐ Mais escolhido</span>
+        <h3>Família</h3>
+        <p class="para">4 banhos por mês</p>
+        <p class="valor">R$ 150<small>/mês</small></p>
+        <p class="economia">Economize R$ 30 + táxi dog grátis</p>
+        <ul>
+          <li><svg class="pata" aria-hidden="true"><use href="#i-pata"/></svg> 4 banhos completos</li>
+          <li><svg class="pata" aria-hidden="true"><use href="#i-pata"/></svg> 1 tosa higiênica</li>
+          <li><svg class="pata" aria-hidden="true"><use href="#i-pata"/></svg> Leva e traz incluso</li>
+          <li><svg class="pata" aria-hidden="true"><use href="#i-pata"/></svg> Hidratação 1x no mês</li>
+        </ul>
+        <a href="#" class="btn" data-whatsapp data-msg="Olá! Tenho interesse no pacote Família (4 banhos/mês).">Quero o Família</a>
+      </article>
+      <article class="pacote revelar">
+        <h3>Premium</h3>
+        <p class="para">4 banhos + tosa completa</p>
+        <p class="valor">R$ 210<small>/mês</small></p>
+        <p class="economia">Economize R$ 55 + táxi dog grátis</p>
+        <ul>
+          <li><svg class="pata" aria-hidden="true"><use href="#i-pata"/></svg> 4 banhos + 1 tosa completa</li>
+          <li><svg class="pata" aria-hidden="true"><use href="#i-pata"/></svg> Hidratação em todos os banhos</li>
+          <li><svg class="pata" aria-hidden="true"><use href="#i-pata"/></svg> Leva e traz incluso</li>
+          <li><svg class="pata" aria-hidden="true"><use href="#i-pata"/></svg> 10% off em consultas</li>
+        </ul>
+        <a href="#" class="btn btn-contorno" data-whatsapp data-msg="Olá! Tenho interesse no pacote Premium.">Quero o Premium</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SEÇÃO: DIFERENCIAIS ===== -->
+<section class="secao diferenciais" id="diferenciais">
+  <div class="container dif-grid">
+    <div class="revelar">
+      <span class="etiqueta">Por que a Patas Felizes</span>
+      <h2>Cuidado que dá pra ver (e cheirar!)</h2>
+      <p class="lead">Pequenos detalhes que fazem os tutores voltarem toda semana — e os pets entrarem abanando o rabo.</p>
+    </div>
+    <div class="dif-lista">
+      <div class="dif-item revelar"><h3><span aria-hidden="true">📸</span>Foto no WhatsApp</h3><p>Você acompanha tudo e recebe a foto do pet pronto.</p></div>
+      <div class="dif-item revelar"><h3><span aria-hidden="true">🤲</span>Manejo gentil</h3><p>Sem sedação e sem pressa. Pets ansiosos têm horário tranquilo.</p></div>
+      <div class="dif-item revelar"><h3><span aria-hidden="true">🧴</span>Produtos veterinários</h3><p>Shampoos hipoalergênicos e específicos para cada tipo de pelo.</p></div>
+      <div class="dif-item revelar"><h3><span aria-hidden="true">🧼</span>Higiene rigorosa</h3><p>Materiais esterilizados e banheiras higienizadas a cada banho.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SEÇÃO: GALERIA — CLIENTES DE 4 PATAS ===== -->
+<section class="secao" id="galeria">
+  <div class="container">
+    <div class="cabecalho-secao centro revelar">
+      <span class="etiqueta">Clientes de 4 patas</span>
+      <h2>Olha quem passou por aqui 🐾</h2>
+      <p class="lead">Alguns dos nossos clientes mais fofos (e exigentes). Marque a gente no Instagram para aparecer aqui!</p>
+    </div>
+    <div class="galeria-grid">
+      <figure class="polaroid revelar">
+        <!-- TROQUE: foto de cliente pet -->
+        <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=800&q=80" alt="Buldogue francês de moletom amarelo olhando para trás" width="400" height="440" loading="lazy">
+        <figcaption>Pipoca<small>Banho semanal</small></figcaption>
+      </figure>
+      <figure class="polaroid revelar">
+        <!-- TROQUE: foto de cliente pet -->
+        <img src="https://images.unsplash.com/photo-1537151625747-768eb6cf92b2?auto=format&fit=crop&w=800&q=80" alt="Filhote de corgi sentado em fundo laranja" width="400" height="440" loading="lazy">
+        <figcaption>Thor<small>Primeira vacina</small></figcaption>
+      </figure>
+      <figure class="polaroid revelar">
+        <!-- TROQUE: foto de cliente pet -->
+        <img src="https://images.unsplash.com/photo-1574158622682-e40e69881006?auto=format&fit=crop&w=800&q=80" alt="Gato rajado de olhos verdes olhando para cima" width="400" height="440" loading="lazy">
+        <figcaption>Frida<small>Banho de gato</small></figcaption>
+      </figure>
+      <figure class="polaroid revelar">
+        <!-- TROQUE: foto de cliente pet -->
+        <img src="https://images.unsplash.com/photo-1596492784531-6e6eb5ea9993?auto=format&fit=crop&w=800&q=80" alt="Cachorro samoieda branco e fofinho sentado em fundo rosa" width="400" height="440" loading="lazy">
+        <figcaption>Floquinho<small>Pacote Premium</small></figcaption>
+      </figure>
+    </div>
+    <div class="galeria-cta">
+      <a href="#" class="btn btn-contorno" data-instagram target="_blank" rel="noopener">Ver mais no Instagram</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SEÇÃO: DEPOIMENTOS ===== -->
+<section class="secao" id="depoimentos" style="padding-top:0">
+  <div class="container">
+    <div class="cabecalho-secao centro revelar">
+      <span class="etiqueta">Quem confia, recomenda</span>
+      <h2>Tutores felizes, pets mais ainda</h2>
+    </div>
+    <div class="depo-grid">
+      <figure class="balao revelar">
+        <p class="estrelas" aria-label="5 de 5 estrelas">★★★★★</p>
+        <blockquote>“O Bento morria de medo de banho e hoje entra na loja abanando o rabo. A equipe tem uma paciência que eu nunca vi. E a foto no WhatsApp é a melhor parte do meu dia!”</blockquote>
+        <figcaption><span class="avatar bg-pessego" aria-hidden="true">M</span><span>Mariana Souza<small>tutora do Bento, shih-tzu</small></span></figcaption>
+      </figure>
+      <figure class="balao revelar">
+        <p class="estrelas" aria-label="5 de 5 estrelas">★★★★★</p>
+        <blockquote>“Uso o pacote Família com o leva e traz. Não preciso sair do trabalho e a Luna volta cheirosa, com lacinho e unha cortada. Vale cada centavo.”</blockquote>
+        <figcaption><span class="avatar bg-azul" aria-hidden="true">R</span><span>Ricardo Lima<small>tutor da Luna, golden</small></span></figcaption>
+      </figure>
+      <figure class="balao revelar">
+        <p class="estrelas" aria-label="5 de 5 estrelas">★★★★★</p>
+        <blockquote>“A Dra. Camila explicou tudo com calma na consulta da minha gata idosa. Atendimento humano e preço justo. Virei cliente fiel.”</blockquote>
+        <figcaption><span class="avatar bg-amarelo" aria-hidden="true">A</span><span>Ana Paula Reis<small>tutora da Mel, SRD</small></span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SEÇÃO: FAQ ===== -->
+<section class="secao faq" id="faq">
+  <div class="container">
+    <div class="revelar">
+      <span class="etiqueta">Dúvidas</span>
+      <h2>Perguntas frequentes</h2>
+      <p class="lead">Não achou sua dúvida? Chama no WhatsApp que a gente responde rapidinho.</p>
+    </div>
+    <div class="faq-lista revelar">
+      <details>
+        <summary>Quanto tempo demora o banho e tosa?</summary>
+        <p>O banho leva de 1h30 a 2h, e banho com tosa de 2h a 3h, dependendo do porte e do pelo. Avisamos pelo WhatsApp assim que o pet estiver pronto.</p>
+      </details>
+      <details>
+        <summary>Meu cachorro é bravo ou muito medroso. Vocês atendem?</summary>
+        <p>Sim! Temos horários mais tranquilos e profissionais treinados em manejo gentil. Conte pra gente no agendamento como ele reage para prepararmos tudo.</p>
+      </details>
+      <details>
+        <summary>Precisa de carteira de vacinação?</summary>
+        <p>Para banho e tosa pedimos a vacina V8/V10 e a antirrábica em dia, para a segurança de todos os pets. Se estiver atrasada, você pode vacinar aqui mesmo.</p>
+      </details>
+      <details>
+        <summary>Como funciona o leva e traz?</summary>
+        <p>Você agenda pelo WhatsApp, buscamos o pet no horário combinado em van climatizada e devolvemos após o serviço. Até 3 km custa R$ 15 por trecho.</p>
+      </details>
+      <details>
+        <summary>Quais formas de pagamento vocês aceitam?</summary>
+        <p>Pix, cartão de débito e crédito (parcelamos pacotes e consultas em até 3x sem juros) e dinheiro.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SEÇÃO: LOCALIZAÇÃO E HORÁRIO ===== -->
+<section class="secao local" id="local">
+  <div class="container">
+    <div class="info-card revelar">
+      <span class="etiqueta">Venha nos visitar</span>
+      <h3>📍 Endereço</h3>
+      <p data-config="endereco">Rua das Acácias, 245 - Vila Mariana, São Paulo - SP</p>
+      <h3>🕒 Horário de funcionamento</h3>
+      <ul class="horarios">
+        <li><span>Segunda a sexta</span><b>8h às 19h</b></li>
+        <li><span>Sábado</span><b>8h às 16h</b></li>
+        <li><span>Domingo e feriados</span><b>Fechado</b></li>
+      </ul>
+      <h3>📞 Telefone / WhatsApp</h3>
+      <p><a href="#" data-whatsapp data-config="telefoneExibicao">(11) 98765-4321</a></p>
+    </div>
+    <div class="mapa revelar">
+      <!-- O mapa é atualizado sozinho com o endereço do CONFIG -->
+      <iframe id="mapa" title="Mapa com a localização do pet shop" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps?q=Rua%20das%20Ac%C3%A1cias%2C%20245%20-%20Vila%20Mariana%2C%20S%C3%A3o%20Paulo%20-%20SP&output=embed"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SEÇÃO: CTA FINAL ===== -->
+<section class="cta-final">
+  <div class="container">
+    <div class="cta-caixa revelar">
+      <h2>Bora deixar seu pet cheiroso essa semana?</h2>
+      <p>As vagas de sábado acabam rápido. Garanta o horário do seu bichinho agora — leva menos de 1 minuto.</p>
+      <a href="#" class="btn btn-primario" data-whatsapp>
+        <svg aria-hidden="true"><use href="#i-whats"/></svg> Agendar pelo WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ===== SEÇÃO: RODAPÉ ===== -->
+<footer class="rodape">
+  <div class="container">
+    <div>
+      <a href="#inicio" class="logo">
+        <span class="logo-icone"><svg class="pata" aria-hidden="true"><use href="#i-pata"/></svg></span>
+        <span>Patas Felizes<small>Pet Shop &amp; Vet</small></span>
+      </a>
+      <p>Banho e tosa, clínica veterinária e táxi dog com carinho de verdade.</p>
+      <div class="redes">
+        <a href="#" data-instagram target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-3.3-.1-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8C2.4 3.9 3.9 2.4 7.2 2.3 8.4 2.2 8.8 2.2 12 2.2zM12 0C8.7 0 8.3 0 7.1.1 2.7.3.3 2.7.1 7.1 0 8.3 0 8.7 0 12s0 3.7.1 4.9c.2 4.4 2.6 6.8 7 7C8.3 24 8.7 24 12 24s3.7 0 4.9-.1c4.4-.2 6.8-2.6 7-7 .1-1.2.1-1.6.1-4.9s0-3.7-.1-4.9c-.2-4.4-2.6-6.8-7-7C15.7 0 15.3 0 12 0zm0 5.8a6.2 6.2 0 1 0 0 12.4 6.2 6.2 0 0 0 0-12.4zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.8a1.4 1.4 0 1 0 0 2.9 1.4 1.4 0 0 0 0-2.9z"/></svg></a>
+        <!-- TROQUE: link do Facebook do cliente -->
+        <a href="https://facebook.com/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M24 12a12 12 0 1 0-13.9 11.9v-8.4h-3V12h3V9.4c0-3 1.8-4.7 4.5-4.7 1.3 0 2.7.2 2.7.2v3h-1.5c-1.5 0-2 .9-2 1.9V12h3.4l-.5 3.5h-2.9v8.4A12 12 0 0 0 24 12z"/></svg></a>
+        <a href="#" data-whatsapp aria-label="WhatsApp"><svg><use href="#i-whats"/></svg></a>
+      </div>
+    </div>
+    <div>
+      <h4>Navegue</h4>
+      <ul>
+        <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#banho">Tabela de banho &amp; tosa</a></li>
+        <li><a href="#vet">Veterinário e vacinas</a></li>
+        <li><a href="#pacotes">Pacotes mensais</a></li>
+        <li><a href="#faq">Dúvidas</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contato</h4>
+      <ul>
+        <li><a href="#" data-whatsapp data-config="telefoneExibicao">(11) 98765-4321</a></li>
+        <li><a href="#" data-instagram target="_blank" rel="noopener" data-config="instagramExibicao">@patasfelizes.pet</a></li>
+        <li data-config="endereco">Rua das Acácias, 245 - Vila Mariana, São Paulo - SP</li>
+      </ul>
+    </div>
+    <p class="copy">© <span id="ano">2026</span> <span data-config="nomeNegocio">Patas Felizes Pet Shop &amp; Vet</span>. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<!-- ===== SEÇÃO: BOTÃO FLUTUANTE WHATSAPP ===== -->
+<a href="#" class="whats-flutuante" data-whatsapp aria-label="Falar no WhatsApp">
+  <svg aria-hidden="true"><use href="#i-whats"/></svg>
+</a>
+
+<script>
+/* =================================================================
+   CONFIG — TROQUE AQUI OS DADOS DO CLIENTE (só neste lugar!)
+   ================================================================= */
+const CONFIG = {
+  nomeNegocio: 'Patas Felizes Pet Shop & Vet',
+  whatsapp: '5511987654321',               // 55 + DDD + número, só números
+  mensagemWhatsApp: 'Olá! Vim pelo site e quero agendar um horário para o meu pet 🐾',
+  telefoneExibicao: '(11) 98765-4321',
+  instagram: 'patasfelizes.pet',           // só o usuário, sem @
+  endereco: 'Rua das Acácias, 245 - Vila Mariana, São Paulo - SP'
+};
+
+/* ---------- Links de WhatsApp (todos os elementos com data-whatsapp) ---------- */
+document.querySelectorAll('[data-whatsapp]').forEach(function (el) {
+  const msg = el.getAttribute('data-msg') || CONFIG.mensagemWhatsApp;
+  el.href = 'https://wa.me/' + CONFIG.whatsapp + '?text=' + encodeURIComponent(msg);
+  el.target = '_blank';
+  el.rel = 'noopener';
+});
+
+/* ---------- Instagram ---------- */
+document.querySelectorAll('[data-instagram]').forEach(function (el) {
+  el.href = 'https://instagram.com/' + CONFIG.instagram;
+});
+
+/* ---------- Textos automáticos (nome, telefone, endereço) ---------- */
+const textos = Object.assign({}, CONFIG, { instagramExibicao: '@' + CONFIG.instagram });
+document.querySelectorAll('[data-config]').forEach(function (el) {
+  const valor = textos[el.getAttribute('data-config')];
+  if (valor) el.textContent = valor;
+});
+
+/* ---------- Mapa ---------- */
+const mapa = document.getElementById('mapa');
+if (mapa) mapa.src = 'https://www.google.com/maps?q=' + encodeURIComponent(CONFIG.endereco) + '&output=embed';
+
+/* ---------- Ano do rodapé ---------- */
+document.getElementById('ano').textContent = new Date().getFullYear();
+
+/* ---------- Header muda ao rolar ---------- */
+const header = document.querySelector('.header');
+function checarRolagem() { header.classList.toggle('rolou', window.scrollY > 30); }
+window.addEventListener('scroll', checarRolagem, { passive: true });
+checarRolagem();
+
+/* ---------- Menu mobile ---------- */
+const botaoMenu = document.querySelector('.hamburguer');
+const menu = document.getElementById('menu');
+function fecharMenu() {
+  menu.classList.remove('aberto');
+  botaoMenu.setAttribute('aria-expanded', 'false');
+  botaoMenu.setAttribute('aria-label', 'Abrir menu');
+}
+botaoMenu.addEventListener('click', function () {
+  const abrir = !menu.classList.contains('aberto');
+  menu.classList.toggle('aberto', abrir);
+  botaoMenu.setAttribute('aria-expanded', String(abrir));
+  botaoMenu.setAttribute('aria-label', abrir ? 'Fechar menu' : 'Abrir menu');
+});
+menu.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', fecharMenu); });
+document.addEventListener('keydown', function (e) { if (e.key === 'Escape') fecharMenu(); });
+
+/* ---------- Animação de entrada ao rolar ---------- */
+const semAnimacao = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (!semAnimacao && 'IntersectionObserver' in window) {
+  document.documentElement.classList.add('js');
+  const observador = new IntersectionObserver(function (entradas) {
+    entradas.forEach(function (entrada) {
+      if (entrada.isIntersecting) {
+        entrada.target.classList.add('visivel');
+        observador.unobserve(entrada.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.revelar').forEach(function (el) { observador.observe(el); });
+}
+</script>
+<!-- grs:modelo:selo -->
+<script>
+(function () {
+  var GRS = "https://wa.me/5512981085504?text=Ol%C3%A1!%20Vi%20o%20modelo%20de%20site%20para%20pet%20shop%20no%20site%20da%20GRS%20e%20quero%20um%20site%20parecido%20para%20o%20meu%20neg%C3%B3cio.";
+  var TEL = "tel:+5512981085504";
+  var FONE = "(12) 98108-5504";
+  var WA = /^https?:\/\/(wa\.me|api\.whatsapp\.com|web\.whatsapp\.com)\//i;
+  var NUMERO = /\(\d{2}\)\s?\d{4,5}-\d{4}/g;
+  function trocar() {
+    document.querySelectorAll('a[href]').forEach(function (a) {
+      if (WA.test(a.href)) { a.href = GRS; a.target = '_blank'; a.rel = 'noopener noreferrer'; }
+      else if (/^tel:/i.test(a.getAttribute('href'))) { a.href = TEL; }
+    });
+    // Telefones escritos na página (fora de <script> e <style>)
+    var andar = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (n) {
+        var p = n.parentNode && n.parentNode.nodeName;
+        return p === 'SCRIPT' || p === 'STYLE' ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    for (var n = andar.nextNode(); n; n = andar.nextNode()) {
+      if (NUMERO.test(n.nodeValue)) { NUMERO.lastIndex = 0; n.nodeValue = n.nodeValue.replace(NUMERO, FONE); }
+      NUMERO.lastIndex = 0;
+    }
+  }
+  trocar();
+  document.addEventListener('DOMContentLoaded', trocar);
+  var abrir = window.open;
+  window.open = function (u) {
+    var args = Array.prototype.slice.call(arguments);
+    if (typeof u === 'string' && WA.test(u)) args[0] = GRS;
+    return abrir.apply(window, args);
+  };
+})();
+</script>
+<style>
+/* Evita rolagem lateral no celular (ex.: menu escondido fora da tela) */
+html{overflow-x:clip}
+.grs-selo{position:fixed;left:12px;bottom:12px;z-index:2147483000;display:flex;align-items:center;gap:10px;max-width:calc(100vw - 108px);padding:8px 8px 8px 14px;border-radius:999px;background:rgba(7,10,18,.92);color:#e9edf5;font:500 12.5px/1.3 system-ui,-apple-system,"Segoe UI",sans-serif;box-shadow:0 10px 30px -10px rgba(0,0,0,.6);border:1px solid rgba(148,163,184,.25)}
+.grs-selo span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.grs-selo a{flex:none;display:inline-flex;align-items:center;min-height:32px;padding:0 12px;border-radius:999px;background:#2e62f5;color:#fff;text-decoration:none;font-weight:600}
+.grs-selo a:hover{background:#2759ec}
+.grs-selo a:focus-visible{outline:2px solid #38d9f0;outline-offset:2px}
+@media print{.grs-selo{display:none}}
+</style>
+<div class="grs-selo" role="note" aria-label="Aviso: modelo de demonstração">
+  <span>Modelo de demonstração · dados fictícios</span>
+  <a href="/#modelos">Voltar à GRS</a>
+</div>
+<!-- /grs:modelo:selo -->
+</body>
+</html>

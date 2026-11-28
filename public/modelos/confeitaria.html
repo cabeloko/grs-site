@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<!--
+============================================================
+  GUIA RÁPIDO DE EDIÇÃO — Template "Doce Ofício Confeitaria"
+============================================================
+  Tudo o que você precisa trocar está marcado. Use Ctrl+F.
+
+  1) CORES ........ procure por ":root" (logo no início do <style>).
+                    Troque os códigos (#5B3222 etc.) e o site inteiro muda.
+  2) FONTES ....... troque o link do Google Fonts no <head> e as
+                    variáveis --fonte-titulo, --fonte-manuscrita e
+                    --fonte-texto no :root.
+  3) WHATSAPP ..... procure por "const CONFIG" (no <script>, lá embaixo).
+                    Troque o número UMA vez só (formato 55 + DDD + número,
+                    só números, ex.: '5511999999999'). Todos os botões
+                    de WhatsApp do site são atualizados sozinhos.
+                    Cada botão "Encomendar" tem um data-msg com o nome do
+                    produto: se mudar o produto, mude o data-msg também.
+  4) TEXTOS ....... edite direto no HTML. Cada parte começa com um
+                    comentário "===== SEÇÃO: NOME =====".
+  5) PRODUTOS ..... SEÇÃO VITRINE: cada <article class="produto"> é um
+                    produto (nome, descrição, preço "a partir de").
+  6) FOTOS ........ procure por "TROQUE:". Troque o endereço (src) da
+                    imagem e o texto do "alt" (descrição da foto).
+  7) ENDEREÇO/MAPA  troque "endereco" no CONFIG. O mapa se ajusta sozinho.
+                    Horário de funcionamento: SEÇÃO LOCALIZAÇÃO.
+  8) REDES SOCIAIS  troque "instagram" no CONFIG (só o nome, sem o @).
+  9) PRAZOS ....... antecedência mínima: procure por "ANTECEDÊNCIA".
+ 10) SEO .......... troque <title>, meta description, Open Graph e o
+                    bloco "application/ld+json" no <head>.
+============================================================
+-->
+<html lang="pt-BR">
+<head>
+<!-- grs:modelo:head -->
+<meta name="robots" content="noindex, nofollow">
+<!-- /grs:modelo:head -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Doce Ofício Confeitaria Artesanal | Bolos e doces sob encomenda</title>
+  <meta name="description" content="Bolos de festa, bolos caseiros, doces finos, tortas e kits festa feitos à mão, sob encomenda. Peça pelo WhatsApp na Doce Ofício Confeitaria Artesanal.">
+
+  <!-- Open Graph (aparece quando o link é compartilhado no WhatsApp/Facebook) -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Doce Ofício Confeitaria Artesanal">
+  <meta property="og:description" content="Bolos e doces feitos à mão, sob encomenda, para deixar sua festa inesquecível.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1559620192-032c4bc4674e?auto=format&fit=crop&w=1200&q=80">
+  <meta property="og:locale" content="pt_BR">
+
+  <!-- Fontes (Google Fonts) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,500&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Dados estruturados para o Google (troque pelos dados reais) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Bakery",
+    "name": "Doce Ofício Confeitaria Artesanal",
+    "description": "Confeitaria artesanal com bolos de festa, bolos caseiros, doces finos, tortas e kits festa sob encomenda.",
+    "image": "https://images.unsplash.com/photo-1559620192-032c4bc4674e?auto=format&fit=crop&w=1200&q=80",
+    "telephone": "+55-12-98108-5504",
+    "priceRange": "$$",
+    "servesCuisine": "Confeitaria",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Rua das Amoreiras, 245 - Vila Mariana",
+      "addressLocality": "São Paulo",
+      "addressRegion": "SP",
+      "postalCode": "04000-000",
+      "addressCountry": "BR"
+    },
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday","Wednesday","Thursday","Friday"], "opens": "10:00", "closes": "19:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "15:00" }
+    ],
+    "sameAs": ["https://instagram.com/doceoficio.confeitaria"]
+  }
+  </script>
+
+  <script>document.documentElement.classList.add('js');</script>
+
+  <style>
+    /* =========================================================
+       CORES E FONTES — troque aqui e o site inteiro muda
+       ========================================================= */
+    :root {
+      --cor-primaria: #5B3222;         /* marrom-chocolate: títulos, botões */
+      --cor-primaria-escura: #3E2117;  /* chocolate amargo: rodapé, hover */
+      --cor-secundaria: #E8919E;       /* rosa-morango: detalhes e selos */
+      --cor-secundaria-clara: #F9DDE0; /* rosa bem clarinho: fundos */
+      --cor-rosa-texto: #B24A5E;       /* rosa escuro para textos manuscritos */
+      --cor-pistache: #B7CF9E;         /* pistache: faixas e avisos */
+      --cor-pistache-escuro: #4F6E3C;  /* pistache escuro: textos sobre claro */
+      --cor-fundo: #FBF5EC;            /* baunilha: fundo principal */
+      --cor-fundo-alt: #F4E8DA;        /* creme: seções alternadas */
+      --cor-branco: #FFFDF9;
+      --cor-texto: #3A2A22;            /* texto principal */
+      --cor-texto-suave: #6E5A4E;      /* textos de apoio */
+
+      --fonte-titulo: 'Fraunces', Georgia, serif;     /* títulos com charme */
+      --fonte-manuscrita: 'Caveat', cursive;          /* detalhes escritos à mão */
+      --fonte-texto: 'Nunito', system-ui, sans-serif; /* textos corridos */
+
+      --raio: 22px;
+      --sombra: 0 20px 40px -22px rgba(62, 33, 23, .45);
+      --largura-max: 1180px;
+      --altura-header: 78px;
+    }
+
+    /* ===== Base ===== */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: var(--altura-header); }
+    body { margin: 0; font-family: var(--fonte-texto); font-size: 1.04rem; line-height: 1.7; color: var(--cor-texto); background: var(--cor-fundo); overflow-x: hidden; }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; }
+    h1, h2, h3 { font-family: var(--fonte-titulo); font-weight: 700; line-height: 1.1; margin: 0 0 .5em; color: var(--cor-primaria); font-variation-settings: "SOFT" 100; }
+    p { margin: 0 0 1em; }
+    :focus-visible { outline: 3px solid var(--cor-rosa-texto); outline-offset: 3px; border-radius: 6px; }
+    .container { width: min(100% - 32px, var(--largura-max)); margin-inline: auto; }
+    .secao { padding: clamp(64px, 9vw, 116px) 0; }
+    .manuscrito { font-family: var(--fonte-manuscrita); font-weight: 700; color: var(--cor-rosa-texto); font-size: clamp(1.5rem, 2.6vw, 1.9rem); line-height: 1; display: inline-block; transform: rotate(-2deg); margin-bottom: 10px; }
+    .titulo-secao { font-size: clamp(2rem, 4.4vw, 3.1rem); }
+    .titulo-secao em { font-style: italic; font-weight: 500; color: var(--cor-rosa-texto); }
+    .centro { text-align: center; }
+    .centro .titulo-secao { max-width: 20ch; margin-inline: auto; }
+    .intro { color: var(--cor-texto-suave); max-width: 54ch; }
+    .centro .intro { margin-inline: auto; }
+
+    /* ===== Botões ===== */
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 15px 28px; border-radius: 999px; border: 2px solid transparent; font-family: var(--fonte-texto); font-weight: 700; font-size: 1rem; text-decoration: none; cursor: pointer; transition: background .25s, color .25s, transform .25s, border-color .25s; }
+    .btn svg { width: 20px; height: 20px; flex-shrink: 0; }
+    .btn-primario { background: var(--cor-primaria); color: var(--cor-branco); }
+    .btn-primario:hover { background: var(--cor-primaria-escura); transform: translateY(-2px); }
+    .btn-contorno { border-color: var(--cor-primaria); color: var(--cor-primaria); }
+    .btn-contorno:hover { background: var(--cor-primaria); color: var(--cor-branco); }
+    .btn-rosa { background: var(--cor-secundaria); color: var(--cor-primaria-escura); }
+    .btn-rosa:hover { background: var(--cor-secundaria-clara); transform: translateY(-2px); }
+
+    /* ===== Header ===== */
+    .header { position: fixed; inset: 0 0 auto 0; z-index: 50; height: var(--altura-header); background: rgba(251, 245, 236, .94); backdrop-filter: blur(10px); transition: box-shadow .3s; }
+    .header.rolou { box-shadow: 0 10px 24px -18px rgba(62,33,23,.5); }
+    .header .container { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .logo { text-decoration: none; display: flex; flex-direction: column; line-height: 1; }
+    .logo strong { font-family: var(--fonte-titulo); font-style: italic; font-weight: 500; font-size: 1.65rem; color: var(--cor-primaria); letter-spacing: -.01em; }
+    .logo small { font-family: var(--fonte-manuscrita); font-size: 1.1rem; color: var(--cor-rosa-texto); margin-left: 18px; }
+    .menu { display: flex; align-items: center; gap: 28px; }
+    .menu ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 24px; }
+    .menu ul a { text-decoration: none; font-weight: 600; font-size: .96rem; padding: 4px 0; background: linear-gradient(var(--cor-secundaria), var(--cor-secundaria)) left bottom / 0 3px no-repeat; transition: background-size .3s; }
+    .menu ul a:hover { background-size: 100% 3px; }
+    .menu .btn { padding: 11px 22px; font-size: .94rem; }
+    .hamburguer { display: none; width: 46px; height: 46px; border: 0; border-radius: 50%; background: var(--cor-primaria); cursor: pointer; position: relative; }
+    .hamburguer span, .hamburguer span::before, .hamburguer span::after { content: ""; position: absolute; left: 13px; width: 20px; height: 2px; border-radius: 2px; background: var(--cor-branco); transition: transform .3s; }
+    .hamburguer span { top: 22px; }
+    .hamburguer span::before { top: -6px; left: 0; }
+    .hamburguer span::after { top: 6px; left: 0; }
+    .hamburguer[aria-expanded="true"] span { background: transparent; }
+    .hamburguer[aria-expanded="true"] span::before { transform: translateY(6px) rotate(45deg); }
+    .hamburguer[aria-expanded="true"] span::after { transform: translateY(-6px) rotate(-45deg); }
+    @media (max-width: 960px) {
+      .hamburguer { display: block; }
+      .menu { position: fixed; top: var(--altura-header); left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 18px; padding: 24px 16px 30px; background: var(--cor-fundo); box-shadow: 0 24px 30px -24px rgba(62,33,23,.5); transform: translateY(-120%); visibility: hidden; transition: transform .35s, visibility .35s; }
+      .menu.aberto { transform: none; visibility: visible; }
+      .menu ul { flex-direction: column; gap: 0; }
+      .menu ul a { display: block; padding: 12px 4px; font-size: 1.12rem; border-bottom: 1px dashed #E3CDBE; background: none; }
+    }
+
+    /* ===== Hero ===== */
+    .hero { padding: calc(var(--altura-header) + 40px) 0 80px; position: relative; overflow: hidden; }
+    .hero::before { content: ""; position: absolute; width: 620px; height: 620px; right: -180px; top: 40px; border-radius: 46% 54% 60% 40% / 50% 42% 58% 50%; background: var(--cor-secundaria-clara); z-index: -1; }
+    .hero-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(36px, 6vw, 80px); align-items: center; }
+    .hero h1 { font-size: clamp(2.5rem, 6vw, 4.6rem); letter-spacing: -.02em; margin-bottom: 22px; }
+    .hero h1 em { font-style: italic; font-weight: 500; color: var(--cor-rosa-texto); }
+    .hero-sub { font-size: clamp(1.05rem, 1.6vw, 1.2rem); color: var(--cor-texto-suave); max-width: 44ch; margin-bottom: 30px; }
+    .hero-acoes { display: flex; gap: 14px; flex-wrap: wrap; }
+    .hero-prova { display: flex; align-items: center; gap: 14px; margin-top: 34px; font-size: .95rem; color: var(--cor-texto-suave); }
+    .hero-prova .bolinhas { display: flex; }
+    .hero-prova .bolinhas span { width: 38px; height: 38px; border-radius: 50%; border: 3px solid var(--cor-fundo); margin-left: -10px; display: grid; place-items: center; font-weight: 700; font-size: .8rem; color: var(--cor-primaria); }
+    .hero-prova .bolinhas span:first-child { margin-left: 0; background: var(--cor-secundaria); }
+    .hero-prova .bolinhas span:nth-child(2) { background: var(--cor-pistache); }
+    .hero-prova .bolinhas span:nth-child(3) { background: #EBC9A0; }
+    .hero-prova strong { color: var(--cor-primaria); }
+    .hero-visual { position: relative; max-width: 460px; justify-self: center; width: 100%; }
+    .hero-arco { border-radius: 999px 999px 28px 28px; overflow: hidden; aspect-ratio: 3 / 4; border: 10px solid var(--cor-branco); box-shadow: var(--sombra); }
+    .hero-arco img { width: 100%; height: 100%; object-fit: cover; }
+    .selo-giratorio { position: absolute; left: -46px; bottom: 36px; width: 136px; height: 136px; border-radius: 50%; background: var(--cor-primaria); display: grid; place-items: center; box-shadow: var(--sombra); }
+    .selo-giratorio svg.texto-circular { position: absolute; inset: 0; width: 100%; height: 100%; animation: girar 18s linear infinite; }
+    .selo-giratorio svg.texto-circular text { font-family: var(--fonte-texto); font-size: 9.5px; font-weight: 700; letter-spacing: 1.3px; fill: var(--cor-fundo); text-transform: uppercase; }
+    .selo-giratorio .coracao { width: 34px; height: 34px; color: var(--cor-secundaria); }
+    @keyframes girar { to { transform: rotate(360deg); } }
+    .hero-bilhete { position: absolute; right: -14px; top: 30px; background: var(--cor-branco); padding: 12px 18px; border-radius: 14px; box-shadow: var(--sombra); font-family: var(--fonte-manuscrita); font-size: 1.45rem; color: var(--cor-primaria); transform: rotate(4deg); line-height: 1.1; }
+    @media (max-width: 860px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero::before { width: 420px; height: 420px; right: -200px; top: auto; bottom: 40px; }
+      .selo-giratorio { left: -8px; width: 112px; height: 112px; }
+      .hero-bilhete { right: 0; }
+    }
+
+    /* ===== Faixa ===== */
+    .faixa { background: var(--cor-pistache); color: var(--cor-primaria-escura); padding: 18px 0; }
+    .faixa ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 34px; font-weight: 700; font-size: .98rem; }
+    .faixa li { display: flex; align-items: center; gap: 10px; }
+    .faixa li::before { content: "✿"; color: var(--cor-primaria); }
+
+    /* ===== Vitrine (seção do nicho) ===== */
+    .vitrine-grade { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+    .produto { background: var(--cor-branco); border-radius: var(--raio); overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 12px 30px -24px rgba(62,33,23,.6); transition: transform .3s, box-shadow .3s; }
+    .produto:hover { transform: translateY(-6px) rotate(-.4deg); box-shadow: var(--sombra); }
+    .produto-foto { aspect-ratio: 4 / 3; overflow: hidden; }
+    .produto-foto img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s; }
+    .produto:hover .produto-foto img { transform: scale(1.05); }
+    .produto-corpo { padding: 22px 24px 26px; display: flex; flex-direction: column; flex: 1; }
+    .produto .categoria { font-family: var(--fonte-manuscrita); font-size: 1.35rem; color: var(--cor-rosa-texto); line-height: 1; margin-bottom: 4px; }
+    .produto h3 { font-size: 1.4rem; margin-bottom: 8px; }
+    .produto p { color: var(--cor-texto-suave); font-size: .96rem; }
+    .produto-rodape { margin-top: auto; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding-top: 14px; border-top: 1px dashed #E3CDBE; }
+    .preco small { display: block; font-size: .78rem; color: var(--cor-texto-suave); text-transform: uppercase; letter-spacing: .08em; font-weight: 700; }
+    .preco strong { font-family: var(--fonte-titulo); font-size: 1.45rem; color: var(--cor-primaria); }
+    .preco span { font-size: .85rem; color: var(--cor-texto-suave); }
+    .produto .btn { padding: 11px 20px; font-size: .92rem; }
+    /* Produto em destaque: ocupa 2 colunas */
+    .produto-destaque { grid-column: span 2; flex-direction: row; }
+    .produto-destaque .produto-foto { aspect-ratio: auto; flex: 1.1; min-height: 360px; }
+    .produto-destaque .produto-corpo { flex: 1; padding: 34px; justify-content: center; }
+    .produto-destaque h3 { font-size: 2rem; }
+    .produto-destaque .selo-mais { align-self: flex-start; background: var(--cor-secundaria-clara); color: var(--cor-rosa-texto); font-weight: 700; font-size: .8rem; padding: 6px 12px; border-radius: 999px; margin-bottom: 16px; text-transform: uppercase; letter-spacing: .08em; }
+    /* Card personalizado (sem foto) */
+    /* Card personalizado: faixa larga no fim da vitrine */
+    .produto-personalizado { grid-column: 1 / -1; flex-direction: row; align-items: center; gap: 28px; background: var(--cor-primaria); color: #F3E3D6; padding: 34px clamp(24px, 4vw, 48px); position: relative; overflow: hidden; }
+    .produto-personalizado > div { flex: 1; position: relative; }
+    .produto-personalizado p { margin: 0; }
+    .produto-personalizado::before { content: ""; position: absolute; width: 220px; height: 220px; border-radius: 50%; background: radial-gradient(circle, rgba(232,145,158,.35), transparent 70%); right: -60px; top: -60px; }
+    .produto-personalizado > svg { width: 64px; height: 64px; flex-shrink: 0; color: var(--cor-secundaria); position: relative; }
+    .produto-personalizado h3 { color: var(--cor-branco); position: relative; }
+    .produto-personalizado p { color: #E9D5C7; position: relative; }
+    .produto-personalizado .categoria { color: var(--cor-secundaria); position: relative; }
+    .produto-personalizado .btn { position: relative; flex-shrink: 0; }
+    @media (max-width: 960px) {
+      .vitrine-grade { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px) {
+      .vitrine-grade { grid-template-columns: 1fr; }
+      .produto-destaque { grid-column: auto; flex-direction: column; }
+      .produto-destaque .produto-foto { aspect-ratio: 4 / 3; min-height: 0; }
+      .produto-destaque .produto-corpo { padding: 24px; }
+      .produto-destaque h3 { font-size: 1.6rem; }
+      .produto-personalizado { flex-direction: column; align-items: flex-start; gap: 16px; }
+    }
+
+    /* ===== Como encomendar ===== */
+    .como { background: var(--cor-fundo-alt); }
+    .passos { list-style: none; margin: 52px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; position: relative; }
+    .passos::before { content: ""; position: absolute; top: 38px; left: 12%; right: 12%; border-top: 2px dashed var(--cor-secundaria); }
+    .passos li { text-align: center; position: relative; padding: 0 8px; }
+    .passo-num { width: 76px; height: 76px; margin: 0 auto 18px; border-radius: 50%; background: var(--cor-branco); border: 2px solid var(--cor-secundaria); display: grid; place-items: center; font-family: var(--fonte-manuscrita); font-weight: 700; font-size: 2.3rem; color: var(--cor-rosa-texto); position: relative; }
+    .passos h3 { font-size: 1.25rem; margin-bottom: 6px; }
+    .passos p { color: var(--cor-texto-suave); font-size: .95rem; margin: 0; }
+    .aviso { margin: 56px auto 0; max-width: 860px; background: var(--cor-branco); border: 2px solid var(--cor-pistache); border-radius: var(--raio); padding: 26px 30px; display: grid; grid-template-columns: auto 1fr; gap: 20px; align-items: start; }
+    .aviso-icone { width: 54px; height: 54px; border-radius: 50%; background: var(--cor-pistache); display: grid; place-items: center; color: var(--cor-primaria-escura); }
+    .aviso-icone svg { width: 28px; height: 28px; }
+    .aviso h3 { font-size: 1.25rem; margin-bottom: 8px; }
+    .aviso ul { margin: 0; padding-left: 18px; color: var(--cor-texto); }
+    .aviso li { margin-bottom: 4px; }
+    .aviso li strong { color: var(--cor-pistache-escuro); }
+    @media (max-width: 860px) {
+      .passos { grid-template-columns: 1fr 1fr; row-gap: 40px; }
+      .passos::before { display: none; }
+    }
+    @media (max-width: 480px) {
+      .passos { grid-template-columns: 1fr; }
+      .aviso { grid-template-columns: 1fr; padding: 24px 20px; }
+    }
+
+    /* ===== Sobre ===== */
+    .sobre-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(36px, 7vw, 96px); align-items: center; }
+    .polaroid { background: var(--cor-branco); padding: 14px 14px 56px; box-shadow: var(--sombra); transform: rotate(-3deg); position: relative; max-width: 420px; margin-inline: auto; }
+    .polaroid img { aspect-ratio: 4 / 5; object-fit: cover; width: 100%; }
+    .polaroid figcaption { position: absolute; left: 0; right: 0; bottom: 12px; text-align: center; font-family: var(--fonte-manuscrita); font-size: 1.5rem; color: var(--cor-primaria); }
+    .polaroid::before { content: ""; position: absolute; top: -14px; left: 50%; width: 110px; height: 30px; transform: translateX(-50%) rotate(2deg); background: rgba(232,145,158,.55); }
+    .assinatura { font-family: var(--fonte-manuscrita); font-size: 2.2rem; color: var(--cor-primaria); line-height: 1; margin: 20px 0 0; }
+    .assinatura small { display: block; font-family: var(--fonte-texto); font-size: .88rem; color: var(--cor-texto-suave); margin-top: 6px; }
+    @media (max-width: 860px) { .sobre-grid { grid-template-columns: 1fr; } }
+
+    /* ===== Diferenciais ===== */
+    .diferenciais { padding-top: 0; }
+    .dif-lista { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 1px dashed #D9C2B2; border-bottom: 1px dashed #D9C2B2; }
+    .dif-item { padding: 34px 26px; text-align: left; }
+    .dif-item + .dif-item { border-left: 1px dashed #D9C2B2; }
+    .dif-item svg { width: 40px; height: 40px; color: var(--cor-rosa-texto); margin-bottom: 14px; }
+    .dif-item h3 { font-size: 1.15rem; margin-bottom: 6px; }
+    .dif-item p { margin: 0; font-size: .94rem; color: var(--cor-texto-suave); }
+    @media (max-width: 960px) {
+      .dif-lista { grid-template-columns: 1fr 1fr; }
+      .dif-item:nth-child(3) { border-left: 0; }
+      .dif-item:nth-child(n+3) { border-top: 1px dashed #D9C2B2; }
+    }
+    @media (max-width: 520px) {
+      .dif-lista { grid-template-columns: 1fr; }
+      .dif-item + .dif-item { border-left: 0; border-top: 1px dashed #D9C2B2; }
+      .dif-item { padding: 26px 4px; }
+    }
+
+    /* ===== Datas especiais ===== */
+    .datas { background: var(--cor-secundaria-clara); }
+    .datas-grade { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+    .data-card { border-radius: var(--raio); padding: 30px 28px 32px; display: flex; flex-direction: column; position: relative; overflow: hidden; min-height: 380px; }
+    .data-card:nth-child(2) { transform: translateY(28px); }
+    .data-card .ilustra { width: 100%; height: 130px; border-radius: 16px; display: grid; place-items: center; margin-bottom: 22px; }
+    .data-card .ilustra svg { width: 78px; height: 78px; }
+    .data-card .quando { font-family: var(--fonte-manuscrita); font-size: 1.4rem; line-height: 1; margin-bottom: 6px; }
+    .data-card h3 { font-size: 1.6rem; }
+    .data-card p { font-size: .96rem; }
+    .data-card .btn { margin-top: auto; align-self: flex-start; }
+    .data-pascoa { background: var(--cor-branco); }
+    .data-pascoa .ilustra { background: repeating-linear-gradient(45deg, #F6E6D3 0 14px, #F2DCC4 14px 28px); color: var(--cor-primaria); }
+    .data-pascoa .quando { color: var(--cor-rosa-texto); }
+    .data-maes { background: var(--cor-pistache); }
+    .data-maes .ilustra { background: radial-gradient(circle at 30% 40%, rgba(255,253,249,.55) 0 12px, transparent 13px), radial-gradient(circle at 70% 65%, rgba(255,253,249,.45) 0 9px, transparent 10px), #A3BF88; color: var(--cor-rosa-texto); }
+    .data-maes .quando { color: var(--cor-primaria-escura); }
+    .data-maes p { color: var(--cor-primaria-escura); }
+    .data-natal { background: var(--cor-primaria); color: #EEDCCD; }
+    .data-natal h3 { color: var(--cor-branco); }
+    .data-natal .ilustra { background: radial-gradient(circle at 20% 30%, #F9DDE0 0 2px, transparent 3px) 0 0 / 34px 34px, #4A281B; color: #EBC98F; }
+    .data-natal .quando { color: var(--cor-secundaria); }
+    @media (max-width: 900px) {
+      .datas-grade { grid-template-columns: 1fr; max-width: 520px; margin-inline: auto; }
+      .data-card:nth-child(2) { transform: none; }
+      .data-card { min-height: 0; }
+      .data-card .btn { margin-top: 10px; }
+    }
+
+    /* ===== Depoimentos ===== */
+    .depo-grade { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 52px; align-items: start; }
+    .bilhete { background: var(--cor-branco); border-radius: 6px 22px 6px 22px; padding: 30px 28px; box-shadow: 0 16px 30px -22px rgba(62,33,23,.55); position: relative; }
+    .bilhete:nth-child(1) { transform: rotate(-1.5deg); }
+    .bilhete:nth-child(2) { transform: rotate(1deg) translateY(24px); background: #FFF6E9; }
+    .bilhete:nth-child(3) { transform: rotate(-.6deg); }
+    .bilhete::before { content: "“"; position: absolute; top: -12px; right: 22px; font-family: var(--fonte-titulo); font-size: 5rem; line-height: 1; color: var(--cor-secundaria); }
+    .estrelas { color: #C98A1B; letter-spacing: 3px; margin-bottom: 10px; }
+    .bilhete blockquote { margin: 0 0 18px; }
+    .bilhete blockquote p { margin: 0; }
+    .bilhete footer strong { display: block; font-family: var(--fonte-manuscrita); font-size: 1.6rem; color: var(--cor-primaria); line-height: 1; }
+    .bilhete footer span { font-size: .86rem; color: var(--cor-texto-suave); }
+    @media (max-width: 900px) {
+      .depo-grade { grid-template-columns: 1fr; max-width: 560px; margin-inline: auto; }
+      .bilhete:nth-child(n) { transform: none; }
+    }
+
+    /* ===== FAQ ===== */
+    .faq { background: var(--cor-fundo-alt); }
+    .faq-lista { max-width: 800px; margin: 44px auto 0; }
+    .faq details { border-bottom: 1px dashed #D9C2B2; }
+    .faq summary { list-style: none; cursor: pointer; padding: 22px 50px 22px 0; font-family: var(--fonte-titulo); font-size: 1.18rem; font-weight: 500; color: var(--cor-primaria); position: relative; }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: ""; position: absolute; right: 6px; top: 50%; width: 12px; height: 12px; border-right: 2.5px solid var(--cor-rosa-texto); border-bottom: 2.5px solid var(--cor-rosa-texto); transform: translateY(-70%) rotate(45deg); transition: transform .3s; }
+    .faq details[open] summary::after { transform: translateY(-30%) rotate(-135deg); }
+    .faq details p { margin: 0; padding: 0 0 22px; color: var(--cor-texto-suave); }
+
+    /* ===== Localização ===== */
+    .local-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 28px; margin-top: 44px; align-items: stretch; }
+    .local-info { background: var(--cor-branco); border-radius: var(--raio); padding: 34px; box-shadow: 0 12px 30px -24px rgba(62,33,23,.6); }
+    .local-info h3 { font-size: 1.3rem; }
+    .local-info address { font-style: normal; margin-bottom: 24px; color: var(--cor-texto-suave); }
+    .horarios { list-style: none; margin: 0 0 26px; padding: 0; }
+    .horarios li { display: flex; justify-content: space-between; gap: 12px; padding: 9px 0; border-bottom: 1px dashed #E3CDBE; }
+    .horarios li span:last-child { font-weight: 700; color: var(--cor-primaria); }
+    .mapa { border-radius: var(--raio); overflow: hidden; min-height: 380px; background: var(--cor-fundo-alt); }
+    .mapa iframe { width: 100%; height: 100%; min-height: 380px; border: 0; display: block; }
+    @media (max-width: 860px) { .local-grid { grid-template-columns: 1fr; } }
+
+    /* ===== CTA final ===== */
+    .cta-final { background: var(--cor-primaria); color: #EEDCCD; text-align: center; padding: clamp(88px, 11vw, 130px) 0 clamp(72px, 9vw, 110px); position: relative; }
+    .cta-final::before { content: ""; position: absolute; top: -1px; left: 0; right: 0; height: 24px; background: radial-gradient(circle at 12px 0, var(--cor-fundo) 12px, transparent 12.5px) 0 0 / 24px 24px repeat-x; }
+    .cta-final h2 { color: var(--cor-branco); font-size: clamp(2.1rem, 5vw, 3.5rem); max-width: 18ch; margin-inline: auto; }
+    .cta-final h2 em { font-style: italic; font-weight: 500; color: var(--cor-secundaria); }
+    .cta-final p { max-width: 48ch; margin: 0 auto 32px; font-size: 1.1rem; }
+    .cta-final .manuscrito { color: var(--cor-secundaria); }
+
+    /* ===== Rodapé ===== */
+    .rodape { background: var(--cor-primaria-escura); color: #D9C3B4; padding: 60px 0 26px; font-size: .95rem; }
+    .rodape-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+    .rodape .logo strong { color: var(--cor-branco); }
+    .rodape .logo small { color: var(--cor-secundaria); }
+    .rodape h4 { font-family: var(--fonte-titulo); color: var(--cor-branco); font-size: 1.1rem; margin: 0 0 14px; font-weight: 500; }
+    .rodape ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+    .rodape a { text-decoration: none; }
+    .rodape a:hover { color: var(--cor-secundaria); }
+    .rodape-base { border-top: 1px solid rgba(255,255,255,.1); padding-top: 22px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; font-size: .86rem; }
+    @media (max-width: 760px) { .rodape-grid { grid-template-columns: 1fr; } }
+
+    /* ===== Botão flutuante de WhatsApp ===== */
+    .whats-flutuante { position: fixed; right: 20px; bottom: 20px; z-index: 60; width: 60px; height: 60px; border-radius: 50%; background: #25D366; color: #fff; display: grid; place-items: center; box-shadow: 0 10px 25px -8px rgba(0,0,0,.45); transition: transform .25s; }
+    .whats-flutuante:hover { transform: scale(1.08); }
+    .whats-flutuante svg { width: 32px; height: 32px; }
+
+    /* ===== Animação de entrada ao rolar ===== */
+    .js .revelar { opacity: 0; translate: 0 26px; transition: opacity .7s ease, translate .7s ease; }
+    .js .revelar.visivel { opacity: 1; translate: 0 0; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .js .revelar { opacity: 1; translate: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ícone do WhatsApp reutilizável (não aparece na tela) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-whats" viewBox="0 0 24 24"><path fill="currentColor" d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.39-1.47-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.18-1.41-.08-.13-.27-.2-.57-.35m-5.42 7.4h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.88 9.88m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.89a11.82 11.82 0 0 0-3.48-8.41z"/></symbol>
+  </svg>
+
+  <!-- ===== SEÇÃO: HEADER / MENU ===== -->
+  <header class="header">
+    <div class="container">
+      <a href="#inicio" class="logo" aria-label="Doce Ofício Confeitaria Artesanal — voltar ao início">
+        <strong>Doce Ofício</strong>
+        <small>confeitaria artesanal</small>
+      </a>
+      <button class="hamburguer" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu"><span></span></button>
+      <nav class="menu" id="menu" aria-label="Menu principal">
+        <ul>
+          <li><a href="#vitrine">Vitrine</a></li>
+          <li><a href="#como-encomendar">Como encomendar</a></li>
+          <li><a href="#datas">Datas especiais</a></li>
+          <li><a href="#sobre">Nossa história</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+        <a class="btn btn-primario" data-whatsapp href="#"><svg aria-hidden="true"><use href="#i-whats"/></svg> Encomendar</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===== SEÇÃO: HERO (primeira dobra) ===== -->
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div class="revelar">
+          <span class="manuscrito">feito à mão, fornada por fornada</span>
+          <h1>O bolo que vira <em>assunto</em> da sua festa.</h1>
+          <p class="hero-sub">Bolos, doces finos e tortas feitos sob encomenda com manteiga de verdade, chocolate nobre e frutas da estação. Do aniversário ao café de domingo.</p>
+          <div class="hero-acoes">
+            <a class="btn btn-primario" data-whatsapp data-msg="Olá! Vim pelo site e quero fazer uma encomenda na Doce Ofício." href="#"><svg aria-hidden="true"><use href="#i-whats"/></svg> Fazer minha encomenda</a>
+            <a class="btn btn-contorno" href="#vitrine">Ver a vitrine</a>
+          </div>
+          <div class="hero-prova">
+            <div class="bolinhas" aria-hidden="true"><span>AL</span><span>RP</span><span>MC</span></div>
+            <p style="margin:0"><strong>+1.200 festas adoçadas</strong><br>★ 4,9 de média no Google</p>
+          </div>
+        </div>
+        <div class="hero-visual revelar">
+          <div class="hero-arco">
+            <!-- TROQUE: foto do bolo mais bonito da confeitaria (principal do site) -->
+            <img src="https://images.unsplash.com/photo-1559620192-032c4bc4674e?auto=format&fit=crop&w=1200&q=80" alt="Bolo artesanal com cobertura branca, amoras e flores comestíveis sobre boleira verde" width="1200" height="1600">
+          </div>
+          <div class="selo-giratorio" aria-hidden="true">
+            <svg class="texto-circular" viewBox="0 0 136 136">
+              <defs><path id="circulo" d="M68,68 m-50,0 a50,50 0 1,1 100,0 a50,50 0 1,1 -100,0"/></defs>
+              <text><textPath href="#circulo">sem conservantes • 100% artesanal •</textPath></text>
+            </svg>
+            <svg class="coracao" viewBox="0 0 24 24"><path fill="currentColor" d="M12 21s-7.5-4.6-9.5-9.2C1.2 8.6 3.3 5 6.8 5c2 0 3.4 1.1 4.2 2.4h2C13.8 6.1 15.2 5 17.2 5c3.5 0 5.6 3.6 4.3 6.8C19.5 16.4 12 21 12 21z"/></svg>
+          </div>
+          <div class="hero-bilhete">encomendas<br>abertas ♡</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SEÇÃO: FAIXA DE DESTAQUES ===== -->
+    <div class="faixa">
+      <div class="container">
+        <ul>
+          <li>Ingredientes selecionados</li>
+          <li>Receitas de família</li>
+          <li>Entrega com cuidado</li>
+          <li>Personalizamos seu tema</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ===== SEÇÃO: VITRINE DE PRODUTOS ===== -->
+    <section class="secao" id="vitrine">
+      <div class="container">
+        <div class="centro revelar">
+          <span class="manuscrito">nossa vitrine</span>
+          <h2 class="titulo-secao">Escolha o doce, a gente cuida do <em>resto</em></h2>
+          <p class="intro">Preços de referência. O valor final depende do tamanho, do sabor e da decoração — mandamos o orçamento certinho pelo WhatsApp.</p>
+        </div>
+
+        <div class="vitrine-grade">
+          <!-- Produto 1 (destaque — ocupa 2 colunas) -->
+          <article class="produto produto-destaque revelar">
+            <div class="produto-foto">
+              <!-- TROQUE: foto de bolo de festa -->
+              <img src="https://images.unsplash.com/photo-1535141192574-5d4897c12636?auto=format&fit=crop&w=1200&q=80" alt="Bolo de festa de dois andares decorado com morangos e mirtilos" loading="lazy" width="1200" height="1500">
+            </div>
+            <div class="produto-corpo">
+              <span class="selo-mais">O mais pedido</span>
+              <span class="categoria">para celebrar</span>
+              <h3>Bolos de festa</h3>
+              <p>Massa fofinha, recheio generoso e decoração no tema que você sonhou. Andares, chantininho, pasta americana ou naked cake.</p>
+              <div class="produto-rodape">
+                <div class="preco"><small>a partir de</small><strong>R$ 115</strong> <span>/kg</span></div>
+                <a class="btn btn-primario" data-whatsapp data-msg="Olá! Quero encomendar um Bolo de festa. Pode me passar sabores e valores?" href="#"><svg aria-hidden="true"><use href="#i-whats"/></svg> Encomendar</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Produto 2 -->
+          <article class="produto revelar">
+            <div class="produto-foto">
+              <!-- TROQUE: foto de bolo caseiro -->
+              <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1200&q=80" alt="Bolo caseiro de chocolate com calda escorrendo e rosetas de brigadeiro" loading="lazy" width="1200" height="900">
+            </div>
+            <div class="produto-corpo">
+              <span class="categoria">para o cafezinho</span>
+              <h3>Bolos caseiros</h3>
+              <p>Chocolate com brigadeiro, cenoura com ganache, fubá cremoso e laranja.</p>
+              <div class="produto-rodape">
+                <div class="preco"><small>a partir de</small><strong>R$ 48</strong></div>
+                <a class="btn btn-primario" data-whatsapp data-msg="Olá! Quero encomendar um Bolo caseiro. Quais sabores tem hoje?" href="#"><svg aria-hidden="true"><use href="#i-whats"/></svg> Encomendar</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Produto 3 -->
+          <article class="produto revelar">
+            <div class="produto-foto">
+              <!-- TROQUE: foto de doces finos -->
+              <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=1200&q=80" alt="Doces finos em copinhos com creme e morangos frescos" loading="lazy" width="1200" height="900">
+            </div>
+            <div class="produto-corpo">
+              <span class="categoria">para a mesa de doces</span>
+              <h3>Doces finos</h3>
+              <p>Brigadeiros gourmet, bem-casados, copinhos de morango e camafeus. Mínimo de 50 unidades.</p>
+              <div class="produto-rodape">
+                <div class="preco"><small>a partir de</small><strong>R$ 3,90</strong> <span>/un.</span></div>
+                <a class="btn btn-primario" data-whatsapp data-msg="Olá! Quero encomendar Doces finos. Pode me mandar o cardápio?" href="#"><svg aria-hidden="true"><use href="#i-whats"/></svg> Encomendar</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Produto 4 -->
+          <article class="produto revelar">
+            <div class="produto-foto">
+              <!-- TROQUE: foto de torta -->
+              <img src="https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&w=1200&q=80" alt="Fatia de torta cheesecake com calda de frutas vermelhas" loading="lazy" width="1200" height="900">
+            </div>
+            <div class="produto-corpo">
+              <span class="categoria">para impressionar</span>
+              <h3>Tortas</h3>
+              <p>Cheesecake de frutas vermelhas, torta de limão, holandesa e banoffee.</p>
+              <div class="produto-rodape">
+                <div class="preco"><small>a partir de</small><strong>R$ 95</strong></div>
+                <a class="btn btn-primario" data-whatsapp data-msg="Olá! Quero encomendar uma Torta. Quais opções vocês têm?" href="#"><svg aria-hidden="true"><use href="#i-whats"/></svg> Encomendar</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Produto 5 -->
+          <article class="produto revelar">
+            <div class="produto-foto">
+              <!-- TROQUE: foto de kit festa -->
+              <img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?auto=format&fit=crop&w=1200&q=80" alt="Cupcakes rosados com cobertura de creme e frutas" loading="lazy" width="1200" height="900">
+            </div>
+            <div class="produto-corpo">
+              <span class="categoria">festa pronta</span>
+              <h3>Kits festa</h3>
+              <p>Bolo de 1,5 kg + 50 docinhos + 10 cupcakes. Ideal para até 20 pessoas.</p>
+              <div class="produto-rodape">
+                <div class="preco"><small>a partir de</small><strong>R$ 289</strong></div>
+                <a class="btn btn-primario" data-whatsapp data-msg="Olá! Quero encomendar um Kit festa. Como funciona?" href="#"><svg aria-hidden="true"><use href="#i-whats"/></svg> Encomendar</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Produto 6 (sem foto — personalizado) -->
+          <article class="produto produto-personalizado revelar">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M4 21h16M5 21v-6h14v6M7 15v-3h10v3M12 12V9m0 0c-1.2 0-2-.9-2-2 0-1.5 2-3.5 2-3.5s2 2 2 3.5c0 1.1-.8 2-2 2z"/></svg>
+            <div>
+              <span class="categoria">do seu jeito</span>
+              <h3>Tem uma ideia? A gente cria com você.</h3>
+              <p>Mande a foto de referência, o tema e o número de convidados. Fazemos um orçamento sob medida.</p>
+            </div>
+            <a class="btn btn-rosa" data-whatsapp data-msg="Olá! Quero um doce personalizado. Posso mandar uma foto de referência?" href="#"><svg aria-hidden="true"><use href="#i-whats"/></svg> Pedir orçamento</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SEÇÃO: COMO ENCOMENDAR (passo a passo) ===== -->
+    <section class="secao como" id="como-encomendar">
+      <div class="container">
+        <div class="centro revelar">
+          <span class="manuscrito">simples assim</span>
+          <h2 class="titulo-secao">Como encomendar em 4 passos</h2>
+        </div>
+        <ol class="passos">
+          <li class="revelar">
+            <span class="passo-num">1</span>
+            <h3>Escolha o doce</h3>
+            <p>Navegue pela vitrine e escolha bolo, doces, torta ou kit.</p>
+          </li>
+          <li class="revelar">
+            <span class="passo-num">2</span>
+            <h3>Sabor e tamanho</h3>
+            <p>Definimos juntos o recheio, a quantidade de fatias e a decoração.</p>
+          </li>
+          <li class="revelar">
+            <span class="passo-num">3</span>
+            <h3>Data da festa</h3>
+            <p>Reservamos sua data na agenda com 50% de sinal via Pix.</p>
+          </li>
+          <li class="revelar">
+            <span class="passo-num">4</span>
+            <h3>Retirada ou entrega</h3>
+            <p>Retire no ateliê ou receba em casa com embalagem térmica.</p>
+          </li>
+        </ol>
+
+        <!-- ANTECEDÊNCIA MÍNIMA: ajuste os prazos do cliente aqui -->
+        <div class="aviso revelar" role="note">
+          <span class="aviso-icone" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M8 2v4m8-4v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm7 10v3"/></svg></span>
+          <div>
+            <h3>Antecedência mínima para encomendas</h3>
+            <ul>
+              <li><strong>Bolos de festa e kits:</strong> 7 dias</li>
+              <li><strong>Doces finos e tortas:</strong> 4 dias</li>
+              <li><strong>Bolos caseiros:</strong> 48 horas</li>
+            </ul>
+            <p style="margin:10px 0 0;color:var(--cor-texto-suave);font-size:.94rem">Precisa para antes? Chame no WhatsApp: às vezes temos uma brechinha na agenda.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SEÇÃO: SOBRE (nossa história) ===== -->
+    <section class="secao" id="sobre">
+      <div class="container sobre-grid">
+        <figure class="polaroid revelar" style="margin-top:0;margin-bottom:0">
+          <!-- TROQUE: foto da confeiteira ou do ateliê -->
+          <img src="https://images.unsplash.com/photo-1557925923-cd4648e211a0?auto=format&fit=crop&w=1200&q=80" alt="Mão segurando um bolo artesanal de chocolate com cobertura de biscoito" loading="lazy" width="1200" height="1500">
+          <figcaption>direto do nosso ateliê</figcaption>
+        </figure>
+        <div class="revelar">
+          <span class="manuscrito">muito prazer</span>
+          <h2 class="titulo-secao">Confeitaria é <em>ofício</em>: paciência, técnica e afeto</h2>
+          <p>A Doce Ofício começou na cozinha de casa, com o caderno de receitas da minha avó e uma batedeira emprestada. Hoje temos um ateliê próprio, mas o jeito de fazer continua o mesmo: tudo preparado no dia, em pequenas fornadas, sem pressa e sem atalhos.</p>
+          <p>Cada encomenda é pensada para a sua história, seja o primeiro aniversário do seu filho ou o bolo de sábado com a família.</p>
+          <p class="assinatura">Marina Duarte<small>confeiteira e fundadora</small></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SEÇÃO: DIFERENCIAIS ===== -->
+    <section class="secao diferenciais">
+      <div class="container">
+        <div class="dif-lista revelar">
+          <div class="dif-item">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M12 3c3 3 5 5.5 5 9a5 5 0 0 1-10 0c0-3.5 2-6 5-9zm0 18v-4"/></svg>
+            <h3>Ingredientes de verdade</h3>
+            <p>Manteiga, chocolate nobre, ovos caipiras e frutas frescas.</p>
+          </div>
+          <div class="dif-item">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M12 7v5l3 2m6-2a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg>
+            <h3>Feito no dia</h3>
+            <p>Seu bolo sai do forno o mais perto possível da festa.</p>
+          </div>
+          <div class="dif-item">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.4l-5.2 2.7 1-5.8L3.5 9.2l5.9-.9z"/></svg>
+            <h3>Decoração sob medida</h3>
+            <p>Do minimalista ao temático, criamos junto com você.</p>
+          </div>
+          <div class="dif-item">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M3 7h11v9H3zm11 3h4l3 3v3h-7M7 19a2 2 0 1 0 0-.01M17 19a2 2 0 1 0 0-.01"/></svg>
+            <h3>Entrega cuidadosa</h3>
+            <p>Transporte refrigerado para o bolo chegar perfeito.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SEÇÃO: DATAS ESPECIAIS ===== -->
+    <section class="secao datas" id="datas">
+      <div class="container">
+        <div class="centro revelar">
+          <span class="manuscrito">agenda doce do ano</span>
+          <h2 class="titulo-secao">Datas especiais pedem <em>reserva</em> antecipada</h2>
+          <p class="intro">Nossas edições limitadas esgotam rápido. Garanta a sua com antecedência pelo WhatsApp.</p>
+        </div>
+        <div class="datas-grade">
+          <article class="data-card data-pascoa revelar">
+            <div class="ilustra" aria-hidden="true">
+              <svg viewBox="0 0 64 64"><path fill="currentColor" d="M32 6c-11 0-20 18-20 31a20 20 0 0 0 40 0C52 24 43 6 32 6z"/><path fill="none" stroke="#F9DDE0" stroke-width="3" stroke-linecap="round" d="M15 34l6-4 6 4 5-4 5 4 6-4 6 4"/></svg>
+            </div>
+            <span class="quando">março e abril</span>
+            <h3>Páscoa</h3>
+            <p>Ovos de colher recheados, colomba artesanal e cestas presenteáveis.</p>
+            <a class="btn btn-primario" data-whatsapp data-msg="Olá! Quero reservar produtos de Páscoa na Doce Ofício." href="#"><svg aria-hidden="true"><use href="#i-whats"/></svg> Reservar Páscoa</a>
+          </article>
+          <article class="data-card data-maes revelar">
+            <div class="ilustra" aria-hidden="true">
+              <svg viewBox="0 0 64 64"><g fill="currentColor"><circle cx="32" cy="18" r="9"/><circle cx="46" cy="28" r="9"/><circle cx="41" cy="44" r="9"/><circle cx="23" cy="44" r="9"/><circle cx="18" cy="28" r="9"/></g><circle cx="32" cy="32" r="7" fill="#FFFDF9"/></svg>
+            </div>
+            <span class="quando">maio</span>
+            <h3>Dia das Mães</h3>
+            <p>Caixas de doces finos, mini bolos com flores e cartão escrito à mão.</p>
+            <a class="btn btn-primario" data-whatsapp data-msg="Olá! Quero reservar um presente de Dia das Mães na Doce Ofício." href="#"><svg aria-hidden="true"><use href="#i-whats"/></svg> Reservar presente</a>
+          </article>
+          <article class="data-card data-natal revelar">
+            <div class="ilustra" aria-hidden="true">
+              <svg viewBox="0 0 64 64"><path fill="currentColor" d="M32 6l6.5 13.2 14.5 2.1-10.5 10.2 2.5 14.5L32 39.2l-13 6.8 2.5-14.5L11 21.3l14.5-2.1z"/><circle cx="32" cy="56" r="3" fill="currentColor"/></svg>
+            </div>
+            <span class="quando">dezembro</span>
+            <h3>Natal</h3>
+            <p>Panetone artesanal, torta de nozes, bolo de frutas e kits para a ceia.</p>
+            <a class="btn btn-rosa" data-whatsapp data-msg="Olá! Quero reservar produtos de Natal na Doce Ofício." href="#"><svg aria-hidden="true"><use href="#i-whats"/></svg> Reservar Natal</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SEÇÃO: DEPOIMENTOS (prova social) ===== -->
+    <section class="secao" id="depoimentos">
+      <div class="container">
+        <div class="centro revelar">
+          <span class="manuscrito">recadinhos de clientes</span>
+          <h2 class="titulo-secao">Quem prova, <em>volta</em></h2>
+        </div>
+        <div class="depo-grade">
+          <article class="bilhete revelar">
+            <div class="estrelas" aria-label="Avaliação 5 de 5 estrelas">★★★★★</div>
+            <blockquote><p>O bolo do aniversário da Helena ficou idêntico à referência e todo mundo pediu o contato. Recheio de ninho com morango maravilhoso!</p></blockquote>
+            <footer><strong>Aline Rocha</strong><span>Aniversário de 1 ano</span></footer>
+          </article>
+          <article class="bilhete revelar">
+            <div class="estrelas" aria-label="Avaliação 5 de 5 estrelas">★★★★★</div>
+            <blockquote><p>Encomendei os doces finos do meu casamento. Pontualidade, capricho e um bem-casado que derrete na boca.</p></blockquote>
+            <footer><strong>Renata e Paulo</strong><span>Casamento</span></footer>
+          </article>
+          <article class="bilhete revelar">
+            <div class="estrelas" aria-label="Avaliação 5 de 5 estrelas">★★★★★</div>
+            <blockquote><p>Toda sexta passo para buscar o bolo de fubá cremoso. Tem gosto de casa de vó, sem exagero no açúcar.</p></blockquote>
+            <footer><strong>Mário Castro</strong><span>Cliente desde 2019</span></footer>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SEÇÃO: FAQ (perguntas frequentes) ===== -->
+    <section class="secao faq" id="faq">
+      <div class="container">
+        <div class="centro revelar">
+          <span class="manuscrito">ficou alguma dúvida?</span>
+          <h2 class="titulo-secao">Perguntas frequentes</h2>
+        </div>
+        <div class="faq-lista revelar">
+          <details>
+            <summary>Quanto de bolo preciso para minha festa?</summary>
+            <p>Calculamos em média 100 g por convidado adulto. Para 30 pessoas, um bolo de 3 kg costuma ser suficiente. Na conversa pelo WhatsApp a gente ajuda a acertar a quantidade.</p>
+          </details>
+          <details>
+            <summary>Como funciona o pagamento?</summary>
+            <p>Reservamos a data com 50% de sinal via Pix e o restante é pago na retirada ou na entrega. Também aceitamos cartão no ateliê.</p>
+          </details>
+          <details>
+            <summary>Vocês fazem entrega? Qual o valor?</summary>
+            <p>Sim, entregamos com transporte refrigerado. A taxa varia conforme a distância e é informada junto com o orçamento.</p>
+          </details>
+          <details>
+            <summary>Têm opções sem lactose, sem glúten ou sem açúcar?</summary>
+            <p>Temos alguns sabores adaptados sob consulta. Como produzimos em cozinha compartilhada, avisamos que pode haver traços de glúten e lactose.</p>
+          </details>
+          <details>
+            <summary>Posso cancelar ou mudar a data da encomenda?</summary>
+            <p>Mudanças de data podem ser feitas com até 5 dias de antecedência, conforme disponibilidade da agenda. Em caso de cancelamento, o sinal fica como crédito para uma próxima encomenda.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SEÇÃO: LOCALIZAÇÃO E HORÁRIO ===== -->
+    <section class="secao" id="contato">
+      <div class="container">
+        <div class="centro revelar">
+          <span class="manuscrito">venha nos visitar</span>
+          <h2 class="titulo-secao">Nosso ateliê</h2>
+        </div>
+        <div class="local-grid">
+          <div class="local-info revelar">
+            <h3>Endereço</h3>
+            <address data-config="endereco">Rua das Amoreiras, 245 - Vila Mariana, São Paulo - SP</address>
+            <h3>Horário para retiradas</h3>
+            <ul class="horarios">
+              <li><span>Terça a sexta</span><span>10h às 19h</span></li>
+              <li><span>Sábado</span><span>9h às 15h</span></li>
+              <li><span>Domingo e segunda</span><span>Fechado</span></li>
+            </ul>
+            <a class="btn btn-primario" data-whatsapp href="#"><svg aria-hidden="true"><use href="#i-whats"/></svg> <span data-config="telefoneExibicao">(11) 99999-9999</span></a>
+          </div>
+          <div class="mapa revelar">
+            <!-- O mapa é atualizado automaticamente pelo "endereco" do CONFIG -->
+            <iframe id="mapa" title="Mapa com a localização da Doce Ofício Confeitaria" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps?q=Rua%20das%20Amoreiras%2C%20245%20-%20S%C3%A3o%20Paulo%20-%20SP&output=embed"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SEÇÃO: CTA FINAL ===== -->
+    <section class="cta-final">
+      <div class="container revelar">
+        <span class="manuscrito">sua festa merece</span>
+        <h2>Vamos criar o doce da sua <em>próxima lembrança</em>?</h2>
+        <p>Conte a data, o número de convidados e o tema. A gente responde com sugestões e orçamento no mesmo dia.</p>
+        <a class="btn btn-rosa" data-whatsapp data-msg="Olá! Quero fazer um orçamento para minha festa." href="#"><svg aria-hidden="true"><use href="#i-whats"/></svg> Pedir meu orçamento</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== SEÇÃO: RODAPÉ ===== -->
+  <footer class="rodape">
+    <div class="container">
+      <div class="rodape-grid">
+        <div>
+          <a href="#inicio" class="logo" style="margin-bottom:14px"><strong>Doce Ofício</strong><small>confeitaria artesanal</small></a>
+          <p>Bolos e doces feitos à mão, sob encomenda, com ingredientes selecionados e muito carinho.</p>
+        </div>
+        <div>
+          <h4>Navegue</h4>
+          <ul>
+            <li><a href="#vitrine">Vitrine</a></li>
+            <li><a href="#como-encomendar">Como encomendar</a></li>
+            <li><a href="#datas">Datas especiais</a></li>
+            <li><a href="#faq">Dúvidas frequentes</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contato</h4>
+          <ul>
+            <li><a data-whatsapp href="#">WhatsApp: <span data-config="telefoneExibicao">(11) 99999-9999</span></a></li>
+            <li><a data-instagram href="#">Instagram: @<span data-config="instagram">doceoficio.confeitaria</span></a></li>
+            <li data-config="endereco">Rua das Amoreiras, 245 - Vila Mariana, São Paulo - SP</li>
+          </ul>
+        </div>
+      </div>
+      <div class="rodape-base">
+        <span>© <span id="ano">2026</span> <span data-config="nomeNegocio">Doce Ofício Confeitaria Artesanal</span>. Todos os direitos reservados.</span>
+        <span>Fotos meramente ilustrativas.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== SEÇÃO: BOTÃO FLUTUANTE DE WHATSAPP ===== -->
+  <a class="whats-flutuante" data-whatsapp href="#" aria-label="Encomendar pelo WhatsApp">
+    <svg aria-hidden="true"><use href="#i-whats"/></svg>
+  </a>
+
+  <script>
+    /* =========================================================
+       CONFIG — troque aqui os dados do cliente (um lugar só!)
+       ========================================================= */
+    const CONFIG = {
+      nomeNegocio: 'Doce Ofício Confeitaria Artesanal',
+      whatsapp: '5511999999999',               // 55 + DDD + número, só números
+      mensagemWhatsApp: 'Olá! Vim pelo site da Doce Ofício e gostaria de fazer uma encomenda.',
+      telefoneExibicao: '(11) 99999-9999',
+      instagram: 'doceoficio.confeitaria',      // sem o @
+      endereco: 'Rua das Amoreiras, 245 - Vila Mariana, São Paulo - SP'
+    };
+
+    /* ===== WhatsApp: preenche todos os botões com data-whatsapp ===== */
+    document.querySelectorAll('[data-whatsapp]').forEach(function (el) {
+      const mensagem = el.dataset.msg || CONFIG.mensagemWhatsApp;
+      el.href = 'https://wa.me/' + CONFIG.whatsapp + '?text=' + encodeURIComponent(mensagem);
+      el.target = '_blank';
+      el.rel = 'noopener';
+    });
+
+    /* ===== Preenche textos a partir do CONFIG ===== */
+    document.querySelectorAll('[data-config]').forEach(function (el) {
+      el.textContent = CONFIG[el.dataset.config];
+    });
+    document.querySelectorAll('[data-instagram]').forEach(function (el) {
+      el.href = 'https://instagram.com/' + CONFIG.instagram;
+      el.target = '_blank';
+      el.rel = 'noopener';
+    });
+    document.getElementById('mapa').src = 'https://www.google.com/maps?q=' + encodeURIComponent(CONFIG.endereco) + '&output=embed';
+    document.getElementById('ano').textContent = new Date().getFullYear();
+
+    /* ===== Menu mobile (hambúrguer) ===== */
+    const botaoMenu = document.querySelector('.hamburguer');
+    const menu = document.getElementById('menu');
+    function fecharMenu() {
+      menu.classList.remove('aberto');
+      botaoMenu.setAttribute('aria-expanded', 'false');
+      botaoMenu.setAttribute('aria-label', 'Abrir menu');
+    }
+    botaoMenu.addEventListener('click', function () {
+      const abrir = !menu.classList.contains('aberto');
+      menu.classList.toggle('aberto', abrir);
+      botaoMenu.setAttribute('aria-expanded', String(abrir));
+      botaoMenu.setAttribute('aria-label', abrir ? 'Fechar menu' : 'Abrir menu');
+    });
+    menu.querySelectorAll('a').forEach(function (link) { link.addEventListener('click', fecharMenu); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') fecharMenu(); });
+
+    /* ===== Sombra no header ao rolar ===== */
+    const header = document.querySelector('.header');
+    window.addEventListener('scroll', function () {
+      header.classList.toggle('rolou', window.scrollY > 10);
+    }, { passive: true });
+
+    /* ===== Animação de entrada ao rolar ===== */
+    const elementos = document.querySelectorAll('.revelar');
+    const semAnimacao = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (semAnimacao || !('IntersectionObserver' in window)) {
+      elementos.forEach(function (el) { el.classList.add('visivel'); });
+    } else {
+      const observador = new IntersectionObserver(function (entradas) {
+        entradas.forEach(function (entrada) {
+          if (entrada.isIntersecting) {
+            entrada.target.classList.add('visivel');
+            observador.unobserve(entrada.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      elementos.forEach(function (el) { observador.observe(el); });
+    }
+  </script>
+<!-- grs:modelo:selo -->
+<script>
+(function () {
+  var GRS = "https://wa.me/5512981085504?text=Ol%C3%A1!%20Vi%20o%20modelo%20de%20site%20para%20confeitaria%20no%20site%20da%20GRS%20e%20quero%20um%20site%20parecido%20para%20o%20meu%20neg%C3%B3cio.";
+  var TEL = "tel:+5512981085504";
+  var FONE = "(12) 98108-5504";
+  var WA = /^https?:\/\/(wa\.me|api\.whatsapp\.com|web\.whatsapp\.com)\//i;
+  var NUMERO = /\(\d{2}\)\s?\d{4,5}-\d{4}/g;
+  function trocar() {
+    document.querySelectorAll('a[href]').forEach(function (a) {
+      if (WA.test(a.href)) { a.href = GRS; a.target = '_blank'; a.rel = 'noopener noreferrer'; }
+      else if (/^tel:/i.test(a.getAttribute('href'))) { a.href = TEL; }
+    });
+    // Telefones escritos na página (fora de <script> e <style>)
+    var andar = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (n) {
+        var p = n.parentNode && n.parentNode.nodeName;
+        return p === 'SCRIPT' || p === 'STYLE' ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    for (var n = andar.nextNode(); n; n = andar.nextNode()) {
+      if (NUMERO.test(n.nodeValue)) { NUMERO.lastIndex = 0; n.nodeValue = n.nodeValue.replace(NUMERO, FONE); }
+      NUMERO.lastIndex = 0;
+    }
+  }
+  trocar();
+  document.addEventListener('DOMContentLoaded', trocar);
+  var abrir = window.open;
+  window.open = function (u) {
+    var args = Array.prototype.slice.call(arguments);
+    if (typeof u === 'string' && WA.test(u)) args[0] = GRS;
+    return abrir.apply(window, args);
+  };
+})();
+</script>
+<style>
+/* Evita rolagem lateral no celular (ex.: menu escondido fora da tela) */
+html{overflow-x:clip}
+.grs-selo{position:fixed;left:12px;bottom:12px;z-index:2147483000;display:flex;align-items:center;gap:10px;max-width:calc(100vw - 108px);padding:8px 8px 8px 14px;border-radius:999px;background:rgba(7,10,18,.92);color:#e9edf5;font:500 12.5px/1.3 system-ui,-apple-system,"Segoe UI",sans-serif;box-shadow:0 10px 30px -10px rgba(0,0,0,.6);border:1px solid rgba(148,163,184,.25)}
+.grs-selo span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.grs-selo a{flex:none;display:inline-flex;align-items:center;min-height:32px;padding:0 12px;border-radius:999px;background:#2e62f5;color:#fff;text-decoration:none;font-weight:600}
+.grs-selo a:hover{background:#2759ec}
+.grs-selo a:focus-visible{outline:2px solid #38d9f0;outline-offset:2px}
+@media print{.grs-selo{display:none}}
+</style>
+<div class="grs-selo" role="note" aria-label="Aviso: modelo de demonstração">
+  <span>Modelo de demonstração · dados fictícios</span>
+  <a href="/#modelos">Voltar à GRS</a>
+</div>
+<!-- /grs:modelo:selo -->
+</body>
+</html>

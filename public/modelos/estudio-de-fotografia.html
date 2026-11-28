@@ -61,7 +61,7 @@
   "@type": "LocalBusiness",
   "name": "Lente Viva Estúdio",
   "description": "Estúdio de fotografia com ensaios de família, gestante, newborn, retrato profissional e cobertura de eventos. Veja os pacotes e agende.",
-  "telephone": "+55 11 99999-9999",
+  "telephone": "+55-12-98108-5504",
   "email": "contato@exemplo.com.br",
   "address": {
     "@type": "PostalAddress",
@@ -473,11 +473,26 @@ const CONFIG = {
 <script>
 (function () {
   var GRS = "https://wa.me/5512981085504?text=Ol%C3%A1!%20Vi%20o%20modelo%20de%20site%20para%20est%C3%BAdio%20de%20fotografia%20no%20site%20da%20GRS%20e%20quero%20um%20site%20parecido%20para%20o%20meu%20neg%C3%B3cio.";
+  var TEL = "tel:+5512981085504";
+  var FONE = "(12) 98108-5504";
   var WA = /^https?:\/\/(wa\.me|api\.whatsapp\.com|web\.whatsapp\.com)\//i;
+  var NUMERO = /\(\d{2}\)\s?\d{4,5}-\d{4}/g;
   function trocar() {
     document.querySelectorAll('a[href]').forEach(function (a) {
       if (WA.test(a.href)) { a.href = GRS; a.target = '_blank'; a.rel = 'noopener noreferrer'; }
+      else if (/^tel:/i.test(a.getAttribute('href'))) { a.href = TEL; }
     });
+    // Telefones escritos na página (fora de <script> e <style>)
+    var andar = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (n) {
+        var p = n.parentNode && n.parentNode.nodeName;
+        return p === 'SCRIPT' || p === 'STYLE' ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    for (var n = andar.nextNode(); n; n = andar.nextNode()) {
+      if (NUMERO.test(n.nodeValue)) { NUMERO.lastIndex = 0; n.nodeValue = n.nodeValue.replace(NUMERO, FONE); }
+      NUMERO.lastIndex = 0;
+    }
   }
   trocar();
   document.addEventListener('DOMContentLoaded', trocar);
@@ -490,6 +505,8 @@ const CONFIG = {
 })();
 </script>
 <style>
+/* Evita rolagem lateral no celular (ex.: menu escondido fora da tela) */
+html{overflow-x:clip}
 .grs-selo{position:fixed;left:12px;bottom:12px;z-index:2147483000;display:flex;align-items:center;gap:10px;max-width:calc(100vw - 108px);padding:8px 8px 8px 14px;border-radius:999px;background:rgba(7,10,18,.92);color:#e9edf5;font:500 12.5px/1.3 system-ui,-apple-system,"Segoe UI",sans-serif;box-shadow:0 10px 30px -10px rgba(0,0,0,.6);border:1px solid rgba(148,163,184,.25)}
 .grs-selo span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .grs-selo a{flex:none;display:inline-flex;align-items:center;min-height:32px;padding:0 12px;border-radius:999px;background:#2e62f5;color:#fff;text-decoration:none;font-weight:600}
