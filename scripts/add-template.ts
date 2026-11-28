@@ -11,6 +11,10 @@
  *      endereços e números fictícios e não devem aparecer no Google)
  *   3. Adiciona um selo fixo "Modelo de demonstração · dados fictícios" com
  *      link de volta para o site da GRS
+ *   4. Redireciona todos os links e formulários de WhatsApp do modelo para o
+ *      WhatsApp da GRS (src/config/site.ts), com uma mensagem que cita o
+ *      modelo. O título vem de src/config/portfolio.ts (pelo slug) ou do
+ *      3º argumento opcional:  npm run modelo -- arquivo.html padaria "padaria"
  *
  * Pode ser executado de novo sobre o mesmo arquivo: os trechos inseridos
  * ficam entre marcadores e são substituídos, nunca duplicados.
@@ -19,6 +23,8 @@
  */
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
+import { portfolioProjects } from "../src/config/portfolio";
+import { siteConfig } from "../src/config/site";
 
 const root = path.resolve(import.meta.dirname, "..");
 const outDir = path.join(root, "public/modelos");
@@ -32,9 +38,46 @@ const HEAD_SNIPPET = `${HEAD_START}
 <meta name="robots" content="noindex, nofollow">
 ${HEAD_END}`;
 
+/** Mensagem enviada à GRS a partir de um modelo. */
+function whatsappMessage(label?: string) {
+  return label
+    ? `Olá! Vi o modelo de site para ${label} no site da GRS e quero um site parecido para o meu negócio.`
+    : "Olá! Vi um modelo de site no site da GRS e quero um site parecido para o meu negócio.";
+}
+
+/**
+ * Script inserido depois dos scripts do modelo: troca o destino de todos os
+ * links de WhatsApp (wa.me / api.whatsapp.com) e intercepta window.open dos
+ * formulários, apontando para o WhatsApp da GRS com a mensagem do modelo.
+ * Links de telefone (tel:) e textos do modelo não são alterados.
+ */
+function whatsappSnippet(label?: string) {
+  const url = `https://wa.me/${siteConfig.contact.whatsappNumber}?text=${encodeURIComponent(whatsappMessage(label))}`;
+  return `<script>
+(function () {
+  var GRS = ${JSON.stringify(url)};
+  var WA = /^https?:\\/\\/(wa\\.me|api\\.whatsapp\\.com|web\\.whatsapp\\.com)\\//i;
+  function trocar() {
+    document.querySelectorAll('a[href]').forEach(function (a) {
+      if (WA.test(a.href)) { a.href = GRS; a.target = '_blank'; a.rel = 'noopener noreferrer'; }
+    });
+  }
+  trocar();
+  document.addEventListener('DOMContentLoaded', trocar);
+  var abrir = window.open;
+  window.open = function (u) {
+    var args = Array.prototype.slice.call(arguments);
+    if (typeof u === 'string' && WA.test(u)) args[0] = GRS;
+    return abrir.apply(window, args);
+  };
+})();
+</script>`;
+}
+
 // Selo fixo no canto inferior esquerdo (o botão de WhatsApp dos modelos fica
 // à direita). Estilos isolados com prefixo "grs-" para não conflitar.
-const BODY_SNIPPET = `${BODY_START}
+const bodySnippet = (label?: string) => `${BODY_START}
+${whatsappSnippet(label)}
 <style>
 .grs-selo{position:fixed;left:12px;bottom:12px;z-index:2147483000;display:flex;align-items:center;gap:10px;max-width:calc(100vw - 108px);padding:8px 8px 8px 14px;border-radius:999px;background:rgba(7,10,18,.92);color:#e9edf5;font:500 12.5px/1.3 system-ui,-apple-system,"Segoe UI",sans-serif;box-shadow:0 10px 30px -10px rgba(0,0,0,.6);border:1px solid rgba(148,163,184,.25)}
 .grs-selo span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -73,10 +116,17 @@ function findTagOutsideComments(html: string, tag: RegExp, which: "first" | "las
 }
 
 async function main() {
-  const [input, slug] = process.argv.slice(2);
+  const [input, slug, labelArg] = process.argv.slice(2);
   if (!input || !slug || !/^[a-z0-9-]+$/.test(slug)) {
-    console.error("Uso: npm run modelo -- <arquivo.html> <slug>   (slug: letras minúsculas, números e hífens)");
+    console.error('Uso: npm run modelo -- <arquivo.html> <slug> ["título"]   (slug: letras minúsculas, números e hífens)');
     process.exit(1);
+  }
+
+  // Título para a mensagem do WhatsApp: argumento > cadastro em portfolio.ts
+  const fromConfig = portfolioProjects.find((p) => p.slug === slug)?.name.replace(/^Site para\s+/i, "");
+  const label = labelArg?.trim() || fromConfig;
+  if (!label) {
+    console.warn(`! "${slug}" ainda não está em portfolio.ts: usando mensagem genérica no WhatsApp.`);
   }
 
   let html = await readFile(path.resolve(input), "utf8");
@@ -92,14 +142,14 @@ async function main() {
   }
 
   // Insere antes do </body> primeiro (posição maior), depois após o <head>
-  html = `${html.slice(0, bodyEnd.index)}${BODY_SNIPPET}\n${html.slice(bodyEnd.index)}`;
+  html = `${html.slice(0, bodyEnd.index)}${bodySnippet(label)}\n${html.slice(bodyEnd.index)}`;
   const afterHead = head.index + head.length;
   html = `${html.slice(0, afterHead)}\n${HEAD_SNIPPET}${html.slice(afterHead)}`;
 
   await mkdir(outDir, { recursive: true });
   const out = path.join(outDir, `${slug}.html`);
   await writeFile(out, html);
-  console.log(`✓ ${path.relative(root, out)}  →  publicado em /modelos/${slug}.html`);
+  console.log(`✓ ${path.relative(root, out)}  →  /modelos/${slug}.html  (WhatsApp: "${whatsappMessage(label)}")`);
 }
 
 main().catch((error) => {

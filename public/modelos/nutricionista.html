@@ -995,6 +995,25 @@ if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-mot
 }
 </script>
 <!-- grs:modelo:selo -->
+<script>
+(function () {
+  var GRS = "https://wa.me/5512981085504?text=Ol%C3%A1!%20Vi%20o%20modelo%20de%20site%20para%20nutricionista%20no%20site%20da%20GRS%20e%20quero%20um%20site%20parecido%20para%20o%20meu%20neg%C3%B3cio.";
+  var WA = /^https?:\/\/(wa\.me|api\.whatsapp\.com|web\.whatsapp\.com)\//i;
+  function trocar() {
+    document.querySelectorAll('a[href]').forEach(function (a) {
+      if (WA.test(a.href)) { a.href = GRS; a.target = '_blank'; a.rel = 'noopener noreferrer'; }
+    });
+  }
+  trocar();
+  document.addEventListener('DOMContentLoaded', trocar);
+  var abrir = window.open;
+  window.open = function (u) {
+    var args = Array.prototype.slice.call(arguments);
+    if (typeof u === 'string' && WA.test(u)) args[0] = GRS;
+    return abrir.apply(window, args);
+  };
+})();
+</script>
 <style>
 .grs-selo{position:fixed;left:12px;bottom:12px;z-index:2147483000;display:flex;align-items:center;gap:10px;max-width:calc(100vw - 108px);padding:8px 8px 8px 14px;border-radius:999px;background:rgba(7,10,18,.92);color:#e9edf5;font:500 12.5px/1.3 system-ui,-apple-system,"Segoe UI",sans-serif;box-shadow:0 10px 30px -10px rgba(0,0,0,.6);border:1px solid rgba(148,163,184,.25)}
 .grs-selo span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}

@@ -84,9 +84,14 @@ Os modelos são páginas HTML de arquivo único, publicadas em `public/modelos/`
    O script copia o arquivo para `public/modelos/<slug>.html` e adiciona:
    - `<meta name="robots" content="noindex">`, para que os negócios fictícios dos modelos não
      apareçam no Google com o seu domínio;
-   - um selo fixo "Modelo de demonstração · dados fictícios" com link de volta para a GRS.
+   - um selo fixo "Modelo de demonstração · dados fictícios" com link de volta para a GRS;
+   - um script que redireciona todos os links e formulários de WhatsApp do modelo para o WhatsApp
+     da GRS (`src/config/site.ts`), com a mensagem "Olá! Vi o modelo de site para … no site da GRS
+     e quero um site parecido para o meu negócio." O título vem do cadastro em `portfolio.ts`
+     (pelo slug) ou de um 3º argumento: `npm run modelo -- arquivo.html padaria "padaria"`.
 
-   Pode ser rodado de novo sobre o mesmo arquivo sem duplicar nada.
+   Pode ser rodado de novo sobre o mesmo arquivo sem duplicar nada. Se o WhatsApp da GRS mudar,
+   rode o comando de novo para cada modelo.
 2. Cadastre o modelo em `src/config/portfolio.ts` (mesmo `slug`, título, categoria, descrição e
    `url: "/modelos/<slug>.html"`).
 3. Gere as capturas (precisa de acesso à internet para fontes e fotos):
